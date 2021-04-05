@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CourseWork.Models
 {
-    class Part
+    public class Part
     {
+        //--ToDo: Заполнить поля и навигационные свойства
     }
 }
