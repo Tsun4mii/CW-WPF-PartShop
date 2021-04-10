@@ -17,7 +17,7 @@ namespace CourseWork.Models
         public int UserId { get; set; }
         public User User { get; set; }
         public int DeliveryId { get; set; }
-
+        public Delivery Delivery { get; set; }
         //--ToDo: Добавить класс Delivery и создать навигационное свойство
     }
 }

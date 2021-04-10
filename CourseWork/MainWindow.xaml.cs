@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseWork.Database;
+using CourseWork.Models;
+using CourseWork.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -23,18 +26,16 @@ namespace CourseWork
     /// </summary>
     public partial class MainWindow : Window
     {
-        string connectionString;
-        SqlDataAdapter adapter;
-        DataTable logTable;
         public MainWindow()
         {
             InitializeComponent();
-            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthView a = new AuthView();
+            a.ShowDialog();
         }
     }
 }

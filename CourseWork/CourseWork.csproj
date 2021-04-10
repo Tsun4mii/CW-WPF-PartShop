@@ -66,9 +66,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Database\PartShopDbContext.cs" />
+    <Compile Include="Migrations\202104101848357_InitialCreate.cs" />
+    <Compile Include="Migrations\202104101848357_InitialCreate.designer.cs">
+      <DependentUpon>202104101848357_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104102047543_FirstMigration.cs" />
+    <Compile Include="Migrations\202104102047543_FirstMigration.designer.cs">
+      <DependentUpon>202104102047543_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthorizedUser.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Delivery.cs" />
+    <Compile Include="Models\Provider.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -77,6 +91,9 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AuthView.xaml.cs">
+      <DependentUpon>AuthView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CartView.xaml.cs">
       <DependentUpon>CartView.xaml</DependentUpon>
@@ -109,6 +126,10 @@
     <Page Include="Views\AdminView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AuthView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CartView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +170,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202104101848357_InitialCreate.resx">
+      <DependentUpon>202104101848357_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104102047543_FirstMigration.resx">
+      <DependentUpon>202104102047543_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

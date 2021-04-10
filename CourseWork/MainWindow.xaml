@@ -5,29 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWork"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="20 8 20 8" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
-        </Style>
-    </Window.Resources>
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="291*"/>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="phonesGrid" SelectionChanged="phonesGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Log}" Header="Логин" Width="120"/>
-                <DataGridTextColumn Binding="{Binding Pass}" Header="Пароль" Width="125"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
-            <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" />
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Button Click="Button_Click" />
+        </Grid>
     </Grid>
 </Window>
