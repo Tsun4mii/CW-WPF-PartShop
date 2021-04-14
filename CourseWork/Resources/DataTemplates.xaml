@@ -4,4 +4,19 @@
     <DataTemplate DataType="{x:Type local:SearchViewModel}">
         <local1:SearchView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type local:HomeViewModel}">
+        <local1:HomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:CartViewModel}">
+        <local1:CartView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:AdminViewModel}">
+        <local1:AdminView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:ProfileViewModel}">
+        <local1:ProfileView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+        <local1:SettingsView/>
+    </DataTemplate>
 </ResourceDictionary>

@@ -32,7 +32,6 @@ namespace CourseWork
         {
             InitializeComponent();
             DataContext = a;
-            //MainGrid.Children.Add(new HomeView());
         }
 
         //private void Button_Click(object sender, RoutedEventArgs e)

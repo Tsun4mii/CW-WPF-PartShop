@@ -3,15 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CourseWork" xmlns:local1="clr-namespace:CourseWork.Views"
-        xmlns:local2="clr-namespace:CourseWork.ViewModels"
+        xmlns:local="clr-namespace:CourseWork"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type local2:SearchViewModel}">
-            <local1:SearchView/>
-        </DataTemplate>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32*"/>
