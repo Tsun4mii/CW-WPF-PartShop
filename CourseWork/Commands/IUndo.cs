@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
-namespace CourseWork.ViewModels
+namespace CourseWork.Commands
 {
-    class SearchViewModel : ViewModelBase
+    interface IUndo : ICommand
     {
-
+        void Unexecute(object obj);
     }
 }

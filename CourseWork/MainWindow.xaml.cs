@@ -1,5 +1,6 @@
 ﻿using CourseWork.Database;
 using CourseWork.Models;
+using CourseWork.ViewModels;
 using CourseWork.Views;
 using System;
 using System.Collections.Generic;
@@ -26,16 +27,23 @@ namespace CourseWork
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel a = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = a;
+            //MainGrid.Children.Add(new HomeView());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    AuthView a = new AuthView();
+        //    a.ShowDialog();
+        //}
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AuthView a = new AuthView();
-            a.ShowDialog();
+            a.index = ListViewMenu.SelectedIndex;
         }
     }
 }
