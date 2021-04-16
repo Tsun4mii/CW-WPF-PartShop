@@ -11,7 +11,7 @@ namespace CourseWork.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public int index { get; set; }
+        public string index { get; set; }
         private ViewModelBase currentViewModel;
 
         public ViewModelBase CurrentViewModel
@@ -39,8 +39,14 @@ namespace CourseWork.ViewModels
                  {
                      switch(index)
                      {
-                         case 1:
+                         case "Search":
                              Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel();
+                             break;
+                         case "Home":
+                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new HomeViewModel();
+                             break;
+                         case "Settings":
+                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
                              break;
                      }
                  }));

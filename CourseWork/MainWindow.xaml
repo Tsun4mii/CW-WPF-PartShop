@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseWork"
+        xmlns:view="clr-namespace:CourseWork.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
@@ -12,26 +13,14 @@
             <RowDefinition Height="253*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="274*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.RowSpan="2" Grid.Row="0" Background="Bisque">
-            <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged" Margin="0 50" Foreground="White" MinHeight="240" VerticalContentAlignment="Top" 
-                              Background="{x:Null}" BorderBrush="{x:Null}" 
-                              IsSynchronizedWithCurrentItem="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListViewItem Height="60"  >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="Cart" FontSize="20" FontFamily="Global Sans Serif" Margin="15,0,0,0" TextWrapping="Wrap"  />
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" >
-                    <StackPanel Orientation="Horizontal">
-                        <Button Command="{Binding ChangeCommand}" Width="100"/>
-                        <TextBlock VerticalAlignment="Center" Text="Search" FontSize="20" FontFamily="Global Sans Serif" Margin="15,0,0,0" TextWrapping="Wrap"  />
-                    </StackPanel>
-                </ListViewItem>
-            </ListView>
-        </Grid>
+        <StackPanel Grid.Row="1">
+            <RadioButton x:Name="homeRadio" Content="Home" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+            <RadioButton x:Name="searchRadio" Content="Search" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+            <RadioButton x:Name="settingsRadio" Content="Settings" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+        </StackPanel>
         <Grid Grid.Row="0" Grid.Column="1">
             
         </Grid>

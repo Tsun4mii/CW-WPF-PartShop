@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:CourseWork.Views"
         xmlns:viewmodel ="clr-namespace:CourseWork.ViewModels"
         mc:Ignorable="d"
-        Title="AuthView" Height="450" Width="400">
+        Title="AuthView" Height="450" Width="903.226">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="E:\2nd course\OOP\CW\CourseWork\CourseWork\Resources\a23.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="142*"/>
             <RowDefinition Height="170*"/>
@@ -15,10 +18,10 @@
             <RowDefinition Height="34*"/>
             <RowDefinition Height="33*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="0,0.6,-0.4,8.8" Grid.Row="1">
-            <TextBox x:Name="login_textbox" Text="{Binding login}"/>
-            <PasswordBox x:Name="password_textbox" Height="50" PasswordChanged="PasswordBox_PasswordChanged"/>
-            <Button Height="40" Margin="0,105,0,16" Command="{Binding AuthCommand}"/>
+        <Grid Margin="0,0.6,-0.4,8.8" Grid.Row="1" >
+            <TextBox x:Name="login_textbox" Text="{Binding login}" Margin="0,-142,412.2,0"/>
+            <PasswordBox x:Name="password_textbox" Height="50" PasswordChanged="PasswordBox_PasswordChanged" Margin="0,55,412.2,56"/>
+            <Button Margin="0,105,412.2,-113" Command="{Binding AuthCommand}"/>
         </Grid>
     </Grid>
 </Window>

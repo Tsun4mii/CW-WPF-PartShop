@@ -38,11 +38,11 @@ namespace CourseWork
         //{
         //    AuthView a = new AuthView();
         //    a.ShowDialog();
-        //}
+        //
 
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void searchRadio_Checked(object sender, RoutedEventArgs e)
         {
-            a.index = ListViewMenu.SelectedIndex;
+            a.index = ((RadioButton)sender).Content.ToString();
         }
     }
 }

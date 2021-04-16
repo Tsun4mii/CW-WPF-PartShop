@@ -9,10 +9,27 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="46*"/>
-            <RowDefinition Height="403*"/>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="265*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="0,0,0,0.4">
             <Label Content="Home View" FontSize="16"/>
-        </Grid>                
+        </Grid>
+        <Grid Grid.Row="1">
+            <Label Content="Welcome to our shop" FontSize="24" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2" Background="Black">
+            <TextBox Width=" 400" Height="50">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="20" Padding="2" BorderThickness="1" BorderBrush="White">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <Button Width="125" Height="50" Margin="540,0,0,0"/>
+        </Grid>
     </Grid>
 </UserControl>
