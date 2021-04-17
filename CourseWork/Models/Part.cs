@@ -20,9 +20,5 @@ namespace CourseWork.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public Provider Provider { get; set; }
-        
-        //--ToDo: Добавить provider 
-        //--Note: Цена в double
-        //PartFullInfo?
     }
 }

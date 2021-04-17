@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -15,7 +15,9 @@
                         PartId = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CartId);
+                .PrimaryKey(t => t.CartId)
+                .ForeignKey("dbo.Parts", t => t.PartId, cascadeDelete: true)
+                .Index(t => t.PartId);
             
             CreateTable(
                 "dbo.Parts",
@@ -29,15 +31,12 @@
                         Description = c.String(),
                         ImageLink = c.String(),
                         CategoryId = c.Int(nullable: false),
-                        Cart_CartId = c.Int(),
                     })
                 .PrimaryKey(t => t.PartId)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
                 .ForeignKey("dbo.Providers", t => t.ProviderId, cascadeDelete: true)
-                .ForeignKey("dbo.Carts", t => t.Cart_CartId)
                 .Index(t => t.ProviderId)
-                .Index(t => t.CategoryId)
-                .Index(t => t.Cart_CartId);
+                .Index(t => t.CategoryId);
             
             CreateTable(
                 "dbo.Categories",
@@ -99,7 +98,6 @@
                         FirstName = c.String(),
                         LastName = c.String(),
                         Email = c.String(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -110,15 +108,15 @@
             DropForeignKey("dbo.Orders", "UserId", "dbo.Users");
             DropForeignKey("dbo.Orders", "DeliveryId", "dbo.Deliveries");
             DropForeignKey("dbo.Orders", "CartId", "dbo.Carts");
-            DropForeignKey("dbo.Parts", "Cart_CartId", "dbo.Carts");
+            DropForeignKey("dbo.Carts", "PartId", "dbo.Parts");
             DropForeignKey("dbo.Parts", "ProviderId", "dbo.Providers");
             DropForeignKey("dbo.Parts", "CategoryId", "dbo.Categories");
             DropIndex("dbo.Orders", new[] { "DeliveryId" });
             DropIndex("dbo.Orders", new[] { "UserId" });
             DropIndex("dbo.Orders", new[] { "CartId" });
-            DropIndex("dbo.Parts", new[] { "Cart_CartId" });
             DropIndex("dbo.Parts", new[] { "CategoryId" });
             DropIndex("dbo.Parts", new[] { "ProviderId" });
+            DropIndex("dbo.Carts", new[] { "PartId" });
             DropTable("dbo.Users");
             DropTable("dbo.Orders");
             DropTable("dbo.Deliveries");

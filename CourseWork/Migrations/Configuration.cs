@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CourseWork.Database.PartShopDbContext";
         }
 
         protected override void Seed(CourseWork.Database.PartShopDbContext context)

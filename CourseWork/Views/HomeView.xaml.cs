@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace CourseWork.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
+        HomeViewModel homeV = new HomeViewModel();
         public HomeView()
         {
             InitializeComponent();
+            DataContext = homeV;
         }
     }
 }

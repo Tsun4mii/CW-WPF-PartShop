@@ -31,5 +31,25 @@
             </TextBox>
             <Button Width="125" Height="50" Margin="540,0,0,0"/>
         </Grid>
+        <Grid Grid.Row="3">
+            <ListBox ItemsSource="{Binding Parts}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="6" BorderThickness="5" DockPanel.Dock="Top" BorderBrush="#d8b9c3">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
     </Grid>
 </UserControl>

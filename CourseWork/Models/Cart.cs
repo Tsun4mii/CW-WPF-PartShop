@@ -12,7 +12,7 @@ namespace CourseWork.Models
         [Key]
         public int CartId { get; set; }
         public int PartId { get; set; }
-        public List<Part> Parts { get; set; } 
+        public Part Part { get; set; } 
         public int Quantity { get; set; }
 
     }

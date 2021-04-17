@@ -11,7 +11,7 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
-                            <TextBlock VerticalAlignment="Center" Text="{TemplateBinding Property=Content}">
+                            <TextBlock VerticalAlignment="Center" Text="{TemplateBinding Property=Content}" Foreground="Black">
  
                             </TextBlock>
                         </Grid>
