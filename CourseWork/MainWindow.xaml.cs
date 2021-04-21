@@ -44,5 +44,11 @@ namespace CourseWork
         {
             a.index = ((RadioButton)sender).Content.ToString();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AuthView v = new AuthView();
+            v.ShowDialog();
+        }
     }
 }

@@ -48,6 +48,9 @@ namespace CourseWork.ViewModels
                          case "Settings":
                              Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
                              break;
+                         case "Auth":
+                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new AuthViewModel();
+                             break;
                      }
                  }));
             }

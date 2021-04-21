@@ -19,4 +19,5 @@
     <DataTemplate DataType="{x:Type local:SettingsViewModel}">
         <local1:SettingsView/>
     </DataTemplate>
+    
 </ResourceDictionary>

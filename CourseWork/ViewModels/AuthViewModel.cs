@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace CourseWork.ViewModels
 {
-    public class AuthViewModel
+    public class AuthViewModel : ViewModelBase
     {
         public string login { get; set; }
         public string password { get; set; }
@@ -29,10 +29,22 @@ namespace CourseWork.ViewModels
                          authUser = db.Users.Where(a => a.Login == login && a.Password == password).FirstOrDefault();
                          if(authUser != null)
                          {
-                             MessageBox.Show("Evrethin is ok");
+                             //MainWindow main = new MainWindow();
+                             //main.Show();
+                             //this.Close();
                          }
                      }
                  }));
+            }
+        }
+        public void Close()
+        {
+            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window.DataContext == this)
+                {
+                    window.Close();
+                }
             }
         }
     }

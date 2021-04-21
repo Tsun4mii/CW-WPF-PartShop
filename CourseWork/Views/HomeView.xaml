@@ -3,43 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CourseWork.Views"
+             xmlns:local="clr-namespace:CourseWork.Views" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#a05344">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="46*"/>
             <RowDefinition Height="69*"/>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="265*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,0,0,0.4">
             <Label Content="Home View" FontSize="16"/>
         </Grid>
         <Grid Grid.Row="1">
-            <Label Content="Welcome to our shop" FontSize="24" HorizontalAlignment="Center"/>
+            <Menu>
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#734046"/>
+                        <GradientStop Color="#a05344" Offset="1"/>
+                        <GradientStop Color="#734046" Offset="0.546"/>
+                    </LinearGradientBrush>
+                </Menu.Background>
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="Масла и автохимия"/>
+                <MenuItem Header="Кузовные детали"/>
+                <MenuItem Header="Шины"/>
+                <MenuItem Header="Инструмент"/>
+            </Menu>
         </Grid>
-        <Grid Grid.Row="2" Background="Black">
-            <TextBox Width=" 400" Height="50">
-                <TextBox.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="20" Padding="2" BorderThickness="1" BorderBrush="White">
-                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                        </Border>
-                    </ControlTemplate>
-                </TextBox.Template>
+        <Grid Grid.Row="2" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox Width=" 400" VerticalAlignment="Center">
+ 
             </TextBox>
-            <Button Width="125" Height="50" Margin="540,0,0,0"/>
+            <Button Width="125" Height="25" />
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="3">
             <ListBox ItemsSource="{Binding Parts}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border CornerRadius="6" BorderThickness="5" DockPanel.Dock="Top" BorderBrush="#d8b9c3">
+                        <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
                             <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
+                                <materialDesign:Card UniformCornerRadius="10">
+                                <StackPanel Orientation="Vertical" Height=" 200" Width="120">
+                                    
+                                    <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
                                     <TextBlock Text="{Binding Name}"/>
+                                    <Separator Background="Black"/>
+                                    <Button/>
                                 </StackPanel>
+                                </materialDesign:Card>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -11,7 +11,7 @@
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
-                            <TextBlock VerticalAlignment="Center" Text="{TemplateBinding Property=Content}" Foreground="Black">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Property=Content}" Foreground="white">
  
                             </TextBlock>
                         </Grid>
@@ -23,7 +23,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#22202F"/>
+                <Setter Property="Background" Value="#321f28"/>
             </Trigger>
         </Style.Triggers>
     </Style>
