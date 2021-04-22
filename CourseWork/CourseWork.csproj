@@ -86,6 +86,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\Provider.cs" />
+    <Compile Include="Services\EmailSenderService.cs" />
     <Compile Include="SingletonView\Singleton.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />

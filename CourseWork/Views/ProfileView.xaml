@@ -40,5 +40,10 @@
                 </Grid>
             </materialDesign:Card>
         </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5"> 
+                
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </UserControl>

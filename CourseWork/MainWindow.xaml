@@ -26,6 +26,7 @@
         <Grid Grid.Row="1">
             <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
             <Button Click="Button_Click"/>
+            <Button Click="Button_Click_1" Margin="0,289,0,185.4"/>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1" Background="#734046">
             <Grid.ColumnDefinitions>

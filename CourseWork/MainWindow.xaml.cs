@@ -1,5 +1,6 @@
 ﻿using CourseWork.Database;
 using CourseWork.Models;
+using CourseWork.Services;
 using CourseWork.ViewModels;
 using CourseWork.Views;
 using System;
@@ -49,6 +50,11 @@ namespace CourseWork
         {
             AuthView v = new AuthView();
             v.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            EmailSenderService.SendEmail().GetAwaiter();
         }
     }
 }
