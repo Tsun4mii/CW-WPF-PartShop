@@ -1,4 +1,5 @@
 ﻿using CourseWork.Models;
+using CourseWork.ViewModels.AdminViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CourseWork.Commands
 {
-    public class UndoCommand : IUndo
+    public class UndoCommand<T> : IUndo
     {
-        private readonly Func<object, Part> execute;
+        private readonly Func<object, T> execute;
         private readonly Action<object> unexecute;
 
         public event EventHandler CanExecuteChanged;
 
-        public UndoCommand(Func<object, Part> execute, Action<object> unexecute)
+        public UndoCommand(Func<object, T> execute, Action<object> unexecute)
         {
             this.execute = execute;
             this.unexecute = unexecute;
@@ -28,7 +29,7 @@ namespace CourseWork.Commands
         public void Execute(object parameter)
         {
             var res = this.execute(parameter);
-            //SearchControl.undoCommandManager.Add(this, res); //--Note: Админ контролл
+            //UsersAdminVM.undoCommandManager.Add(this, res); //--Note: Админ контролл
         }
 
         public void Unexecute(object parameter)

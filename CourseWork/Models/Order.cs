@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,9 @@ namespace CourseWork.Models
     {
         [Key]
         public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; } //--ToDo: Проверить соответсвие типов 
-        public int CartId { get; set; }
-        public Cart Cart { get; set; }
+        public DateTime OrderDate { get; set; } 
+        public List<Part> Parts { get; set; }
+        public string OrderState { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public int DeliveryId { get; set; }

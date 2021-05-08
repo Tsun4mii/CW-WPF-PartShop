@@ -1,5 +1,6 @@
 ﻿using CourseWork.Database;
 using CourseWork.Models;
+using CourseWork.Properties;
 using CourseWork.Services;
 using CourseWork.ViewModels;
 using CourseWork.Views;
@@ -29,6 +30,7 @@ namespace CourseWork
     public partial class MainWindow : Window
     {
         MainViewModel a = new MainViewModel();
+        public static int Code { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -54,7 +56,23 @@ namespace CourseWork
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            EmailSenderService.SendEmail().GetAwaiter();
+            EmailSenderService.SendEmail(Settings.Default.UserMail).GetAwaiter();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddUserView a = new AddUserView();
+            a.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (MainWindow.Code == Convert.ToInt32(CodeChk.Text))
+            {
+                MessageBox.Show("OK");
+            }
+            else
+                MessageBox.Show("No");
         }
     }
 }

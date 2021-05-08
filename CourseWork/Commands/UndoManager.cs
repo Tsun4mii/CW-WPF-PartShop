@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace CourseWork.Commands
 {
-    public struct UndoInfo
+    public struct UndoInfo<T>
     {
-        public UndoCommand command;
-        public Part partChanged;
+        public UndoCommand<T> command;
+        public T partChanged;
 
-        public UndoInfo(UndoCommand command, Part device)
+        public UndoInfo(UndoCommand<T> command, T device)
         {
             this.command = command;
             this.partChanged = device;
         }
     }
 
-    public class UndoManager
+    public class UndoManager<T>
     {
-        public Stack<UndoInfo> UndoCommands = new Stack<UndoInfo>();
-        public Stack<UndoInfo> RedoCommands = new Stack<UndoInfo>();
+        public Stack<UndoInfo<T>> UndoCommands = new Stack<UndoInfo<T>>();
+        public Stack<UndoInfo<T>> RedoCommands = new Stack<UndoInfo<T>>();
 
         public void Undo()
         {
@@ -34,6 +34,7 @@ namespace CourseWork.Commands
             }
         }
 
+
         public void Redo()
         {
             if (RedoCommands.Count > 0)
@@ -43,11 +44,11 @@ namespace CourseWork.Commands
             }
         }
 
-        public void Add(UndoCommand command, Part device)
+        public void Add(UndoCommand<T> command, T device)
         {
             if (device != null)
             {
-                UndoCommands.Push(new UndoInfo(command, device));
+                UndoCommands.Push(new UndoInfo<T>(command, device));
             }
         }
     }

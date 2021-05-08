@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace CourseWork.Views
     /// </summary>
     public partial class CartView : UserControl
     {
+        CartViewModel cartV = new CartViewModel();
+
         public CartView()
         {
             InitializeComponent();
+            DataContext = cartV;
         }
     }
 }

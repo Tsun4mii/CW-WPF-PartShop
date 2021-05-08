@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CourseWork"
         xmlns:view="clr-namespace:CourseWork.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1000" Background="#a05344">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32*"/>
@@ -18,15 +18,23 @@
             <ColumnDefinition Width="274*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Row="1" Background="#734046">
-            <RadioButton x:Name="homeRadio" Content="Home" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-            <RadioButton x:Name="searchRadio" Content="Search" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-            <RadioButton x:Name="settingsRadio" Content="Settings" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-        </StackPanel>
+        
         <Grid Grid.Row="1">
-            <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
-            <Button Click="Button_Click"/>
-            <Button Click="Button_Click_1" Margin="0,289,0,185.4"/>
+            <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
+                <StackPanel Grid.Row="1" Background="#734046">
+                    <RadioButton x:Name="homeRadio" Content="Home" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="searchRadio" Content="Search" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="settingsRadio" Content="Settings" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="cartRadio" Content="Cart" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
+                    <Button Click="Button_Click"/>
+                    <Button Click="Button_Click_1"/>
+                    <Button Click="Button_Click_2" Content="AddUserTest"/>
+                    <TextBox x:Name="CodeChk"/>
+                    <Button Content="Check code" Click="Button_Click_3"/>
+                </StackPanel>
+            </materialDesign:Card>
+            
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1" Background="#734046">
             <Grid.ColumnDefinitions>

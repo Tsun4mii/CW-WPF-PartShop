@@ -76,29 +76,90 @@
     <Compile Include="Commands\IUndo.cs" />
     <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="Commands\UndoManager.cs" />
+    <Compile Include="Database\ConnectionBetweenViews.cs" />
     <Compile Include="Database\PartShopDbContext.cs" />
     <Compile Include="Migrations\202104171943156_InitialMigration.cs" />
     <Compile Include="Migrations\202104171943156_InitialMigration.designer.cs">
       <DependentUpon>202104171943156_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104272004067_AddCard.cs" />
+    <Compile Include="Migrations\202104272004067_AddCard.designer.cs">
+      <DependentUpon>202104272004067_AddCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104282115405_AddFullDiscPart.cs" />
+    <Compile Include="Migrations\202104282115405_AddFullDiscPart.designer.cs">
+      <DependentUpon>202104282115405_AddFullDiscPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105020925328_PartsInOrder.cs" />
+    <Compile Include="Migrations\202105020925328_PartsInOrder.designer.cs">
+      <DependentUpon>202105020925328_PartsInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105031304435_OrderChanges.cs" />
+    <Compile Include="Migrations\202105031304435_OrderChanges.designer.cs">
+      <DependentUpon>202105031304435_OrderChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthorizedUser.cs" />
+    <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Services\EmailSenderService.cs" />
+    <Compile Include="Services\SecurePassService.cs" />
     <Compile Include="SingletonView\Singleton.cs" />
+    <Compile Include="SingletonView\SingletonAdmin.cs" />
+    <Compile Include="SingletonView\SingletonAuth.cs" />
+    <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels\AddDeliveryVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\DeliveriesAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\HomeAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\MainAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\OrdersAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\PartsAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\ProvidersAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\UsersAdminVM.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\ConfirmOrderViewModel.cs" />
+    <Compile Include="ViewModels\FullInfoViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\RegViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AddUserView.xaml.cs">
+      <DependentUpon>AddUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddDeliveryWindow.xaml.cs">
+      <DependentUpon>AddDeliveryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AdminHomeView.xaml.cs">
+      <DependentUpon>AdminHomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\DeliveriesAdminView.xaml.cs">
+      <DependentUpon>DeliveriesAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\OrdersAdminView.xaml.cs">
+      <DependentUpon>OrdersAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\PartsAdminView.xaml.cs">
+      <DependentUpon>PartsAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\ProvidersAdminView.xaml.cs">
+      <DependentUpon>ProvidersAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\UsersAdminView.xaml.cs">
+      <DependentUpon>UsersAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\MainAdminView.xaml.cs">
+      <DependentUpon>MainAdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AuthView.xaml.cs">
       <DependentUpon>AuthView.xaml</DependentUpon>
@@ -106,11 +167,23 @@
     <Compile Include="Views\CartView.xaml.cs">
       <DependentUpon>CartView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConfirmOrderView.xaml.cs">
+      <DependentUpon>ConfirmOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FullInfoView.xaml.cs">
+      <DependentUpon>FullInfoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegView.xaml.cs">
+      <DependentUpon>RegView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
@@ -126,12 +199,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\UpdateViewModelCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\ControlTemplates\Dictionary1.xaml">
+    <Page Include="Resources\AdminDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ListViewItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,9 +219,49 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\RoundedTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminViews\AddDeliveryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AdminHomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\DeliveriesAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\OrdersAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\PartsAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\ProvidersAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\UsersAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\MainAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AuthView.xaml">
       <SubType>Designer</SubType>
@@ -155,13 +271,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ConfirmOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FullInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ProfileView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RegView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +324,18 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202104171943156_InitialMigration.resx">
       <DependentUpon>202104171943156_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104272004067_AddCard.resx">
+      <DependentUpon>202104272004067_AddCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104282115405_AddFullDiscPart.resx">
+      <DependentUpon>202104282115405_AddFullDiscPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105020925328_PartsInOrder.resx">
+      <DependentUpon>202105020925328_PartsInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105031304435_OrderChanges.resx">
+      <DependentUpon>202105031304435_OrderChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -25,11 +25,6 @@ namespace CourseWork.Views
         {
             InitializeComponent();
             DataContext = a;
-
-        }
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            a.password = password_textbox.Password;
         }
     }
 }

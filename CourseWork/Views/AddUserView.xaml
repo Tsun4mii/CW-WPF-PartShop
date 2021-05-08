@@ -1,0 +1,30 @@
+﻿<Window x:Class="CourseWork.Views.AddUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CourseWork.Views"
+        mc:Ignorable="d"
+        Title="AddUserView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="253*"/>
+            <ColumnDefinition Width="307*"/>
+            <ColumnDefinition Width="234*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Grid.Column="0" materialDesign:HintAssist.Hint="Login" x:Name="log"/>
+        <TextBox Grid.Row="0" Grid.Column="1" materialDesign:HintAssist.Hint="Pass" x:Name="pas"/>
+        <TextBox Grid.Row="0" Grid.Column="2" materialDesign:HintAssist.Hint="is_admin" x:Name="isadm"/>
+        <TextBox Grid.Row="1" Grid.Column="0" materialDesign:HintAssist.Hint="FistName" x:Name="fist"/>
+        <TextBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="LastName" x:Name="sec"/>
+        <TextBox Grid.Row="1" Grid.Column="2" materialDesign:HintAssist.Hint="Email" x:Name="mail"/>
+        <Button Grid.Column="1" Grid.Row="2" Click="Button_Click"/>
+    </Grid>
+</Window>

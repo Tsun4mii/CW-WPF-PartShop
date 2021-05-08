@@ -14,12 +14,36 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                
+                <StackPanel Orientation="Vertical">
+                    <ListBox x:Name="partList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Parts}" Height="280">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
+                                    <StackPanel Orientation="Vertical">
+                                        <materialDesign:Card UniformCornerRadius="10">
+                                            <StackPanel Orientation="Vertical" Height=" 200" Width="120">
+                                                <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
+                                                <TextBlock Text="{Binding Name}"/>
+                                                <TextBlock Text="{Binding Amount}"/>
+                                                <Separator Background="Black"/>
+                                            </StackPanel>
+                                        </materialDesign:Card>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                
+                <Button Content="Buy" Command="{Binding BuyCommand}"/>
             </materialDesign:Card>
         </Grid>
     </Grid>

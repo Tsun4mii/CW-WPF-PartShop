@@ -1,4 +1,5 @@
 ﻿using CourseWork.Commands;
+using CourseWork.Database;
 using CourseWork.SingletonView;
 using System;
 using System.Collections.Generic;
@@ -51,9 +52,14 @@ namespace CourseWork.ViewModels
                          case "Auth":
                              Singleton.getInstance(null).MainViewModel.CurrentViewModel = new AuthViewModel();
                              break;
+                         case "Cart":
+                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new CartViewModel();
+                             break;
                      }
                  }));
             }
         }
+
+        
     }
 }

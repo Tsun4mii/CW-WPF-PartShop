@@ -18,5 +18,18 @@ namespace CourseWork.Database
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Card> Cards { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().HasMany(x => x.Parts).WithMany(x => x.Orders).Map(
+                m =>
+                {
+                    m.ToTable("PartsInOrder")
+                    .MapLeftKey("OrderId")
+                    .MapRightKey("PartId");
+                });
+
+        }
     }
 }

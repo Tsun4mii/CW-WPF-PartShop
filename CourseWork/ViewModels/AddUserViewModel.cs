@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseWork.Commands
+namespace CourseWork.ViewModels
 {
-    class UpdateViewModelCommand
+    public class AddUserViewModel
     {
     }
 }

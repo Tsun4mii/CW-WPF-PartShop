@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseWork.Database;
+using CourseWork.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,7 @@ namespace CourseWork
     /// </summary>
     public partial class App : Application
     {
+        CartViewModel a = new CartViewModel();
+        public static PartShopDbContext db = new PartShopDbContext();
     }
 }

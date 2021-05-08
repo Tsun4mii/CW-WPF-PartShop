@@ -19,43 +19,65 @@
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                <Menu>
-                    <Menu.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <DockPanel HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </Menu.ItemsPanel>
-                <MenuItem Header="Масла и автохимия"/>
-                <MenuItem Header="Кузовные детали"/>
-                <MenuItem Header="Шины"/>
-                <MenuItem Header="Инструмент"/>
-            </Menu>
+                <ListBox VerticalAlignment="Center" ItemsSource="{Binding categories}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="{x:Static MouseAction.LeftDoubleClick}"
+                              Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.FindByCategory}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FindByCategory}" />
+                                </Border.InputBindings>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <materialDesign:Card UniformCornerRadius="10">
+                                        <StackPanel Orientation="Vertical" Height="45" Width="100" HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="2" >
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox Width=" 400" VerticalAlignment="Center">
- 
+            <TextBox BorderThickness="1" VerticalContentAlignment="Center" Height="25" Width=" 400" VerticalAlignment="Center" Template="{StaticResource TextBoxBaseControlTemplate}" >
+                
             </TextBox>
-            <Button Width="125" Height="25" />
+                    <Button Width="125" Height="25" Command="{Binding AddToCartCommand}"/>
             </StackPanel>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="3">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-            <ListBox ItemsSource="{Binding Parts}">
+                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" x:Name="partList" MouseDoubleClick="partList_MouseDoubleClick" Height="224.4">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
-                            <StackPanel Orientation="Vertical">
+                                <Border.InputBindings>
+                                    <MouseBinding MouseAction="{x:Static MouseAction.LeftDoubleClick}"
+                              Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.OpenFullInfo}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=OpenFullInfo}" />
+                                </Border.InputBindings>
+                                <StackPanel Orientation="Vertical">
                                 <materialDesign:Card UniformCornerRadius="10">
                                 <StackPanel Orientation="Vertical" Height=" 200" Width="120">
                                     
                                     <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <Separator Background="Black"/>
-                                    <Button/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Name: " FontFamily="Helvetica"/>
+                                            <TextBlock Text="{Binding Name}" FontFamily="Helvetica"/>
+                                        </StackPanel>
+                                        <Separator Background="Black"/>
+                                        <Button Command="{Binding AddToCartCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
                                 </StackPanel>
                                 </materialDesign:Card>
                             </StackPanel>

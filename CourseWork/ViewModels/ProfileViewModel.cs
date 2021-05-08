@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork.ViewModels
 {
-    class ProfileViewModel
+    class ProfileViewModel : ViewModelBase
     {
     }
 }

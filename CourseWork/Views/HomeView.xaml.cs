@@ -1,4 +1,6 @@
-﻿using CourseWork.ViewModels;
+﻿using CourseWork.Database;
+using CourseWork.Models;
+using CourseWork.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,11 @@ namespace CourseWork.Views
         {
             InitializeComponent();
             DataContext = homeV;
+        }
+
+        private void partList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            homeV.id = partList.SelectedIndex;
         }
     }
 }
