@@ -30,7 +30,7 @@
             </materialDesign:Card>
 
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1" >
+        <Grid Grid.Row="0" Grid.Column="1">
             <materialDesign:Card Margin="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 
             </materialDesign:Card>

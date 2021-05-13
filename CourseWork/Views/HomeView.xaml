@@ -19,7 +19,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                <ListBox VerticalAlignment="Center" ItemsSource="{Binding categories}">
+                <ListBox VerticalAlignment="Center" ItemsSource="{Binding categories}" SelectedItem="{Binding SelectedCategory}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
@@ -49,16 +49,16 @@
         <Grid Grid.Row="2" >
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox BorderThickness="1" VerticalContentAlignment="Center" Height="25" Width=" 400" VerticalAlignment="Center" Template="{StaticResource TextBoxBaseControlTemplate}" >
+            <TextBox BorderThickness="1" Text="{Binding textForSearch}" VerticalContentAlignment="Center" Height="25" Width=" 400" VerticalAlignment="Center" Template="{StaticResource TextBoxBaseControlTemplate}" >
                 
             </TextBox>
-                    <Button Width="125" Height="25" Command="{Binding AddToCartCommand}"/>
+                    <Button Width="125" Height="25" Command="{Binding FindByName}"/>
             </StackPanel>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="3">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" x:Name="partList" MouseDoubleClick="partList_MouseDoubleClick" Height="224.4">
+                <ListBox ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" x:Name="partList" MouseDoubleClick="partList_MouseDoubleClick" Height="224.4" SelectionMode="Extended">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
@@ -77,14 +77,24 @@
                                             <TextBlock Text="{Binding Name}" FontFamily="Helvetica"/>
                                         </StackPanel>
                                         <Separator Background="Black"/>
-                                        <Button Command="{Binding AddToCartCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
-                                </StackPanel>
+                                        <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.OpenFullInfo}"/>
+                                        </StackPanel>
                                 </materialDesign:Card>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-                <ListBox.ItemsPanel>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem" 
+                            BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                            <Style.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter Property="IsSelected" Value="True"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel />
                     </ItemsPanelTemplate>

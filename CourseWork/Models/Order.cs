@@ -13,7 +13,7 @@ namespace CourseWork.Models
         [Key]
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; } 
-        public List<Part> Parts { get; set; }
+        public List<OrderedParts> Parts { get; set; }
         public string OrderState { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }

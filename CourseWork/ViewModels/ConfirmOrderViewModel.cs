@@ -16,6 +16,9 @@ namespace CourseWork.ViewModels
         public int code;
         public string codeFromBox { get; set; }
         public Command submitCode;
+        public static int orderId;
+        public ConfirmOrderViewModel()
+        { }
         public ICommand SubmitCode
         {
             get
@@ -23,9 +26,10 @@ namespace CourseWork.ViewModels
                 return submitCode ??
                   (submitCode = new Command(obj =>
                   {
-                      if (code == Convert.ToInt32(codeFromBox))
+                      if (code == Convert.ToInt32(codeFromBox)) //--ToDo: Переделать. Передавать определенный заказ и его потом изменять.
                       {
-                          MessageBox.Show("OK");
+                          App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
+                          App.db.SaveChanges();
                       }
                   }));
             }

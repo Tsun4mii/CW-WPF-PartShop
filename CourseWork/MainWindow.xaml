@@ -27,11 +27,6 @@
                     <RadioButton x:Name="settingsRadio" Content="Settings" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
                     <RadioButton x:Name="cartRadio" Content="Cart" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
                     <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
-                    <Button Click="Button_Click"/>
-                    <Button Click="Button_Click_1"/>
-                    <Button Click="Button_Click_2" Content="AddUserTest"/>
-                    <TextBox x:Name="CodeChk"/>
-                    <Button Content="Check code" Click="Button_Click_3"/>
                 </StackPanel>
             </materialDesign:Card>
             
@@ -43,7 +38,9 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Menu Background="Transparent" VerticalAlignment="Center">
-                    <materialDesign:PackIcon Kind="EmoticonManProfile" Width="50" Height="50" Margin="0,0,5,0"/>
+                    <Button Background="Transparent" BorderBrush="Transparent" Command="{Binding OpenProfile}">
+                        <materialDesign:PackIcon Kind="EmoticonManProfile" Width="20" Height="20"/>
+                    </Button>
                     <materialDesign:PackIcon Kind="Gear" Width="50" Height="50" Margin="0,0,0,5"/>
                 </Menu>
             </Grid>

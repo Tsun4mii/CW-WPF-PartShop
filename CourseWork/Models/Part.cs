@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseWork.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork.Models
 {
-    public class Part
+    public class Part : ViewModelBase
     {
         [Key]
         public int PartId { get; set; }
@@ -21,10 +22,18 @@ namespace CourseWork.Models
 
         public string ImageLink { get; set; }
         public int CategoryId { get; set; }
-        public List<Order> Orders { get; set; }
         public Category Category { get; set; }
         public Provider Provider { get; set; }
         [NotMapped]
-        public int Amount { get; set; }
+        public int Amount {
+            get { return amount; }
+            set
+            {
+                amount = value;
+                OnPropertyChanged("Amount");
+            }
+        }
+        [NotMapped]
+        private int amount;
     }
 }

@@ -16,11 +16,14 @@ namespace CourseWork.ViewModels
     public class HomeViewModel : ViewModelBase
     {
         public ObservableCollection<Part> Parts { get; set; }
+        public ObservableCollection<Part> PartsForSearch { get; set; }
         public Part part;
+        public string textForSearch { get; set; }
         public ObservableCollection<Category> categories { get; set; }
         private Command addToCartCommand;
         private Command openFullInfoCommand;
         private Command findByCategory;
+        private Command findByName;
         public int id { get; set; }
         private Part selectedPart;
         public Part SelectedPart
@@ -46,6 +49,7 @@ namespace CourseWork.ViewModels
             using (PartShopDbContext db = new PartShopDbContext())
             {
                 Parts = new ObservableCollection<Part>(db.Parts);
+                PartsForSearch = new ObservableCollection<Part>(db.Parts);
                 categories = new ObservableCollection<Category>(db.Categories);
                 //Parts = db.Parts.ToList();
             }
@@ -70,7 +74,7 @@ namespace CourseWork.ViewModels
                   {
                       using (PartShopDbContext db = new PartShopDbContext())
                       {
-                          Parts = new ObservableCollection<Part>(db.Parts.Where(x => x.CategoryId == 2));
+                          Parts = new ObservableCollection<Part>(db.Parts.Where(x => x.CategoryId == SelectedCategory.CategoryId));
                           Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
                       }
                   }));
@@ -87,6 +91,17 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
-
+        public ICommand FindByName
+        {
+            get
+            {
+                return findByName ??
+                  (findByName = new Command(obj =>
+                  {
+                      PartsForSearch = new ObservableCollection<Part>(App.db.Parts.Where(x => x.Name.Contains(textForSearch)));
+                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(PartsForSearch);
+                  }));
+            }
+        }
     }
 }

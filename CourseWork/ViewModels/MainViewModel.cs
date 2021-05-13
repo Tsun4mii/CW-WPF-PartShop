@@ -59,6 +59,18 @@ namespace CourseWork.ViewModels
                  }));
             }
         }
+        private Command openProfile;
+        public ICommand OpenProfile
+        {
+            get
+            {
+                return openProfile ??
+                 (openProfile = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ProfileViewModel();
+                 }));
+            }
+        }
 
         
     }

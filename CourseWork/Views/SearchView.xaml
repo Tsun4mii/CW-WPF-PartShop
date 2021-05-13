@@ -14,19 +14,21 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="580*"/>
-            <ColumnDefinition Width="210*"/>
+            <ColumnDefinition Width="210"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <materialDesign:Card Margin="10,10,10,0" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBox  Width="250" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" Template="{StaticResource TextBoxBaseControlTemplate}"/>
-                    <Button />
+                    <TextBox Text="{Binding textForSearch}" Width="250" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                    <Button Command="{Binding FindByName}"/>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="0,10,10,10" UniformCornerRadius="5">
-
+                <Grid>
+                    
+                </Grid>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">

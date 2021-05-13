@@ -1,4 +1,5 @@
 ﻿using CourseWork.Database;
+using CourseWork.Localization;
 using CourseWork.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,10 @@ namespace CourseWork
     {
         CartViewModel a = new CartViewModel();
         public static PartShopDbContext db = new PartShopDbContext();
+        private static Language language;
+        public static Language Language
+        {
+            get => language ?? (language = new Language());
+        }
     }
 }

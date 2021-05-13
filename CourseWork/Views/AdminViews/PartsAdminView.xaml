@@ -35,6 +35,7 @@
                     <Button Command="{Binding SaveCommand}" Content="Save"/>
                     <Button Command="{Binding UndoCommand}" Content="Undo"/>
                     <Button Command="{Binding RedoCommand}" Content="Redo"/>
+                    <Button Command="{Binding AddPart}" Content="Add"/>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>        

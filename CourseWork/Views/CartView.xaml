@@ -4,18 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:CourseWork.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <Grid Background="#a05344">
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="9*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Orientation="Vertical">
-                    <ListBox x:Name="partList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Parts}" Height="280">
+                    <ListBox x:Name="partList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" Height="348">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
@@ -24,14 +25,25 @@
                                             <StackPanel Orientation="Vertical" Height=" 200" Width="120">
                                                 <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
                                                 <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock Text="{Binding Amount}"/>
+                                                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                                                 <Separator Background="Black"/>
+                                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}"/>
                                             </StackPanel>
                                         </materialDesign:Card>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem" 
+                            BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                        <Setter Property="IsSelected" Value="True"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel />
@@ -43,7 +55,37 @@
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                <Button Content="Buy" Command="{Binding BuyCommand}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="388*"/>
+                        <ColumnDefinition Width="203*"/>
+                        <ColumnDefinition Width="189*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="0,0,1,-0.4">
+                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="100" HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="180">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding DeliveryChanged}"/>
+                                </i:EventTrigger>    
+                            </i:Interaction.Triggers>
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" Margin="0" VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>    
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Сумма: "/>
+                        <TextBlock Text="{Binding Summary}"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </materialDesign:Card>
         </Grid>
     </Grid>

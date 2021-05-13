@@ -1,5 +1,6 @@
 ﻿using CourseWork.Commands;
 using CourseWork.Models;
+using CourseWork.Views.AdminViews;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -76,6 +77,18 @@ namespace CourseWork.ViewModels.AdminViewModels
                   }));
             }
         }
-
+        private Command addPart;
+        public ICommand AddPart
+        {
+            get
+            {
+                return addPart ??
+                  (addPart = new Command(obj =>
+                  {
+                      AddPartWindow window = new AddPartWindow();
+                      window.ShowDialog();
+                  }));
+            }
+        }
     }
 }

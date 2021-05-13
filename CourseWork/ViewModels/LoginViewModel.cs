@@ -20,6 +20,16 @@ namespace CourseWork.ViewModels
         public string login { get; set; }
         public string password { get; set; }
         public Command authCommand;
+        private string errorMessage;
+        public string ErrorMessage
+        {
+            get { return errorMessage; }
+            set
+            {
+                this.errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
+            }
+        }
         public ICommand AuthCommand
         {
             get
@@ -27,34 +37,45 @@ namespace CourseWork.ViewModels
                 return authCommand ??
                  (authCommand = new Command(obj =>
                  {
-                     using (PartShopDbContext db = new PartShopDbContext())
+                     try
                      {
-                         User authUser = null;
-                         password = SecurePassService.Hash(password);
-                         authUser = db.Users.Where(a => a.Login == login && a.Password == password).FirstOrDefault();
-                         if (authUser != null)
+                         using (PartShopDbContext db = new PartShopDbContext())
                          {
-                             if(authUser.Is_admin == false)
+                             User authUser = null;
+                             password = SecurePassService.Hash(password);
+                             authUser = db.Users.Where(a => a.Login == login && a.Password == password).FirstOrDefault();
+                             if(authUser == null)
                              {
-                                 MainWindow main = new MainWindow();
-                                 main.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                                 main.Show();
-                                 AuthViewModel.Close();
+                                 throw new Exception("Невозможно найти пользователя с введенными данными");
+                             }
+                             if (authUser != null)
+                             {
+                                 if (authUser.Is_admin == false)
+                                 {
+                                     MainWindow main = new MainWindow();
+                                     main.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                     main.Show();
+                                     AuthViewModel.Close();
+                                 }
+                                 else
+                                 {
+                                     MainAdminView mainAdmin = new MainAdminView();
+                                     mainAdmin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                     mainAdmin.Show();
+                                     AuthViewModel.Close();
+                                 }
+                                 Settings.Default.UserMail = authUser.Email;
+                                 Settings.Default.UserId = authUser.Id;
                              }
                              else
                              {
-                                 MainAdminView mainAdmin = new MainAdminView();
-                                 mainAdmin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                                 mainAdmin.Show();
-                                 AuthViewModel.Close();
+                                 MessageBox.Show("Bad");
                              }
-                             Settings.Default.UserMail = authUser.Email;
-                             Settings.Default.UserId = authUser.Id;
                          }
-                         else
-                         {
-                             MessageBox.Show("Bad");
-                         }
+                     }
+                     catch(Exception e)
+                     {
+                         ErrorMessage = e.Message;
                      }
                  }));
             }

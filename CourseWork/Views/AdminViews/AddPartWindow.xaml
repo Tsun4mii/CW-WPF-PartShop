@@ -1,0 +1,55 @@
+﻿<Window x:Class="CourseWork.Views.AdminViews.AddPartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CourseWork.Views.AdminViews"
+        mc:Ignorable="d"
+        Title="AddPartWindow" Height="450" Width="800" Background="#a05344">
+    <Grid>
+        <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <TextBox Text="{Binding Name}" materialDesign:HintAssist.Hint="Name"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBox Text="{Binding Quantity}" materialDesign:HintAssist.Hint="Quantity"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="2">
+                    <TextBox Text="{Binding ProviderId}" materialDesign:HintAssist.Hint="ProviderId"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Price"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <TextBox Text="{Binding Description}" materialDesign:HintAssist.Hint="Description"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="2">
+                    <TextBox Text="{Binding FullDescription}" materialDesign:HintAssist.Hint="Full Description"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <TextBox Text="{Binding ImageLink}" materialDesign:HintAssist.Hint="Image Link"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="2">
+                    <TextBox Text="{Binding CategoryId}" materialDesign:HintAssist.Hint="CategoryId"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <Button Command="{Binding AddPart}"/>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

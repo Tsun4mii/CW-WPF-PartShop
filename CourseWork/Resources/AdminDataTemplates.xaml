@@ -14,4 +14,7 @@
     <DataTemplate DataType="{x:Type admin:AddDeliveryVM}">
         <adminV:AddDeliveryWindow/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type admin:AddPartVM}">
+        <adminV:AddPartWindow/>
+    </DataTemplate>
 </ResourceDictionary>

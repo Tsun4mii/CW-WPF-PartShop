@@ -50,10 +50,16 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.0.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,6 +84,7 @@
     <Compile Include="Commands\UndoManager.cs" />
     <Compile Include="Database\ConnectionBetweenViews.cs" />
     <Compile Include="Database\PartShopDbContext.cs" />
+    <Compile Include="Localization\Language.cs" />
     <Compile Include="Migrations\202104171943156_InitialMigration.cs" />
     <Compile Include="Migrations\202104171943156_InitialMigration.designer.cs">
       <DependentUpon>202104171943156_InitialMigration.cs</DependentUpon>
@@ -98,11 +105,20 @@
     <Compile Include="Migrations\202105031304435_OrderChanges.designer.cs">
       <DependentUpon>202105031304435_OrderChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105100821057_newmigration.cs" />
+    <Compile Include="Migrations\202105100821057_newmigration.designer.cs">
+      <DependentUpon>202105100821057_newmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105121705504_RebuilMtM.cs" />
+    <Compile Include="Migrations\202105121705504_RebuilMtM.designer.cs">
+      <DependentUpon>202105121705504_RebuilMtM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthorizedUser.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Delivery.cs" />
+    <Compile Include="Models\OrderedParts.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Services\EmailSenderService.cs" />
     <Compile Include="Services\SecurePassService.cs" />
@@ -112,6 +128,7 @@
     <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddDeliveryVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\AddPartVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\DeliveriesAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\HomeAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\MainAdminVM.cs" />
@@ -139,6 +156,9 @@
     </Compile>
     <Compile Include="Views\AdminViews\AddDeliveryWindow.xaml.cs">
       <DependentUpon>AddDeliveryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\AddPartWindow.xaml.cs">
+      <DependentUpon>AddPartWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\AdminHomeView.xaml.cs">
       <DependentUpon>AdminHomeView.xaml</DependentUpon>
@@ -207,6 +227,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\language.ru-RU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\language.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ListViewItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +260,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdminViews\AddDeliveryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\AddPartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -336,6 +368,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105031304435_OrderChanges.resx">
       <DependentUpon>202105031304435_OrderChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105100821057_newmigration.resx">
+      <DependentUpon>202105100821057_newmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105121705504_RebuilMtM.resx">
+      <DependentUpon>202105121705504_RebuilMtM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

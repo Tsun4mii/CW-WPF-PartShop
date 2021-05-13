@@ -48,31 +48,6 @@ namespace CourseWork
             a.index = ((RadioButton)sender).Content.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AuthView v = new AuthView();
-            v.ShowDialog();
-        }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            EmailSenderService.SendEmail(Settings.Default.UserMail).GetAwaiter();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            AddUserView a = new AddUserView();
-            a.ShowDialog();
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            if (MainWindow.Code == Convert.ToInt32(CodeChk.Text))
-            {
-                MessageBox.Show("OK");
-            }
-            else
-                MessageBox.Show("No");
-        }
     }
 }

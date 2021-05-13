@@ -47,14 +47,26 @@ namespace CourseWork.ViewModels
                          {
                              User user = new User();
                              user.Login = login;
-                             user.Password = SecurePassService.Hash(password);
+                             if (password != null)
+                             {
+                                 user.Password = SecurePassService.Hash(password);
+                             }
                              user.FirstName = firstname;
                              user.LastName = lastname;
                              user.Is_admin = false;
                              user.Email = mail;
-                             if(db.Users.Any(a => a.Login == login || a.Email == mail))
+                             if (login != null && password != null)
                              {
-                                 throw new Exception("Пользователь с такими данными уже существует");
+                                 if (db.Users.Any(a => a.Login == login || a.Email == mail))
+                                 {
+                                     throw new Exception("Пользователь с такими данными уже существует");
+                                 }
+                                 else
+                                 {
+                                     db.Users.Add(user);
+                                     db.SaveChanges();
+                                     SingletonAuth.getInstance(null).StartViewModel.CurrentViewModel = new LoginViewModel();
+                                 }
                              }
                              else
                              {

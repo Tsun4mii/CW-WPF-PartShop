@@ -17,14 +17,15 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,80" RadiusY="10" RadiusX="10" Fill="White">
+        <Rectangle Width="280" Height="260" VerticalAlignment="Bottom" Margin="0,80" RadiusY="10" RadiusX="10" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid VerticalAlignment="Bottom" Margin="35,80" Height="240">
-            <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
-            <StackPanel VerticalAlignment="Center" Margin="15">
+        <Grid VerticalAlignment="Bottom" Margin="35,80" Height="260">
+            <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" FontFamily="Helvetica"/>
+            <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Margin="30" Foreground="Red" FontSize="12" FontFamily="Helvetica" MaxWidth="280" TextWrapping="Wrap"/>
+            <StackPanel VerticalAlignment="Center" Margin="15,40,15,0">
                 <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Email" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                 <PasswordBox Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" x:Name="password_textbox" PasswordChanged="PasswordBox_PasswordChanged"/>
             </StackPanel>

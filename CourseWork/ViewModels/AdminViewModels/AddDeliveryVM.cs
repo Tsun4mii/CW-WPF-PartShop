@@ -28,7 +28,7 @@ namespace CourseWork.ViewModels.AdminViewModels
                       delivery.Price = Convert.ToDouble(Price);
                       delivery.Description = Description;
                       App.db.Deliveries.Add(delivery);
-                      App.db.SaveChanges();
+                      App.db.SaveChanges();                     
                   }));
             }
         }

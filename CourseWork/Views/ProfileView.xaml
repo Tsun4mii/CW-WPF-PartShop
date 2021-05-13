@@ -23,7 +23,7 @@
         </Grid>
         <Grid Grid.Column="1" Grid.Row="0">
             <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="10,10,10,10" UniformCornerRadius="5">
-                <Grid>
+                <Grid Background="#321f28">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="273*"/>
                         <ColumnDefinition Width="80*"/>
@@ -41,7 +41,29 @@
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5"> 
+            <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
+                <DataGrid ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Accept">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.AcceptOrder}">
+                                        <materialDesign:PackIcon Kind="Check"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Cancel">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.CancelOrder}">
+                                        <materialDesign:PackIcon Kind="Cross"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>    
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
                 
             </materialDesign:Card>
         </Grid>
