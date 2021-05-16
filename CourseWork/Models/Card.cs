@@ -11,8 +11,12 @@ namespace CourseWork.Models
     {
         [Key]
         public int CardId { get; set; }
+        [RegularExpression(@"[0-9]{4}+\s{1}+[0-9]{4}+\s{1}+[0-9]{4}+\s{1}+[0-9]{4}", ErrorMessage = "Номер карты не соответствует стандарту")]
         public string CardNumber { get; set; }
         public int UserId { get; set; }
+        public User User { get; set; }
+        public double Balance { get; set; }
+        [RegularExpression(@"[0-9]{3}", ErrorMessage = "CVV код должен состоят из 3-ех цифр")]
         public int CvvCode { get; set; }
 
     }

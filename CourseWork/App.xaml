@@ -10,9 +10,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
                 <ResourceDictionary Source="Resources/DataTemplates.xaml"/>
                 <ResourceDictionary Source="Resources/AdminDataTemplates.xaml"/>
                 <ResourceDictionary Source="Resources/MenuButton.xaml"/>
+                <ResourceDictionary Source="Resources/RoundedButton.xaml"/>
                 <ResourceDictionary Source="Resources/ListViewItemTemplate.xaml"/>
                 <ResourceDictionary Source="Resources/RoundedTextBox.xaml"/>
                 <ResourceDictionary Source="Resources/language.xaml" />

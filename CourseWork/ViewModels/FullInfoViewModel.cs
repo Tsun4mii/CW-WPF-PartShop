@@ -8,17 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels
 {
     public class FullInfoViewModel : ViewModelBase
     {
         public Part Part { get; set; }
+        public Category Category { get; set; }
 
         public FullInfoViewModel(Part d)
         {
             Part = new Part();
             Part = d;
+            Category = App.db.Categories.Where(x => x.CategoryId == Part.CategoryId).FirstOrDefault();
         }
         public FullInfoViewModel()
         {
@@ -42,7 +45,7 @@ namespace CourseWork.ViewModels
                           Part.Amount = 1;
                           CartViewModel.Parts.Add(Part);
                       }
-                      
+                      App.notifier.ShowSuccess("Товар был добавлен в корзину");
                   }));
             }
         }

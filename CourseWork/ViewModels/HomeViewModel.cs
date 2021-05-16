@@ -10,6 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace CourseWork.ViewModels
 {
@@ -44,6 +48,7 @@ namespace CourseWork.ViewModels
                 OnPropertyChanged("SelectedCategory");    
             }
         }
+        
         public HomeViewModel()
         {
             using (PartShopDbContext db = new PartShopDbContext())

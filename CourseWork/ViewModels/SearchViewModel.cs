@@ -15,12 +15,44 @@ namespace CourseWork.ViewModels
     class SearchViewModel : ViewModelBase
     {
         public ObservableCollection<Part> Parts { get; set; }
+        public ObservableCollection<Category> Categories { get; set; }
+        private double lowValue;
+        public double LowValue
+        {
+            get { return lowValue; }
+            set
+            {
+                lowValue = Math.Round(value, 2);
+                OnPropertyChanged("LowValue");
+            }
+        }
+        private double maxValue;
+        public double MaxValue
+        {
+            get { return maxValue; }
+            set
+            {
+                maxValue = Math.Round(value);
+                OnPropertyChanged("MaxValue");
+            }
+        }
         public string textForSearch { get; set; }
         public SearchViewModel() 
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
                 Parts = new ObservableCollection<Part>(db.Parts);
+                Categories = new ObservableCollection<Category>(db.Categories);
+            }
+        }
+        private Category selectedCategory;
+        public Category SelectedCategory
+        {
+            get { return selectedCategory; }
+            set
+            {
+                selectedCategory = value;
+                OnPropertyChanged("SelectedCategory");
             }
         }
         public SearchViewModel(ObservableCollection<Part> parts)
@@ -44,6 +76,27 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
-
+        private Command detailedSearch;
+        public ICommand DetailedSearch
+        {
+            get
+            {
+                return detailedSearch ??
+                  (detailedSearch = new Command(obj =>
+                  {
+                      if (selectedCategory != null)
+                      {
+                          Parts = new ObservableCollection<Part>(App.db.Parts.Where(x => (x.CategoryId == selectedCategory.CategoryId) &&
+                                                                x.Price >= lowValue && x.Price <= maxValue));
+                      }
+                      else
+                      {
+                          Parts = new ObservableCollection<Part>(App.db.Parts.Where(x =>
+                                                                 x.Price >= lowValue && x.Price <= maxValue));
+                      }
+                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
+                  }));
+            }
+        }
     }
 }

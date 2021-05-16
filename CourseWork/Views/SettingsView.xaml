@@ -18,7 +18,7 @@
             <ColumnDefinition Width="83*"/>
         </Grid.ColumnDefinitions>
         <Grid>
-            <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Langs}">
+            <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Langs}" SelectedIndex="0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding LanguageChanged}"/>

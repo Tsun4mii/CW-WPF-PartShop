@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:CourseWork.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="#a05344">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#a05344" FontFamily="Helvetica">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
@@ -29,14 +29,45 @@
             <materialDesign:Card Margin="10,10,10.4,9.6" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5" Grid.RowSpan="3">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="124*"/>
-                        <RowDefinition Height="113*"/>
-                        <RowDefinition Height="194*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Наименование: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding Part.Name}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Подробная информация" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Helvetica"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="Наименование: "/>
+                            <TextBlock Text="{Binding Part.Name}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="Доступно на складе: "/>
+                            <TextBlock Text="{Binding Part.Quantity}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="Категория: "/>
+                            <TextBlock Text="{Binding Category.Name}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="Описание: "/>
+                            <TextBlock Text="{Binding Part.Description}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="Подробное описание: "/>
+                            <TextBlock Text="{Binding Part.FullDescription}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

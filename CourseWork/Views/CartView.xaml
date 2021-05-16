@@ -7,7 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:CourseWork.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" Background="White" FontFamily="Helvetica">
     <Grid Background="#a05344">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -21,13 +21,18 @@
                             <DataTemplate>
                                 <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
                                     <StackPanel Orientation="Vertical">
-                                        <materialDesign:Card UniformCornerRadius="10">
+                                        <materialDesign:Card UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                                             <StackPanel Orientation="Vertical" Height=" 200" Width="120">
                                                 <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
                                                 <TextBlock Text="{Binding Name}"/>
                                                 <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                                                 <Separator Background="Black"/>
-                                                <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}">
+                                                        <materialDesign:PackIcon Kind="Delete"/>
+                                                    </Button>
+                                                    <Button/>
+                                                </StackPanel>
                                             </StackPanel>
                                         </materialDesign:Card>
                                     </StackPanel>
@@ -62,10 +67,12 @@
                         <ColumnDefinition Width="189*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" Margin="0,0,1,-0.4">
-                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="100" HorizontalAlignment="Left"/>
+                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="2">
-                        <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="180">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Доставка: "/>
+                            <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="125">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction Command="{Binding DeliveryChanged}"/>
@@ -78,11 +85,12 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>    
                         </ComboBox>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1">
-                        <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Сумма: "/>
-                        <TextBlock Text="{Binding Summary}"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Сумма к оплате: "/>
+                            <TextBlock Text="{Binding Summary}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

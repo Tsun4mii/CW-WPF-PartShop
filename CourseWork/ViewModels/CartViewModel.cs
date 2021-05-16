@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels
 {
@@ -69,14 +70,16 @@ namespace CourseWork.ViewModels
                   {
                       if(selectedPart.Amount > 1)
                       {
+                          App.notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           selectedPart.Amount--;
                           Summary -= selectedPart.Price;
                       }
                       else
                       {
+                          App.notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           Summary -= selectedPart.Price;
                           Parts.Remove(SelectedPart);
-                      }
+                      }                   
                   }));
             }
         }

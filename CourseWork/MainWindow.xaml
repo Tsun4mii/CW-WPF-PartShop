@@ -17,8 +17,14 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="274*"/>
         </Grid.ColumnDefinitions>
-        
-        
+        <Grid Grid.Row="0" Grid.Column="0">
+            <materialDesign:Card Margin="10,0,10,0" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" Background="#734046">
+                <Grid>
+                    <TextBlock Text="AutoLight" FontSize="35" FontFamily="Helvetica" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Opacity="0.5 "/>
+                    <TextBlock Text="AutoLight" Margin="5,5,0,0" FontSize="35" FontFamily="Helvetica" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Grid.Row="1" Background="#734046">
@@ -29,9 +35,10 @@
                     <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
                 </StackPanel>
             </materialDesign:Card>
-            
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1" Background="#734046">
+        <Grid Grid.Row="0" Grid.Column="1">
+            <materialDesign:Card Background="#734046" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
@@ -39,11 +46,13 @@
             <Grid Grid.Column="1">
                 <Menu Background="Transparent" VerticalAlignment="Center">
                     <Button Background="Transparent" BorderBrush="Transparent" Command="{Binding OpenProfile}">
-                        <materialDesign:PackIcon Kind="EmoticonManProfile" Width="20" Height="20"/>
+                        <materialDesign:PackIcon Kind="EmoticonManProfile" Width="25" Height="25"/>
                     </Button>
                     <materialDesign:PackIcon Kind="Gear" Width="50" Height="50" Margin="0,0,0,5"/>
                 </Menu>
             </Grid>
+            </Grid>
+            </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" x:Name="MainGrid">
             <ContentControl Content="{Binding CurrentViewModel}"/>

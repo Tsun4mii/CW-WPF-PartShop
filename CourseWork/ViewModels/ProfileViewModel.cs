@@ -16,9 +16,34 @@ namespace CourseWork.ViewModels
     public class ProfileViewModel : ViewModelBase
     {
         public ObservableCollection<Order> Orders { get; set; }
+        public User User { get; set; }
+        public Card Card { get; set; }
+        public string FullName { get; set; }
         public ProfileViewModel()
         {
             Orders = new ObservableCollection<Order>(App.db.Orders.Where(x => x.UserId == Settings.Default.UserId));
+            User = App.db.Users.Where(x => x.Id == Settings.Default.UserId).FirstOrDefault();
+            Card = App.db.Cards.Where(x => x.UserId == Settings.Default.UserId).FirstOrDefault();
+            if(Card == null)
+            {
+                Balance = 0;
+                FullName = "Добавьте карту для покупок";
+            }
+            else
+            {
+                Balance = Card.Balance;
+                FullName = User.FirstName + " " + User.LastName;
+            }
+        }
+        private double balance;
+        public double Balance
+        {
+            get { return balance; }
+            set
+            {
+                balance = value;
+                OnPropertyChanged("Balance");
+            }
         }
         private Order selectedOrder;
         public Order SelectedOrder
