@@ -1,11 +1,13 @@
 ﻿using CourseWork.Commands;
 using CourseWork.Database;
 using CourseWork.SingletonView;
+using CourseWork.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels
@@ -29,35 +31,25 @@ namespace CourseWork.ViewModels
             Singleton.getInstance(this);
             CurrentViewModel = new HomeViewModel();
         }
-
-        public Command changeCommand;
-        public ICommand ChangeCommand
+        private Command exit;
+        public ICommand Exit
         {
             get
             {
-                return changeCommand ??
-                 (changeCommand = new Command(obj =>
+                return exit ??
+                 (exit = new Command(obj =>
                  {
-                     switch(index)
-                     {
-                         case "Search":
-                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel();
-                             break;
-                         case "Home":
-                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new HomeViewModel();
-                             break;
-                         case "Settings":
-                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
-                             break;
-                         case "Auth":
-                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new AuthViewModel();
-                             break;
-                         case "Cart":
-                             Singleton.getInstance(null).MainViewModel.CurrentViewModel = new CartViewModel();
-                             break;
-                     }
+                     AuthView auth = new AuthView();
+                     auth.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                     auth.Show();
+                     MainViewModel.Close();
                  }));
             }
+        }
+        public static void Close()
+        {
+            var window = System.Windows.Application.Current.Windows;
+            window[0].Close();
         }
         private Command openProfile;
         public ICommand OpenProfile
@@ -71,7 +63,65 @@ namespace CourseWork.ViewModels
                  }));
             }
         }
-
-        
+        private Command openSearch;
+        public ICommand OpenSearch
+        {
+            get
+            {
+                return openSearch ??
+                 (openSearch = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel();
+                 }));
+            }
+        }
+        private Command openHome;
+        public ICommand OpenHome
+        {
+            get
+            {
+                return openHome ??
+                 (openHome = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new HomeViewModel();
+                 }));
+            }
+        }
+        private Command openSettings;
+        public ICommand OpenSettings
+        {
+            get
+            {
+                return openSettings ??
+                 (openSettings = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
+                 }));
+            }
+        }
+        private Command openCart;
+        public ICommand OpenCart
+        {
+            get
+            {
+                return openCart ??
+                 (openCart = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new CartViewModel();
+                 }));
+            }
+        }
+        private Command openAbout;
+        public ICommand OpenAbout
+        {
+            get
+            {
+                return openAbout ??
+                 (openAbout = new Command(obj =>
+                 {
+                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new AboutViewModel();
+                 }));
+            }
+        }
     }
 }

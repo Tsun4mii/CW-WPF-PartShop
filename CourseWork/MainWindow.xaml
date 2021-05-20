@@ -28,11 +28,11 @@
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Grid.Row="1" Background="#734046">
-                    <RadioButton x:Name="homeRadio" Content="Home" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-                    <RadioButton x:Name="searchRadio" Content="Search" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-                    <RadioButton x:Name="settingsRadio" Content="Settings" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-                    <RadioButton x:Name="cartRadio" Content="Cart" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" Checked="searchRadio_Checked"/>
-                    <RadioButton x:Name="aboutRadio" Content="About" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding ChangeCommand}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="homeRadio" Content="{DynamicResource Home}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding OpenHome}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="searchRadio" Content="{DynamicResource Search}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding OpenSearch}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="settingsRadio" Content="{DynamicResource Settings}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding OpenSettings}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="cartRadio" Content="{DynamicResource Cart}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding OpenCart}" Checked="searchRadio_Checked"/>
+                    <RadioButton x:Name="aboutRadio" Content="{DynamicResource About}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" Command="{Binding OpenAbout}" VerticalAlignment="Bottom" Checked="searchRadio_Checked"/>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>
@@ -48,7 +48,9 @@
                     <Button Background="Transparent" BorderBrush="Transparent" Command="{Binding OpenProfile}">
                         <materialDesign:PackIcon Kind="EmoticonManProfile" Width="25" Height="25"/>
                     </Button>
-                    <materialDesign:PackIcon Kind="Gear" Width="50" Height="50" Margin="0,0,0,5"/>
+                    <Button Background="Transparent" Command="{Binding Exit}" BorderBrush="Transparent" Width="60" Height="60" Margin="0,0,15,0">
+                        <materialDesign:PackIcon Kind="ExitToApp" Width="25" Height="25" Margin="0,0,0,5"/>
+                    </Button>
                 </Menu>
             </Grid>
             </Grid>

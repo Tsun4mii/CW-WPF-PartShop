@@ -2,6 +2,7 @@
 using CourseWork.Models;
 using CourseWork.Properties;
 using CourseWork.SingletonView;
+using CourseWork.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +20,7 @@ namespace CourseWork.ViewModels
         public User User { get; set; }
         public Card Card { get; set; }
         public string FullName { get; set; }
+        public double Sum = 0;
         public ProfileViewModel()
         {
             Orders = new ObservableCollection<Order>(App.db.Orders.Where(x => x.UserId == Settings.Default.UserId));
@@ -45,6 +47,16 @@ namespace CourseWork.ViewModels
                 OnPropertyChanged("Balance");
             }
         }
+        private string errorMessage;
+        public string ErrorMessage
+        {
+            get { return errorMessage; }
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
+            }
+        }
         private Order selectedOrder;
         public Order SelectedOrder
         {
@@ -63,8 +75,19 @@ namespace CourseWork.ViewModels
                 return acceptOrder ??
                   (acceptOrder = new Command(obj =>
                   {
-                      ConfirmOrderViewModel.orderId = selectedOrder.OrderId;
-                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
+                      try
+                      {
+                          if(selectedOrder.OrderState == Resources.canceled)
+                          {
+                              throw new Exception("Невозможно подтвердить отмененный заказ");
+                          }
+                          ConfirmOrderViewModel.orderId = selectedOrder.OrderId;
+                          Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
+                      }
+                      catch(Exception e)
+                      {
+                          ErrorMessage = e.Message;
+                      }
                   }));
             }
         }
@@ -76,22 +99,40 @@ namespace CourseWork.ViewModels
                 return cancelOrder ??
                   (cancelOrder = new Command(async obj =>
                   {
-                      List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == selectedOrder.OrderId));
-                      //foreach(var p in selectedOrder.Parts)
-                      //{
-                      //    var orderedParts = App.db.Orders.Where(a => a.OrderId == selectedOrder.OrderId)
-                      //    .Join(App.db.OrderedParts, t => t.OrderId, x => x.PartId, (t, x) => new { t, x })
-                      //    .Join(App.db.Parts, l => l.x.PartId, k => k.PartId, (l, k) => new { l, k }).ToList();
-                      //    foreach(var i in orderedParts)
-                      //    {
-                      //        MessageBox.Show(i.k.Name + i.k.Amount);
-                      //    }
-                      //}
-                      foreach(var p in prts)
+                      try
                       {
-                          App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Quantity += p.Amount;
+                          if(selectedOrder.OrderState == Resources.canceled)
+                          {
+                              throw new Exception("Данный заказ уже отменен");
+                          }    
+                          List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == selectedOrder.OrderId));
+                          foreach (var p in prts)
+                          {
+                              App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Quantity += p.Amount;
+                              Sum += App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Price * p.Amount;
+                          }
+                          Sum += selectedOrder.Delivery.Price;
+                          selectedOrder.OrderState = Resources.canceled;
+                          Card.Balance += Sum;
+                          await App.db.SaveChangesAsync();
                       }
-                      await App.db.SaveChangesAsync();
+                      catch(Exception e)
+                      {
+                          ErrorMessage = e.Message;
+                      }
+                  }));
+            }
+        }
+        private Command addCard;
+        public ICommand AddCard
+        {
+            get
+            {
+                return addCard ??
+                  (addCard = new Command(obj =>
+                  {
+                      AddCardView window = new AddCardView();
+                      window.ShowDialog();
                   }));
             }
         }

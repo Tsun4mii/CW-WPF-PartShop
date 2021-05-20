@@ -42,4 +42,7 @@
     <DataTemplate DataType="{x:Type admin:OrdersAdminVM}">
         <adminV:OrdersAdminView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type local:AboutViewModel}">
+        <local1:AboutView/>
+    </DataTemplate>
 </ResourceDictionary>

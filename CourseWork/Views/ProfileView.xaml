@@ -49,6 +49,9 @@
                             <StackPanel Orientation="Horizontal" Margin="120,160,0,0">
                                 <Button Content="Сменить пароль?"/>
                             </StackPanel>
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"/>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -74,7 +77,7 @@
                         <Image Source="E:\2nd course\OOP\CW\CourseWork\CourseWork\Resources\Images\visa1.png"></Image>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="3">
-                        <Button Style="{StaticResource RoundedButtonStyle}">
+                        <Button Style="{StaticResource RoundedButtonStyle}" Margin="3" Command="{Binding AddCard}">
                             <materialDesign:PackIcon Kind="Add" Width="10" Height="10"/>
                         </Button>
                     </Grid>
@@ -97,7 +100,7 @@
                         <DataGridTemplateColumn Header="Accept">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Tag="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.AcceptOrder}">
+                                    <Button Tag="{Binding}" Style="{StaticResource RoundedButtonStyle}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.AcceptOrder}">
                                         <materialDesign:PackIcon Kind="Check"/>
                                     </Button>
                                 </DataTemplate>

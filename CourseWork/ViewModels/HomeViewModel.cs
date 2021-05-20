@@ -24,6 +24,7 @@ namespace CourseWork.ViewModels
         public Part part;
         public string textForSearch { get; set; }
         public ObservableCollection<Category> categories { get; set; }
+        public ObservableCollection<Mark> Marks { get; set; }
         private Command addToCartCommand;
         private Command openFullInfoCommand;
         private Command findByCategory;
@@ -56,6 +57,7 @@ namespace CourseWork.ViewModels
                 Parts = new ObservableCollection<Part>(db.Parts);
                 PartsForSearch = new ObservableCollection<Part>(db.Parts);
                 categories = new ObservableCollection<Category>(db.Categories);
+                Marks = new ObservableCollection<Mark>(db.Marks);
                 //Parts = db.Parts.ToList();
             }
         }

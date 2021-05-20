@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace CourseWork.ViewModels
 {
@@ -19,6 +23,21 @@ namespace CourseWork.ViewModels
         public static int orderId;
         public ConfirmOrderViewModel()
         { }
+        public static Window wndw = Application.Current.Windows[0];
+        public static Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: wndw,
+                corner: Corner.BottomRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
         public ICommand SubmitCode
         {
             get
@@ -30,6 +49,11 @@ namespace CourseWork.ViewModels
                       {
                           App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
                           App.db.SaveChanges();
+                          notifier.ShowSuccess("Ваш заказ был подтвержден");
+                      }
+                      else
+                      {
+                          notifier.ShowError("Введенный вами код ошибочный");
                       }
                   }));
             }

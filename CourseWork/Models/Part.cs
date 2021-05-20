@@ -21,6 +21,8 @@ namespace CourseWork.Models
         public string FullDescription { get; set; }
 
         public string ImageLink { get; set; }
+        public int MarkId { get; set; }
+        public Mark Mark { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public Provider Provider { get; set; }

@@ -70,6 +70,15 @@ namespace CourseWork.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Canceled.
+        /// </summary>
+        internal static string canceled {
+            get {
+                return ResourceManager.GetString("canceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Waiting for confirmation.
         /// </summary>
         internal static string waiting {

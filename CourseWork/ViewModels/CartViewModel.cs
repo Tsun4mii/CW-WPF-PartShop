@@ -12,7 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace CourseWork.ViewModels
 {
@@ -21,6 +24,7 @@ namespace CourseWork.ViewModels
         public static ObservableCollection<Part> Parts { get; set; }
         public ObservableCollection<Delivery> Deliveries { get; set; }
         public Delivery tmpDelivary = new Delivery { Price = 0 };
+        public Card Card { get; set; }
         public CartViewModel()
         {
             Parts = ConnectionBetweenViews.Parts;
@@ -29,7 +33,9 @@ namespace CourseWork.ViewModels
             {
                 Summary += i.Price * i.Amount;
             }
+            Card = App.db.Cards.Where(x => x.UserId == Settings.Default.UserId).FirstOrDefault();
         }
+
         private Delivery selectedDelivery;
         public Delivery SelectedDelivery
         {
@@ -38,6 +44,16 @@ namespace CourseWork.ViewModels
             {
                 selectedDelivery = value;
                 OnPropertyChanged("SelectedDelivery");
+            }
+        }
+        private string errorMessage;
+        public string ErrorMessage
+        {
+            get { return errorMessage; }
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged("ErrorMessage");
             }
         }
         private Part selectedPart;
@@ -70,16 +86,17 @@ namespace CourseWork.ViewModels
                   {
                       if(selectedPart.Amount > 1)
                       {
-                          App.notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
+                          //notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           selectedPart.Amount--;
                           Summary -= selectedPart.Price;
                       }
                       else
                       {
-                          App.notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
+                          //notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           Summary -= selectedPart.Price;
                           Parts.Remove(SelectedPart);
-                      }                   
+                      }
+                      ConfirmOrderViewModel.notifier.ShowWarning("Товар был удален из корзины");
                   }));
             }
         }
@@ -92,7 +109,18 @@ namespace CourseWork.ViewModels
                 return buyCommand ??
                   (buyCommand = new Command(async obj =>
                   {
-                      await AddOrder(Parts);                   
+                      try
+                      {
+                          if (Card == null)
+                          {
+                              throw new Exception("Для покупки должна быть привязана карта");
+                          }
+                          await AddOrder(Parts);
+                      }
+                      catch(Exception e)
+                      {
+                          ErrorMessage = e.Message;
+                      }
                   }));
             }
         }
@@ -115,27 +143,48 @@ namespace CourseWork.ViewModels
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
-                Order order = new Order();
-                order.OrderDate = DateTime.Now;
-                order.OrderState = Resources.waiting;
-                List<OrderedParts> details = new List<OrderedParts>();
-                foreach (Part i in Parts)                                      //--Огромный ебучий кастыль(но работает)
-                {                                                              //--Решает баг с дублированием объектов в бд
-                    details.Add(new OrderedParts()
+                try
+                {
+                    if(Card.Balance < Summary)
                     {
-                        OrderId = order.OrderId,
-                        PartId = i.PartId,
-                        Amount = i.Amount
-                    });
-                    Summary += i.Price;
+                        throw new Exception("Недостаточно средств на счете");
+                    }
+                    else if( selectedDelivery == null)
+                    {
+                        throw new Exception("Должна быть выбрана доставка");
+                    }
+                    Order order = new Order();
+                    order.OrderDate = DateTime.Now;
+                    order.OrderState = Resources.waiting;
+                    List<OrderedParts> details = new List<OrderedParts>();
+                    foreach (Part i in Parts)                                      //--Огромный ебучий кастыль(но работает)
+                    {                                                              //--Решает баг с дублированием объектов в бд
+                        if(i.Amount > App.db.Parts.Where(x => x.PartId == i.PartId).FirstOrDefault().Quantity)
+                        {
+                            throw new Exception($"Товаров {i.Name} недостаточно на складе для заказа");
+                        }
+                        details.Add(new OrderedParts()
+                        {
+                            OrderId = order.OrderId,
+                            PartId = i.PartId,
+                            Amount = i.Amount
+                        });
+                    }
+                    order.Parts = details;
+                    order.UserId = Settings.Default.UserId;
+                    order.DeliveryId = selectedDelivery.DeliveryId;
+                    db.Orders.Add(order);
+                    Card.Balance -= Summary;
+                    ConfirmOrderViewModel.orderId = order.OrderId;
+                    Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
+                    Parts.Clear();
+                    Summary = 0;
+                    await db.SaveChangesAsync();
                 }
-                order.Parts = details;
-                order.UserId = Settings.Default.UserId;
-                order.DeliveryId = 1;
-                db.Orders.Add(order);
-                ConfirmOrderViewModel.orderId = order.OrderId;
-                Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
-                await db.SaveChangesAsync();
+                catch(Exception e)
+                {
+                    ErrorMessage = e.Message;
+                }
             }
             
         }

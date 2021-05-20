@@ -75,7 +75,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                <Button Content="AddPartToCart" Command="{Binding AddToCart}"/>
+                <Button Content="AddPartToCart" Command="{Binding AddToCart}" Style="{StaticResource RoundedButtonStyle}" Height="30" Width="300"/>
             </materialDesign:Card>
         </Grid>
     </Grid>

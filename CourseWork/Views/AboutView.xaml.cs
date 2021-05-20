@@ -11,17 +11,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CourseWork.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AddCardView.xaml
+    /// Логика взаимодействия для AboutView.xaml
     /// </summary>
-    public partial class AddCardView : Window
+    public partial class AboutView : UserControl
     {
-        AddCardViewModel a = new AddCardViewModel();
-        public AddCardView()
+        AboutViewModel a = new AboutViewModel();
+        public AboutView()
         {
             InitializeComponent();
             DataContext = a;

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="CourseWork.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:CourseWork.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Helvetica">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="401*"/>
+            <RowDefinition Height="49*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                <StackPanel>
+                    <TextBlock Text="Часто задоваемые вопросы" FontSize="24" HorizontalAlignment="Center"/>
+                    <Expander Header="1.Как я могу оплатить заказ?" >
+                        <TextBlock Text="Ответ: Вы должны привязать вашу карту и при заказе деньги спишутся с вашего счета"/>
+                    </Expander>
+                    <Expander Header="2. Как я могу забрать заказ?">
+                        <TextBlock Text="Вы можете выбрать при заказе пунк 'Самовывоз' если хотите забрать заказ самостоятельно или выбрать одну из представленных курьерских служб. Учтите то, что если вы выбираете 'Самовывоз' то это абсолютно бесплатно." TextWrapping="Wrap"/>
+                    </Expander>
+                    
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+        <Grid Grid.Row="1">
+            <materialDesign:Card Margin="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Copyright © Tsunami a.k.a Yuri Shust" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="Contacts: " Margin="70,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center">
+                        <Hyperlink NavigateUri="https://vk.com/tsun4mi" Command="{Binding OpenVk}">
+                            VK,
+                        </Hyperlink>
+                        <Hyperlink Command="{Binding OpenInst}">
+                            Instagram,
+                        </Hyperlink>
+                        <Hyperlink Command="{Binding OpenTeleg}">
+                            Telegram
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>

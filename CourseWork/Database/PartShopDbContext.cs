@@ -19,6 +19,7 @@ namespace CourseWork.Database
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Mark> Marks { get; set; }
         public DbSet<OrderedParts> OrderedParts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

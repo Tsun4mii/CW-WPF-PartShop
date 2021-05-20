@@ -3,10 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseWork.Views"
         mc:Ignorable="d"
-        Title="AddCardView" Height="450" Width="800">
+        Title="AddCardView" Height="300" Width="500" Background="#a05344">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="170*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="36*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition Width="128*"/>
+            <ColumnDefinition Width="73*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <materialDesign:Card UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                <TextBox Text="{Binding CardNumber}" materialDesign:HintAssist.Hint="Card nubmer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,40,0,0" Width="250"/>
+            </materialDesign:Card>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <materialDesign:Card UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="0,2,0,0">
+                <TextBox Text="{Binding CvvCode}" materialDesign:HintAssist.Hint="CVV" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+            </materialDesign:Card>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <TextBox Text="{Binding Balance}" materialDesign:HintAssist.Hint="Balance" Width="100"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Button Command="{Binding AddCard}"/>
+        </Grid>
     </Grid>
 </Window>

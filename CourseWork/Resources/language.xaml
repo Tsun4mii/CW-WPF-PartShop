@@ -2,4 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <v:String x:Key="Test">Test</v:String>
+    <v:String x:Key="Home">Home</v:String>
+    <v:String x:Key="Cart">Cart</v:String>
+    <v:String x:Key="About">About</v:String>
+    <v:String x:Key="Search">Search</v:String>
+    <v:String x:Key="Settings">Settings</v:String>
+    <v:String x:Key="Name">Name: </v:String>
+    <v:String x:Key="Quantity">Quantity: </v:String>
+    <v:String x:Key="Price">Price: </v:String>
+    <v:String x:Key="Description">Description: </v:String>
+    <v:String x:Key="Category">Category:</v:String>
+    <v:String x:Key="Mark">Mark:</v:String>
 </ResourceDictionary>

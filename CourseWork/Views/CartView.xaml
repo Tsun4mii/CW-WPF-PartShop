@@ -22,16 +22,32 @@
                                 <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
                                     <StackPanel Orientation="Vertical">
                                         <materialDesign:Card UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                                            <StackPanel Orientation="Vertical" Height=" 200" Width="120">
+                                            <StackPanel Orientation="Vertical" Height=" 250" Width="120">
                                                 <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
-                                                <TextBlock Text="{Binding Name}"/>
-                                                <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{DynamicResource Name}" FontFamily="Helvetica"/>
+                                                    <TextBlock Text="{Binding Name}" FontFamily="Helvetica"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{DynamicResource Quantity}"/>
+                                                    <TextBlock Text="{Binding Quantity}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{DynamicResource Price}"/>
+                                                    <TextBlock Text="{Binding Price}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Amount: "/>
+                                                    <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
+                                                </StackPanel>
                                                 <Separator Background="Black"/>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}">
                                                         <materialDesign:PackIcon Kind="Delete"/>
                                                     </Button>
-                                                    <Button/>
+                                                    <Button>
+                                                        <materialDesign:PackIcon Kind="ReadMore"/>
+                                                    </Button>
                                                 </StackPanel>
                                             </StackPanel>
                                         </materialDesign:Card>
@@ -66,13 +82,16 @@
                         <ColumnDefinition Width="203*"/>
                         <ColumnDefinition Width="189*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" Margin="0,0,1,-0.4">
-                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center"/>
+                    <Grid Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Height="20" Text="{Binding ErrorMessage}" Foreground="Red" FontSize="12"/>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Column="2">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                             <TextBlock Text="Доставка: "/>
-                            <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="125">
+                            <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="105">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction Command="{Binding DeliveryChanged}"/>
@@ -87,8 +106,8 @@
                         </ComboBox>
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Grid Grid.Column="1" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                             <TextBlock Text="Сумма к оплате: "/>
                             <TextBlock Text="{Binding Summary}"/>
                         </StackPanel>
