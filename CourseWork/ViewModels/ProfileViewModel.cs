@@ -1,6 +1,7 @@
 ﻿using CourseWork.Commands;
 using CourseWork.Models;
 using CourseWork.Properties;
+using CourseWork.Services;
 using CourseWork.SingletonView;
 using CourseWork.Views;
 using System;
@@ -81,6 +82,10 @@ namespace CourseWork.ViewModels
                           {
                               throw new Exception("Невозможно подтвердить отмененный заказ");
                           }
+                          if(selectedOrder.OrderState == Resources.acepted)
+                          {
+                              throw new Exception("Заказ уже подтвержден");
+                          }
                           ConfirmOrderViewModel.orderId = selectedOrder.OrderId;
                           Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
                       }
@@ -104,17 +109,19 @@ namespace CourseWork.ViewModels
                           if(selectedOrder.OrderState == Resources.canceled)
                           {
                               throw new Exception("Данный заказ уже отменен");
-                          }    
-                          List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == selectedOrder.OrderId));
-                          foreach (var p in prts)
-                          {
-                              App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Quantity += p.Amount;
-                              Sum += App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Price * p.Amount;
                           }
-                          Sum += selectedOrder.Delivery.Price;
-                          selectedOrder.OrderState = Resources.canceled;
-                          Card.Balance += Sum;
-                          await App.db.SaveChangesAsync();
+                          //List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == selectedOrder.OrderId));
+                          //foreach (var p in prts)
+                          //{
+                          //    App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Quantity += p.Amount;
+                          //    Sum += App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Price * p.Amount;
+                          //}
+                          //Sum += selectedOrder.Delivery.Price;
+                          //selectedOrder.OrderState = Resources.canceled;
+                          //Card.Balance += Sum;
+                          //await App.db.SaveChangesAsync();
+                          CancelOrderViewModel.orderId = selectedOrder.OrderId;
+                          Singleton.getInstance(null).MainViewModel.CurrentViewModel = new CancelOrderViewModel();
                       }
                       catch(Exception e)
                       {
@@ -136,5 +143,18 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
+        private Command changePassword;
+        public ICommand ChangePassword
+        {
+            get
+            {
+                return changePassword ??
+                  (changePassword = new Command(obj =>
+                  {
+                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ChangePasswordViewModel();
+                  }));
+            }
+        }
+
     }
 }

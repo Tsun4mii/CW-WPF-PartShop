@@ -42,31 +42,31 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <TextBlock Text="Наименование: "/>
+                            <TextBlock Text="{DynamicResource Name}"/>
                             <TextBlock Text="{Binding Part.Name}"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="2">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <TextBlock Text="Доступно на складе: "/>
+                            <TextBlock Text="{DynamicResource Quantity}"/>
                             <TextBlock Text="{Binding Part.Quantity}"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="3">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <TextBlock Text="Категория: "/>
+                            <TextBlock Text="{DynamicResource Category}"/>
                             <TextBlock Text="{Binding Category.Name}"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="4">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <TextBlock Text="Описание: "/>
+                            <TextBlock Text="{DynamicResource Description}"/>
                             <TextBlock Text="{Binding Part.Description}"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="5">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
-                            <TextBlock Text="Подробное описание: "/>
+                            <TextBlock Text="{DynamicResource FullDescription}"/>
                             <TextBlock Text="{Binding Part.FullDescription}" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Grid>
@@ -75,7 +75,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                <Button Content="AddPartToCart" Command="{Binding AddToCart}" Style="{StaticResource RoundedButtonStyle}" Height="30" Width="300"/>
+                <Button Content="{DynamicResource AddToCart}" Command="{Binding AddToCart}" Style="{StaticResource RoundedButtonStyle}" Height="30" Width="300"/>
             </materialDesign:Card>
         </Grid>
     </Grid>

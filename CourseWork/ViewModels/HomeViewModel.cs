@@ -110,5 +110,19 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
+        private Command testCommand;
+        public ICommand TestCommand
+        {
+            get
+            {
+                return testCommand ??
+                  (testCommand = new Command(obj =>
+                  {
+                      App.db.Parts.Where(x => x.PartId == 13).FirstOrDefault().Quantity -= 3;
+                      App.db.SaveChanges();
+                  }));
+            }
+        }
+
     }
 }

@@ -20,7 +20,7 @@
             <materialDesign:Card Margin="10,10,10,0" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBox Text="{Binding textForSearch}" Width="250" Height="25" VerticalAlignment="Center" BorderThickness="1" BorderBrush="Black" Template="{StaticResource TextBoxBaseControlTemplate}"/>
-                    <Button Command="{Binding FindByName}" Margin="10,0,0,0">
+                    <Button Command="{Binding FindByName}" Margin="10,0,0,0" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="40">
                         <materialDesign:PackIcon Kind="Search" Height="20" Width="20"/>
                     </Button>
                 </StackPanel>
@@ -40,7 +40,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <TextBlock Text="Подробный поиск" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica" FontSize="14"/>
+                        <TextBlock Text="{DynamicResource DetailedSearch}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica" FontSize="14"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <StackPanel Orientation="Vertical">
@@ -66,7 +66,7 @@
                     </Grid>
                     <Grid Grid.Row="3">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <TextBlock Text="Категория: " FontFamily="Helvetica" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <TextBlock Text="{DynamicResource Category}" FontFamily="Helvetica" VerticalAlignment="Center" Margin="10,0,0,0"/>
                             <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" MinWidth="100" materialDesign:HintAssist.Hint="Категория..." BorderThickness="2" BorderBrush="Black">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -78,7 +78,7 @@
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="6">
-                        <Button Content="Подобрать" Command="{Binding DetailedSearch}"/>
+                        <Button Content="{DynamicResource Search}" Command="{Binding DetailedSearch}" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="150"/>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

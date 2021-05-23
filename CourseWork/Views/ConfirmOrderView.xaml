@@ -29,7 +29,7 @@
                     <TextBox Margin="10,10,10,10" x:Name="codeCheck" Text="{Binding codeFromBox}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="1">
-                    <Button x:Name="codeConfirm" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
+                    <Button x:Name="codeConfirm" Content="Подтвердить" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
                 </Grid>
             </Grid>
         </materialDesign:Card>

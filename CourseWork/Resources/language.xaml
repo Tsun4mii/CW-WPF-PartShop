@@ -8,9 +8,23 @@
     <v:String x:Key="Search">Search</v:String>
     <v:String x:Key="Settings">Settings</v:String>
     <v:String x:Key="Name">Name: </v:String>
+    <v:String x:Key="FullDescription">Full description:</v:String>
     <v:String x:Key="Quantity">Quantity: </v:String>
     <v:String x:Key="Price">Price: </v:String>
     <v:String x:Key="Description">Description: </v:String>
     <v:String x:Key="Category">Category:</v:String>
     <v:String x:Key="Mark">Mark:</v:String>
+    <v:String x:Key="Welcome">Welcome to AutoLight partshop</v:String>
+    <v:String x:Key="UserInfo">User Information</v:String>
+    <v:String x:Key="UserLogin">User login: </v:String>
+    <v:String x:Key="UserFirst">User first name:</v:String>
+    <v:String x:Key="UserSurname">User surname:</v:String>
+    <v:String x:Key="UserEmail">User email:</v:String>
+    <v:String x:Key="Balance">Balance:</v:String>
+    <v:String x:Key="Buy">Buy</v:String>
+    <v:String x:Key="Summary">Summary:</v:String>
+    <v:String x:Key="Delivery">Delivery:</v:String>
+    <v:String x:Key="ChangePass">Change password?</v:String>
+    <v:String x:Key="AddToCart">Add to cart</v:String>
+    <v:String x:Key="DetailedSearch">Detailed Search</v:String>
 </ResourceDictionary>

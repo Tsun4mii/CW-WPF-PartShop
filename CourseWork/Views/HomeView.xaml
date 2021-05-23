@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,0,0,0.4">
             <materialDesign:Card Margin="10,2,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
-                <TextBlock Text="Welcome to AutoLight part shop" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                <TextBlock Text="{DynamicResource Welcome}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1">
@@ -89,11 +89,11 @@
                                                 <TextBlock Text="{Binding Price}"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Category: "/>
+                                                <TextBlock Text="{DynamicResource Category}"/>
                                                 <TextBlock Text="{Binding Category.Name}"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Mark: "/>
+                                                <TextBlock Text="{DynamicResource Mark}"/>
                                                 <TextBlock Text="{Binding Mark.MarkName}"/>
                                             </StackPanel>
                                             <Separator Background="Black"/>

@@ -84,13 +84,13 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <StackPanel Orientation="Vertical">
-                        <Button Content="Buy" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <Button Content="{DynamicResource Buy}" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center" Margin="0,0,0,10"/>
                             <TextBlock Height="20" Text="{Binding ErrorMessage}" Foreground="Red" FontSize="12"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="2">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                            <TextBlock Text="Доставка: "/>
+                            <TextBlock Text="{DynamicResource Delivery}"/>
                             <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="105">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
@@ -108,7 +108,7 @@
                     </Grid>
                     <Grid Grid.Column="1" >
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                            <TextBlock Text="Сумма к оплате: "/>
+                            <TextBlock Text="{DynamicResource Summary}"/>
                             <TextBlock Text="{Binding Summary}"/>
                         </StackPanel>
                     </Grid>

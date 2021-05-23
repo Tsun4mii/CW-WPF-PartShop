@@ -107,7 +107,7 @@ namespace CourseWork.ViewModels
             get
             {
                 return buyCommand ??
-                  (buyCommand = new Command(async obj =>
+                  (buyCommand = new Command(obj =>
                   {
                       try
                       {
@@ -115,7 +115,16 @@ namespace CourseWork.ViewModels
                           {
                               throw new Exception("Для покупки должна быть привязана карта");
                           }
-                          await AddOrder(Parts);
+                          AddOrder(Parts);
+                          //using (PartShopDbContext db = new PartShopDbContext())
+                          //{
+                          //    ObservableCollection<Part> parts = new ObservableCollection<Part>(db.Parts);
+                          //    foreach(Part i in parts)
+                          //    {
+
+                          //    }
+                          //}
+                          
                       }
                       catch(Exception e)
                       {
@@ -139,7 +148,7 @@ namespace CourseWork.ViewModels
             }
         }
 
-        public async Task AddOrder(ObservableCollection<Part> parts)
+        public void AddOrder(ObservableCollection<Part> parts)
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
@@ -159,7 +168,7 @@ namespace CourseWork.ViewModels
                     List<OrderedParts> details = new List<OrderedParts>();
                     foreach (Part i in Parts)                                      //--Огромный ебучий кастыль(но работает)
                     {                                                              //--Решает баг с дублированием объектов в бд
-                        if(i.Amount > App.db.Parts.Where(x => x.PartId == i.PartId).FirstOrDefault().Quantity)
+                        if(i.Amount > db.Parts.Where(x => x.PartId == i.PartId).FirstOrDefault().Quantity)
                         {
                             throw new Exception($"Товаров {i.Name} недостаточно на складе для заказа");
                         }
@@ -169,6 +178,7 @@ namespace CourseWork.ViewModels
                             PartId = i.PartId,
                             Amount = i.Amount
                         });
+                        db.Parts.Where(x => x.PartId == i.PartId).FirstOrDefault().Quantity -= i.Amount;
                     }
                     order.Parts = details;
                     order.UserId = Settings.Default.UserId;
@@ -179,7 +189,7 @@ namespace CourseWork.ViewModels
                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
                     Parts.Clear();
                     Summary = 0;
-                    await db.SaveChangesAsync();
+                    db.SaveChanges();
                 }
                 catch(Exception e)
                 {

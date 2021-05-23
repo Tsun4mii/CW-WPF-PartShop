@@ -11,6 +11,20 @@
     <v:String x:Key="Quantity">На складе: </v:String>
     <v:String x:Key="Price">Цена: </v:String>
     <v:String x:Key="Description">Описание:</v:String>
+    <v:String x:Key="FullDescription">Полное описание:</v:String>
     <v:String x:Key="Category">Категория:</v:String>
     <v:String x:Key="Mark">Марка:</v:String>
+    <v:String x:Key="Welcome">Добро пожаловать в AutoLight, магазин автозапчастей</v:String>
+    <v:String x:Key="UserInfo">Информация о пользователе</v:String>
+    <v:String x:Key="UserLogin">Псевдоним пользователя: </v:String>
+    <v:String x:Key="UserFirst">Имя пользователя:</v:String>
+    <v:String x:Key="UserSurname">Фамлия пользователя:</v:String>
+    <v:String x:Key="UserEmail">Адрес электронной почты:</v:String>
+    <v:String x:Key="Balance">Баланс:</v:String>
+    <v:String x:Key="Buy">Купить</v:String>
+    <v:String x:Key="Summary">Сумма: </v:String>
+    <v:String x:Key="Delivery">Доставка: </v:String>
+    <v:String x:Key="ChangePass">Сменить пароль?</v:String>
+    <v:String x:Key="AddToCart">Добавить в корзину</v:String>
+    <v:String x:Key="DetailedSearch">Подробный поиск</v:String>
 </ResourceDictionary>

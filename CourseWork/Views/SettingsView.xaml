@@ -7,18 +7,21 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:CourseWork.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="117*"/>
             <RowDefinition Height="332*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid>
-            <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Langs}" SelectedIndex="0">
+            <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <TextBlock Text="Язык: " VerticalAlignment="Center"/>
+                <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Langs}" SelectedIndex="0" Width="100">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding LanguageChanged}"/>
@@ -31,9 +34,8 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-        </Grid>
-        <Grid Grid.Column="1">
-            <TextBlock Text="{DynamicResource Test}"/>
+            </StackPanel>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </UserControl>

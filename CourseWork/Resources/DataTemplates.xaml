@@ -45,4 +45,10 @@
     <DataTemplate DataType="{x:Type local:AboutViewModel}">
         <local1:AboutView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type local:ChangePasswordViewModel}">
+        <local1:ChangePasswordView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:CancelOrderViewModel}">
+        <local1:CancelOrderView/>
+    </DataTemplate>
 </ResourceDictionary>

@@ -154,7 +154,9 @@
     <Compile Include="ViewModels\AdminViewModels\ProvidersAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\UsersAdminVM.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
+    <Compile Include="ViewModels\CancelOrderViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ConfirmOrderViewModel.cs" />
     <Compile Include="ViewModels\FullInfoViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -207,8 +209,14 @@
     <Compile Include="Views\AuthView.xaml.cs">
       <DependentUpon>AuthView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CancelOrderView.xaml.cs">
+      <DependentUpon>CancelOrderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CartView.xaml.cs">
       <DependentUpon>CartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangePasswordView.xaml.cs">
+      <DependentUpon>ChangePasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConfirmOrderView.xaml.cs">
       <DependentUpon>ConfirmOrderView.xaml</DependentUpon>
@@ -334,9 +342,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CancelOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CartView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChangePasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ConfirmOrderView.xaml">
       <SubType>Designer</SubType>

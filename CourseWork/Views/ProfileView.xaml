@@ -31,23 +31,23 @@
                         <TextBlock Text="Информация и пользователе" HorizontalAlignment="Center" FontSize="18"/>
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Margin="10,50,0,0">
-                                <TextBlock Text="Псевдоним пользователя: "/>
+                                <TextBlock Text="{DynamicResource UserLogin}"/>
                                 <TextBlock Text="{Binding User.Login}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                                <TextBlock Text="Имя пользователя: "/>
+                                <TextBlock Text="{DynamicResource UserFirst}"/>
                                 <TextBlock Text="{Binding User.FirstName}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                                <TextBlock Text="Фамилия пользователя: "/>
+                                <TextBlock Text="{DynamicResource UserSurname}"/>
                                 <TextBlock Text="{Binding User.LastName}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                                <TextBlock Text="Адрес электронной почты: "/>
+                                <TextBlock Text="{DynamicResource UserEmail}"/>
                                 <TextBlock Text="{Binding User.Email}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="120,160,0,0">
-                                <Button Content="Сменить пароль?"/>
+                                <Button Content="{DynamicResource ChangePass}" Command="{Binding ChangePassword}"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"/>
@@ -82,7 +82,7 @@
                         </Button>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                        <TextBlock Text="Balance:" Margin="0,0,60,0" Foreground="White" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{DynamicResource Balance}" Margin="0,0,60,0" Foreground="White" FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                         <TextBlock Text="{Binding Balance}" Margin="100,0,0,0" Foreground="White" FontSize="20" VerticalAlignment="Center"/>
@@ -109,7 +109,7 @@
                         <DataGridTemplateColumn Header="Cancel">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Tag="{Binding}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.CancelOrder}">
+                                    <Button Tag="{Binding}" Style="{StaticResource RoundedButtonStyle}" Command="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.CancelOrder}">
                                         <materialDesign:PackIcon Kind="Cancel"/>
                                     </Button>
                                 </DataTemplate>
