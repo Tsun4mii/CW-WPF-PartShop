@@ -37,7 +37,7 @@
                                                     <TextBlock Text="{Binding Price}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="Amount: "/>
+                                                    <TextBlock Text="{DynamicResource Amount}"/>
                                                     <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </StackPanel>
                                                 <Separator Background="Black"/>

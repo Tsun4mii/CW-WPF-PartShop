@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork.SingletonView
 {
-    class SingletonAuth
+    public class SingletonAuth
     {
         private static SingletonAuth instance;
         public AuthViewModel StartViewModel { get; set; }

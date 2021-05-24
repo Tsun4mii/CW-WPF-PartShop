@@ -24,7 +24,7 @@
         </Rectangle>
         <Grid VerticalAlignment="Bottom" Margin="35.2,0,35.2,30" Height="350">
             <Label Content="REGISTRATION" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
-            <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="35" Foreground="Red" FontSize="12"/>
+            <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="35" Foreground="Red" FontSize="12" TextWrapping="Wrap"/>
             <StackPanel VerticalAlignment="Center" Margin="10">
                 <TextBox Margin="0,5" materialDesign:HintAssist.Hint="Login" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
                 <TextBox Margin="0,5" materialDesign:HintAssist.Hint="Email" Text="{Binding mail}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>

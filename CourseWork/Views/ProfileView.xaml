@@ -28,7 +28,7 @@
                                                  Height="60" Width="60"/>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <TextBlock Text="Информация и пользователе" HorizontalAlignment="Center" FontSize="18"/>
+                        <TextBlock Text="{DynamicResource UserInfo}" HorizontalAlignment="Center" FontSize="18"/>
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Margin="10,50,0,0">
                                 <TextBlock Text="{DynamicResource UserLogin}"/>
@@ -47,7 +47,7 @@
                                 <TextBlock Text="{Binding User.Email}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="120,160,0,0">
-                                <Button Content="{DynamicResource ChangePass}" Command="{Binding ChangePassword}"/>
+                                <Button Content="{DynamicResource ChangePass}" Command="{Binding ChangePassword}" Style="{StaticResource RoundedButtonStyle}"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center">
                                 <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"/>
@@ -89,6 +89,12 @@
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
                         <TextBlock Text="{Binding FullName}" Foreground="White" Margin="20,0,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="0">
+                        <TextBox materialDesign:HintAssist.Hint="пополнить" Foreground="white" Text="{Binding plusBalance}"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <Button Style="{StaticResource RoundedButtonStyle}" Height="25" Width="80" Content="Пополнить" Command="{Binding Deposit}"/>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

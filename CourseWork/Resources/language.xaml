@@ -27,4 +27,9 @@
     <v:String x:Key="ChangePass">Change password?</v:String>
     <v:String x:Key="AddToCart">Add to cart</v:String>
     <v:String x:Key="DetailedSearch">Detailed Search</v:String>
+    <v:String x:Key="Amount">Amount: </v:String>
+    <v:String x:Key="Category2">Category</v:String>
+    <v:String x:Key="from">From:</v:String>
+    <v:String x:Key="to">To:</v:String>
+    <v:String x:Key="Language">Language:</v:String>
 </ResourceDictionary>

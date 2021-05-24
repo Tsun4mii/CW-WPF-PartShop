@@ -30,7 +30,6 @@ namespace CourseWork
     public partial class MainWindow : Window
     {
         MainViewModel a = new MainViewModel();
-        public static int Code { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -43,10 +42,6 @@ namespace CourseWork
         //    a.ShowDialog();
         //
 
-        private void searchRadio_Checked(object sender, RoutedEventArgs e)
-        {
-            a.index = ((RadioButton)sender).Content.ToString();
-        }
 
 
     }

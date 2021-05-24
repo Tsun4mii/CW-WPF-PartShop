@@ -14,7 +14,6 @@ namespace CourseWork.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public string index { get; set; }
         private ViewModelBase currentViewModel;
 
         public ViewModelBase CurrentViewModel
@@ -39,17 +38,24 @@ namespace CourseWork.ViewModels
                 return exit ??
                  (exit = new Command(obj =>
                  {
-                     AuthView auth = new AuthView();
-                     auth.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                     auth.Show();
-                     MainViewModel.Close();
+                     //AuthView auth = new AuthView();
+                     //auth.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                     //auth.Show();
+                     //Close();
+                     Application.Current.Shutdown();
+                     System.Diagnostics.Process.Start(Environment.GetCommandLineArgs()[0]);
                  }));
             }
         }
-        public static void Close()
+        public void Close()
         {
-            var window = System.Windows.Application.Current.Windows;
-            window[0].Close();
+            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window.DataContext == this)
+                {
+                    window.Close();
+                }
+            }
         }
         private Command openProfile;
         public ICommand OpenProfile

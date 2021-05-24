@@ -89,6 +89,7 @@ namespace CourseWork.ViewModels
                  (openRegCommand = new Command(obj =>
                  {
                      SingletonAuth.getInstance(null).StartViewModel.CurrentViewModel = new RegViewModel();
+
                  }));
             }
         }

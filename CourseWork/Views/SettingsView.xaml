@@ -20,7 +20,7 @@
         <Grid>
             <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                <TextBlock Text="Язык: " VerticalAlignment="Center"/>
+                <TextBlock Text="{DynamicResource Language}" VerticalAlignment="Center"/>
                 <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Langs}" SelectedIndex="0" Width="100">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">

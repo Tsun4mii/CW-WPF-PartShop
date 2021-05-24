@@ -20,6 +20,7 @@ namespace CourseWork.ViewModels
         public ObservableCollection<Order> Orders { get; set; }
         public User User { get; set; }
         public Card Card { get; set; }
+        public int plusBalance { get; set; }
         public string FullName { get; set; }
         public double Sum = 0;
         public ProfileViewModel()
@@ -155,6 +156,32 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
-
+        private Command deposit;
+        public ICommand Deposit
+        {
+            get
+            {
+                return deposit ??
+                  (deposit = new Command(obj =>
+                  {
+                      try
+                      {
+                          if (plusBalance > 0)
+                          {
+                              App.db.Cards.Where(x => x.CardId == Card.CardId).FirstOrDefault().Balance += plusBalance;
+                              App.db.SaveChanges();
+                          }
+                          else
+                          {
+                              throw new Exception("Невозможно пополнить на отрицательную или нулевую сумму");
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
+                  }));
+            }
+        }
     }
 }

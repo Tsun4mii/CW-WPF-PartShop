@@ -86,6 +86,10 @@ namespace CourseWork.ViewModels
                              }
                          }
                      }
+                     catch(Exception e)
+                     {
+                         ErrorMessage = e.Message;
+                     }
                  }));
             }
         }

@@ -1,5 +1,6 @@
 ﻿using CourseWork.Database;
 using CourseWork.Localization;
+using CourseWork.SingletonView;
 using CourseWork.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,5 @@ namespace CourseWork
         {
             get => language ?? (language = new Language());
         }
-        
     }
 }

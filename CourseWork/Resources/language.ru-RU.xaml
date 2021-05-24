@@ -27,4 +27,9 @@
     <v:String x:Key="ChangePass">Сменить пароль?</v:String>
     <v:String x:Key="AddToCart">Добавить в корзину</v:String>
     <v:String x:Key="DetailedSearch">Подробный поиск</v:String>
+    <v:String x:Key="Amount">Заказано:</v:String>
+    <v:String x:Key="Category2">Категория</v:String>
+    <v:String x:Key="from">От:</v:String>
+    <v:String x:Key="to">До:</v:String>
+    <v:String x:Key="Language">Язык:</v:String>
 </ResourceDictionary>
