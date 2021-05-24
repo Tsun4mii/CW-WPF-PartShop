@@ -101,7 +101,10 @@ namespace CourseWork.ViewModels
                 return openSettings ??
                  (openSettings = new Command(obj =>
                  {
-                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
+                     if (Singleton.getInstance(null).MainViewModel.CurrentViewModel != new SettingsViewModel())
+                     {
+                         Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SettingsViewModel();
+                     }
                  }));
             }
         }

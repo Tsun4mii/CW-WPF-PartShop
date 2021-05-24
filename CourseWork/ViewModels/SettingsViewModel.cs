@@ -13,6 +13,7 @@ namespace CourseWork.ViewModels
     {
         public List<CultureInfo> Langs { get; set; }
         private CultureInfo selectedLanguage;
+        private CultureInfo currentLang { get; set; }
         public CultureInfo SelectedLanguage
         {
             get { return selectedLanguage; }
@@ -27,7 +28,19 @@ namespace CourseWork.ViewModels
             Langs = new List<CultureInfo>();
             foreach(var i in App.Language.Languages)
             {
-                Langs.Add(i);
+                if (i != null)
+                {
+                    Langs.Add(i);
+                }
+            }
+            if (selectedLanguage != null)
+            {
+                App.Language.Name = selectedLanguage;
+                
+            }
+            else
+            {
+                selectedLanguage = App.Language.Name;
             }
         }
         private Command languageChanged;
@@ -38,7 +51,17 @@ namespace CourseWork.ViewModels
                 return languageChanged ??
                   (languageChanged = new Command(obj =>
                   {
-                      App.Language.Name = selectedLanguage;
+                      if (selectedLanguage == null)
+                      {
+                          selectedLanguage = App.Language.Name;
+                      }
+                      else
+                      {
+                          App.Language.Name = selectedLanguage;
+                          currentLang = selectedLanguage;
+                          CourseWork.Properties.Settings.Default.DefaultLanguage = currentLang;
+                          CourseWork.Properties.Settings.Default.Save();
+                      }
                   }));
             }
         }
