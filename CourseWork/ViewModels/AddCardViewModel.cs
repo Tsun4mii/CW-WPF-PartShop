@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels
@@ -24,13 +25,20 @@ namespace CourseWork.ViewModels
                 return addCard ??
                   (addCard = new Command(obj =>
                   {
-                      Card card = new Card();
-                      card.CardNumber = CardNumber;
-                      card.CvvCode = CvvCode;
-                      card.Balance = Balance;
-                      card.UserId = Settings.Default.UserId;
-                      App.db.Cards.Add(card);
-                      App.db.SaveChanges();
+                      try
+                      {
+                          Card card = new Card();
+                          card.CardNumber = CardNumber;
+                          card.CvvCode = CvvCode;
+                          card.Balance = Balance;
+                          card.UserId = Settings.Default.UserId;
+                          App.db.Cards.Add(card);
+                          App.db.SaveChanges();
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

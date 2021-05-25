@@ -97,7 +97,7 @@
                                                 <TextBlock Text="{Binding Mark.MarkName}"/>
                                             </StackPanel>
                                             <Separator Background="Black"/>
-                                        <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.OpenFullInfo}"/>
+                                        <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.OpenFullInfo}" Style="{StaticResource RoundedButtonStyle}" Content="{DynamicResource More}"/>
                                         </StackPanel>
                                 </materialDesign:Card>
                             </StackPanel>

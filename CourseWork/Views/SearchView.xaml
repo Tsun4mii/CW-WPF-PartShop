@@ -96,10 +96,29 @@
                                 </Border.InputBindings>
                                 <StackPanel Orientation="Vertical">
                                     <materialDesign:Card UniformCornerRadius="10">
-                                        <StackPanel Orientation="Vertical" Height=" 200" Width="120">
+                                        <StackPanel Orientation="Vertical" Height=" 230" Width="130">
 
-                                            <Image Width="120" Height="120" Margin="5" Source="{Binding ImageLink}" />
-                                            <TextBlock Text="{Binding Name}"/>
+                                            <Image Width="130" Height="120" Margin="5" Source="{Binding ImageLink}" />
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Name}" FontFamily="Helvetica"/>
+                                                <TextBlock Text="{Binding Name}" FontFamily="Helvetica"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Quantity}"/>
+                                                <TextBlock Text="{Binding Quantity}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Price}"/>
+                                                <TextBlock Text="{Binding Price}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Category}"/>
+                                                <TextBlock Text="{Binding Category.Name}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{DynamicResource Mark}"/>
+                                                <TextBlock Text="{Binding Mark.MarkName}"/>
+                                            </StackPanel>
                                             <Separator Background="Black"/>
                                             <Button Command="{Binding AddToCartCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
                                         </StackPanel>

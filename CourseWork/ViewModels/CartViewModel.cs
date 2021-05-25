@@ -148,7 +148,7 @@ namespace CourseWork.ViewModels
             }
         }
 
-        public void AddOrder(ObservableCollection<Part> parts)
+        public async Task AddOrder(ObservableCollection<Part> parts)
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
@@ -185,11 +185,11 @@ namespace CourseWork.ViewModels
                     order.DeliveryId = selectedDelivery.DeliveryId;
                     db.Orders.Add(order);
                     Card.Balance -= Summary;
-                    ConfirmOrderViewModel.orderId = order.OrderId;
-                    Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
                     Parts.Clear();
                     Summary = 0;
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
+                    ConfirmOrderViewModel.orderId = order.OrderId;
+                    Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
                 }
                 catch(Exception e)
                 {

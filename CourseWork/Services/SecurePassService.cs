@@ -11,6 +11,7 @@ namespace CourseWork.Services
     {
         public static string Hash(string input)
         {
+
             byte[] hash = Encoding.ASCII.GetBytes(input);
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] hashenc = md5.ComputeHash(hash);

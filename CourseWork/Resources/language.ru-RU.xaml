@@ -32,4 +32,6 @@
     <v:String x:Key="from">От:</v:String>
     <v:String x:Key="to">До:</v:String>
     <v:String x:Key="Language">Язык:</v:String>
+    <v:String x:Key="Apply">Применить</v:String>
+    <v:String x:Key="More">Подробнее</v:String>
 </ResourceDictionary>

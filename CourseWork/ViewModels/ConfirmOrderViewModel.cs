@@ -1,4 +1,5 @@
 ﻿using CourseWork.Commands;
+using CourseWork.Models;
 using CourseWork.Properties;
 using CourseWork.Services;
 using System;
@@ -21,6 +22,7 @@ namespace CourseWork.ViewModels
         public string codeFromBox { get; set; }
         public Command submitCode;
         public static int orderId;
+        public Order order = App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault();
         public ConfirmOrderViewModel()
         { }
         public static Window wndw = Application.Current.Windows[0];
@@ -50,6 +52,7 @@ namespace CourseWork.ViewModels
                           App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
                           App.db.SaveChanges();
                           notifier.ShowSuccess("Ваш заказ был подтвержден");
+                          EmailSenderService.SendTicket(Settings.Default.UserMail, "Чек заказа", EmailSenderService.GenerateTicket(order)).GetAwaiter();
                       }
                       else
                       {

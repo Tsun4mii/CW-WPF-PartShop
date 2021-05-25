@@ -103,7 +103,7 @@ namespace CourseWork.ViewModels
             get
             {
                 return cancelOrder ??
-                  (cancelOrder = new Command(async obj =>
+                  (cancelOrder = new Command(obj =>
                   {
                       try
                       {

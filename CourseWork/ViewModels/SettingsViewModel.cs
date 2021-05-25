@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels
@@ -40,7 +41,7 @@ namespace CourseWork.ViewModels
             }
             else
             {
-                selectedLanguage = App.Language.Name;
+                selectedLanguage = Properties.Settings.Default.DefaultLanguage;
             }
         }
         private Command languageChanged;
@@ -61,6 +62,35 @@ namespace CourseWork.ViewModels
                           currentLang = selectedLanguage;
                           CourseWork.Properties.Settings.Default.DefaultLanguage = currentLang;
                           CourseWork.Properties.Settings.Default.Save();
+                      }
+                  }));
+            }
+        }
+        private Command confirmChange;
+        public ICommand ConfirmChange
+        {
+            get
+            {
+                return confirmChange ??
+                  (confirmChange = new Command(obj =>
+                  {
+                      try
+                      {
+                          if (selectedLanguage == null)
+                          {
+                              selectedLanguage = App.Language.Name;
+                          }
+                          else
+                          {
+                              App.Language.Name = selectedLanguage;
+                              currentLang = selectedLanguage;
+                              CourseWork.Properties.Settings.Default.DefaultLanguage = currentLang;
+                              CourseWork.Properties.Settings.Default.Save();
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
                       }
                   }));
             }
