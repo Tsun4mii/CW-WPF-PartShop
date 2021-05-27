@@ -99,7 +99,7 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return refreshView ??
                   (refreshView = new Command(obj =>
                   {
-                      
+                      SingletonAdmin.getInstance(null).StartViewModel.CurrentViewModel = new DeliveriesAdminVM();
                   }));
             }
         }

@@ -88,6 +88,7 @@ namespace CourseWork.Services
         {
             using (PartShopDbContext db = new PartShopDbContext()) 
             {
+                double sum = 0;
                 var orderParts = from o in db.Orders
                                  join op in db.OrderedParts
                                  on o.OrderId equals op.OrderId
@@ -103,10 +104,17 @@ namespace CourseWork.Services
                                  };
                 StringBuilder body = new StringBuilder();
                 body.Append($"Чек заказа {order.OrderId} из магазина автозапастей AutoLight");
+                body.Append("\n" + order.OrderDate);
+                body.Append("\n-----------------------------------");
                 foreach(var p in orderParts)
                 {
                     body.Append($"\nЗапчасть: {p.Name}, Количество: {p.Amount}, Цена: {p.Price}, Для авто: {p.Mark}");
+                    sum += p.Price * p.Amount;
                 }
+                body.Append("\n-----------------------------------");
+                body.Append($"\nДоставка: {order.Delivery.Name}");
+                body.Append($"\nИтоговая сумма: {sum + order.Delivery.Price}");
+                body.Append("\n-----------------------------------");
                 body.Append("\nСпасибо за заказ в нашем магазине!");
                 return body.ToString();
             }

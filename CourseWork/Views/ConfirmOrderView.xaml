@@ -23,13 +23,13 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock FontSize="20" TextWrapping="Wrap" TextAlignment="Center">Для подтверждения заказа проверьте вашу почту и введите пятизначный код</TextBlock>
+                    <TextBlock FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="{DynamicResource Confirm}"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
                     <TextBox Margin="10,10,10,10" x:Name="codeCheck" Text="{Binding codeFromBox}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="1">
-                    <Button x:Name="codeConfirm" Content="Подтвердить" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
+                    <Button x:Name="codeConfirm" Content="{DynamicResource ConfirmButton}" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
                 </Grid>
             </Grid>
         </materialDesign:Card>

@@ -30,7 +30,7 @@ namespace CourseWork.Views
             DataContext = a;
             Random random = new Random();
             int code = random.Next(99999);
-            EmailSenderService.SendCode(Settings.Default.UserMail, code).GetAwaiter();
+            EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код отмены", "Никому не сообщайте данный код! \nКод подтверждения: ").GetAwaiter();
             a.code = code;
         }
     }

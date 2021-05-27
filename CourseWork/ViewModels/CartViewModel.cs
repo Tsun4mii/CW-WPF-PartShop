@@ -22,6 +22,8 @@ namespace CourseWork.ViewModels
     public class CartViewModel : ViewModelBase
     {
         public static ObservableCollection<Part> Parts { get; set; }
+        public static ObservableCollection<Category> Categories { get; set; }
+        public static ObservableCollection<Mark> Marks { get; set; }
         public ObservableCollection<Delivery> Deliveries { get; set; }
         public Delivery tmpDelivary = new Delivery { Price = 0 };
         public Card Card { get; set; }
@@ -29,6 +31,8 @@ namespace CourseWork.ViewModels
         {
             Parts = ConnectionBetweenViews.Parts;
             Deliveries = new ObservableCollection<Delivery>(App.db.Deliveries);
+            Marks = new ObservableCollection<Mark>(App.db.Marks);
+            Categories = new ObservableCollection<Category>(App.db.Categories);
             foreach(Part i in Parts)
             {
                 Summary += i.Price * i.Amount;
@@ -86,13 +90,11 @@ namespace CourseWork.ViewModels
                   {
                       if(selectedPart.Amount > 1)
                       {
-                          //notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           selectedPart.Amount--;
                           Summary -= selectedPart.Price;
                       }
                       else
                       {
-                          //notifier.ShowSuccess($"Товар {selectedPart.Name} был удален из корзины");
                           Summary -= selectedPart.Price;
                           Parts.Remove(SelectedPart);
                       }
@@ -116,15 +118,6 @@ namespace CourseWork.ViewModels
                               throw new Exception("Для покупки должна быть привязана карта");
                           }
                           AddOrder(Parts);
-                          //using (PartShopDbContext db = new PartShopDbContext())
-                          //{
-                          //    ObservableCollection<Part> parts = new ObservableCollection<Part>(db.Parts);
-                          //    foreach(Part i in parts)
-                          //    {
-
-                          //    }
-                          //}
-                          
                       }
                       catch(Exception e)
                       {
@@ -147,8 +140,20 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
+        private Command openFullInfoCommand;
+        public ICommand OpenFullInfo
+        {
+            get
+            {
+                return openFullInfoCommand ??
+                  (openFullInfoCommand = new Command(obj =>
+                  {
+                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new FullInfoViewModel(selectedPart);
+                  }));
+            }
+        }
 
-        public async Task AddOrder(ObservableCollection<Part> parts)
+        public void AddOrder(ObservableCollection<Part> parts)
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
@@ -187,7 +192,7 @@ namespace CourseWork.ViewModels
                     Card.Balance -= Summary;
                     Parts.Clear();
                     Summary = 0;
-                    await db.SaveChangesAsync();
+                    db.SaveChanges();
                     ConfirmOrderViewModel.orderId = order.OrderId;
                     Singleton.getInstance(null).MainViewModel.CurrentViewModel = new ConfirmOrderViewModel();
                 }

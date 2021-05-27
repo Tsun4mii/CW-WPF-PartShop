@@ -16,7 +16,7 @@
         <Grid Grid.Row="0">
             <materialDesign:Card Margin="10,10,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Orientation="Vertical">
-                    <ListBox x:Name="partList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" Height="348">
+                    <ListBox x:Name="partList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Parts}" SelectedItem="{Binding SelectedPart}" MinHeight="348" MaxHeight="500">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="6" BorderThickness="1" DockPanel.Dock="Top" BorderBrush="Transparent">
@@ -37,16 +37,27 @@
                                                     <TextBlock Text="{Binding Price}"/>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{DynamicResource Category}"/>
+                                                    <TextBlock Text="{Binding Category.Name}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{DynamicResource Mark}"/>
+                                                    <TextBlock Text="{Binding Mark.MarkName}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
                                                     <TextBlock Text="{DynamicResource Amount}"/>
                                                     <TextBlock Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </StackPanel>
                                                 <Separator Background="Black"/>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}">
+                                                    <Button Style="{StaticResource RoundedButtonStyle}" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.DeleteItem}">
                                                         <materialDesign:PackIcon Kind="Delete"/>
                                                     </Button>
-                                                    <Button>
+                                                    <Button Style="{StaticResource RoundedButtonStyle}" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.OpenFullInfo}">
+                                                        <StackPanel Orientation="Horizontal">
                                                         <materialDesign:PackIcon Kind="ReadMore"/>
+                                                        <TextBlock Text="{DynamicResource More}"/>
+                                                        </StackPanel>
                                                     </Button>
                                                 </StackPanel>
                                             </StackPanel>
@@ -84,12 +95,12 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <StackPanel Orientation="Vertical">
-                        <Button Content="{DynamicResource Buy}" Command="{Binding BuyCommand}" Width="200" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                        <Button Content="{DynamicResource Buy}" Command="{Binding BuyCommand}" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,10" Style="{StaticResource RoundedButtonStyle}"/>
                             <TextBlock Height="20" Text="{Binding ErrorMessage}" Foreground="Red" FontSize="12"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="2">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0 ">
                             <TextBlock Text="{DynamicResource Delivery}"/>
                             <ComboBox SelectedItem="{Binding SelectedDelivery}" ItemsSource="{Binding Deliveries}" Width="105">
                             <i:Interaction.Triggers>
@@ -107,7 +118,7 @@
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1" >
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0">
                             <TextBlock Text="{DynamicResource Summary}"/>
                             <TextBlock Text="{Binding Summary}"/>
                         </StackPanel>

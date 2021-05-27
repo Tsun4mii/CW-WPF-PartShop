@@ -15,12 +15,12 @@
         <Grid Grid.Row="0">
             <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
                 <StackPanel>
-                    <TextBlock Text="Часто задоваемые вопросы" FontSize="24" HorizontalAlignment="Center"/>
-                    <Expander Header="1.Как я могу оплатить заказ?" >
-                        <TextBlock Text="Ответ: Вы должны привязать вашу карту и при заказе деньги спишутся с вашего счета"/>
+                    <TextBlock Text="{DynamicResource FAQ}" FontSize="24" HorizontalAlignment="Center"/>
+                    <Expander Header="{DynamicResource FAQ1}" >
+                        <TextBlock Text="{DynamicResource FAQ11}"/>
                     </Expander>
-                    <Expander Header="2. Как я могу забрать заказ?">
-                        <TextBlock Text="Вы можете выбрать при заказе пунк 'Самовывоз' если хотите забрать заказ самостоятельно или выбрать одну из представленных курьерских служб. Учтите то, что если вы выбираете 'Самовывоз' то это абсолютно бесплатно." TextWrapping="Wrap"/>
+                    <Expander Header="{DynamicResource FAQ2}">
+                        <TextBlock Text="{DynamicResource FAQ21}" TextWrapping="Wrap"/>
                     </Expander>
                     
                 </StackPanel>

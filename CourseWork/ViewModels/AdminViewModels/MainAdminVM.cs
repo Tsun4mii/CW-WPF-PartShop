@@ -88,5 +88,55 @@ namespace CourseWork.ViewModels.AdminViewModels
                   }));
             }
         }
+        public Command openMarks;
+        public ICommand OpenMarks
+        {
+            get
+            {
+                return openMarks ??
+                  (openMarks = new Command(obj =>
+                  {
+                      SingletonAdmin.getInstance(null).StartViewModel.CurrentViewModel = new MarksAdminVM();
+                  }));
+            }
+        }
+        public Command openCategories;
+        public ICommand OpenCategories
+        {
+            get
+            {
+                return openCategories ??
+                  (openCategories = new Command(obj =>
+                  {
+                      SingletonAdmin.getInstance(null).StartViewModel.CurrentViewModel = new CategoriesAdminVM();
+                  }));
+            }
+        }
+        public Command openCards;
+        public ICommand OpenCards
+        {
+            get
+            {
+                return openCards ??
+                  (openCards = new Command(obj =>
+                  {
+                      SingletonAdmin.getInstance(null).StartViewModel.CurrentViewModel = new CardsAdminVM();
+                  }));
+            }
+        }
+        private Command openSettings;
+        public ICommand OpenSettings
+        {
+            get
+            {
+                return openSettings ??
+                 (openSettings = new Command(obj =>
+                 {
+
+                     SingletonAdmin.getInstance(null).StartViewModel.CurrentViewModel = new SettingsViewModel();
+                     
+                 }));
+            }
+        }
     }
 }

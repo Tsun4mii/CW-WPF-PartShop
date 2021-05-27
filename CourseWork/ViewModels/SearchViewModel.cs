@@ -16,6 +16,7 @@ namespace CourseWork.ViewModels
     {
         public ObservableCollection<Part> Parts { get; set; }
         public ObservableCollection<Category> Categories { get; set; }
+        public ObservableCollection<Mark> Marks { get; set; }
         private double lowValue;
         public double LowValue
         {
@@ -43,6 +44,7 @@ namespace CourseWork.ViewModels
             {
                 Parts = new ObservableCollection<Part>(db.Parts);
                 Categories = new ObservableCollection<Category>(db.Categories);
+                Marks = new ObservableCollection<Mark>(db.Marks);
             }
         }
         private Category selectedCategory;
@@ -55,12 +57,35 @@ namespace CourseWork.ViewModels
                 OnPropertyChanged("SelectedCategory");
             }
         }
+        private Part selectedPart;
+        public Part SelectedPart
+        {
+            get { return selectedPart; }
+            set
+            {
+                selectedPart = value;
+                OnPropertyChanged("SelectedPart");
+            }
+        }
         public SearchViewModel(ObservableCollection<Part> parts)
         {
+            Categories = new ObservableCollection<Category>(App.db.Categories);
             Parts = new ObservableCollection<Part>();
             foreach(Part i in parts)
             {
                 Parts.Add(i);
+            }
+        }
+        private Command openFullInfoCommand;
+        public ICommand OpenFullInfo
+        {
+            get
+            {
+                return openFullInfoCommand ??
+                  (openFullInfoCommand = new Command(obj =>
+                  {
+                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new FullInfoViewModel(selectedPart);
+                  }));
             }
         }
         private Command findByName;

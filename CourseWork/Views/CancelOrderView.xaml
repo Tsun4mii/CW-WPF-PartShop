@@ -27,13 +27,13 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <TextBlock Text="Для отмены заказа проверьте почту и введите полученный код" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Margin="0,20,0,0"/>
+                        <TextBlock Text="{DynamicResource CancelOrder}" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Margin="0,20,0,0"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <TextBox Height="40" Text="{Binding codeFromView}" Width="400" materialDesign:HintAssist.Hint="Cancelation code"/>
                     </Grid>
                     <Grid Grid.Row="2">
-                        <Button Width="200" Style="{StaticResource RoundedButtonStyle}" Command="{Binding CancelOrder}" Height="40"/>
+                        <Button Width="200" Content="{DynamicResource ConfirmButton}" Style="{StaticResource RoundedButtonStyle}" Command="{Binding CancelOrder}" Height="40"/>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

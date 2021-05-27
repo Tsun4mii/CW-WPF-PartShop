@@ -72,13 +72,13 @@
                               CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=OpenFullInfo}" />
                                 </Border.InputBindings>
                                 <StackPanel Orientation="Vertical">
-                                <materialDesign:Card UniformCornerRadius="10">
+                                <materialDesign:Card UniformCornerRadius="10" MaxWidth="150">
                                 <StackPanel Orientation="Vertical" Height=" 230" Width="130">
                                     
                                     <Image Width="130" Height="110" Margin="5" Source="{Binding ImageLink}" />
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{DynamicResource Name}" FontFamily="Helvetica"/>
-                                            <TextBlock Text="{Binding Name}" FontFamily="Helvetica"/>
+                                            <TextBlock Text="{Binding Name}" FontFamily="Helvetica" TextWrapping="WrapWithOverflow"/>
                                         </StackPanel>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{DynamicResource Quantity}"/>

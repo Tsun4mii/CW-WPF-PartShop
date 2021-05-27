@@ -146,9 +146,12 @@
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddDeliveryVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddPartVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\CardsAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\CategoriesAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\DeliveriesAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\HomeAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\MainAdminVM.cs" />
+    <Compile Include="ViewModels\AdminViewModels\MarksAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\OrdersAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\PartsAdminVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\ProvidersAdminVM.cs" />
@@ -188,8 +191,17 @@
     <Compile Include="Views\AdminViews\AdminHomeView.xaml.cs">
       <DependentUpon>AdminHomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminViews\CardsAdminView.xaml.cs">
+      <DependentUpon>CardsAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\CategoriesAdminView.xaml.cs">
+      <DependentUpon>CategoriesAdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminViews\DeliveriesAdminView.xaml.cs">
       <DependentUpon>DeliveriesAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminViews\MarksAdminView.xaml.cs">
+      <DependentUpon>MarksAdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\OrdersAdminView.xaml.cs">
       <DependentUpon>OrdersAdminView.xaml</DependentUpon>
@@ -314,7 +326,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AdminViews\CardsAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\CategoriesAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AdminViews\DeliveriesAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminViews\MarksAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -30,7 +30,7 @@ namespace CourseWork.ViewModels
         {
             cfg.PositionProvider = new WindowPositionProvider(
                 parentWindow: wndw,
-                corner: Corner.BottomRight,
+                corner: Corner.TopRight,
                 offsetX: 10,
                 offsetY: 10);
 

@@ -26,6 +26,10 @@
                     <RadioButton x:Name="providersRadio" Content="Providers" Command="{Binding OpenProviders}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" />
                     <RadioButton x:Name="partsRadio" Content="Parts" Command="{Binding OpenParts}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}" />
                     <RadioButton x:Name="delivRadio" Content="Deliveries" Command="{Binding OpenDeliveries}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}"  VerticalAlignment="Bottom" />
+                    <RadioButton x:Name="marksRadio" Content="Marks" Command="{Binding OpenMarks}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}"  VerticalAlignment="Bottom" />
+                    <RadioButton x:Name="catRadio" Content="Categories" Command="{Binding OpenCategories}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}"  VerticalAlignment="Bottom" />
+                    <RadioButton x:Name="cardsRadio" Content="Cards" Command="{Binding OpenCards}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}"  VerticalAlignment="Bottom" />
+                    <RadioButton x:Name="optRadio" Content="{DynamicResource Settings}" Command="{Binding OpenSettings}" FontSize="20" Height="50" Style="{StaticResource MenuButtonTheme}"  VerticalAlignment="Bottom" />
                 </StackPanel>
             </materialDesign:Card>
 

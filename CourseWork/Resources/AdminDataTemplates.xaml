@@ -17,4 +17,13 @@
     <DataTemplate DataType="{x:Type admin:AddPartVM}">
         <adminV:AddPartWindow/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type admin:MarksAdminVM}">
+        <adminV:MarksAdminView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type admin:CategoriesAdminVM}">
+        <adminV:CategoriesAdminView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type admin:CardsAdminVM}">
+        <adminV:CardsAdminVM/>
+    </DataTemplate>
 </ResourceDictionary>

@@ -34,4 +34,13 @@
     <v:String x:Key="Language">Язык:</v:String>
     <v:String x:Key="Apply">Применить</v:String>
     <v:String x:Key="More">Подробнее</v:String>
+    <v:String x:Key="FAQ">Часто задаваемые вопросы</v:String>
+    <v:String x:Key="FAQ1">1. Как я могу оплатить заказ?</v:String>
+    <v:String x:Key="FAQ11">Ответ: Вы должны привязать вашу карту и при заказе деньги спишутся с вашего счета</v:String>
+    <v:String x:Key="FAQ2">2. Как я могу забрать заказ?</v:String>
+    <v:String x:Key="FAQ21">Вы можете выбрать при заказе пунк 'Самовывоз' если хотите забрать заказ самостоятельно или выбрать одну из представленных курьерских служб. Учтите то, что если вы выбираете 'Самовывоз' то это абсолютно бесплатно.</v:String>
+    <v:String x:Key="Contacts">Контакты:</v:String>
+    <v:String x:Key="Confirm">Для подтверждения заказа проверьте вашу почту и введите пятизначный код</v:String>
+    <v:String x:Key="CancelOrder">Для отмены заказа проверьте почту и введите полученный код</v:String>
+    <v:String x:Key="ConfirmButton">Подтвердить</v:String>
 </ResourceDictionary>

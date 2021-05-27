@@ -1,5 +1,4 @@
-﻿using CourseWork.ViewModels.AdminViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +16,13 @@ using System.Windows.Shapes;
 namespace CourseWork.Views.AdminViews
 {
     /// <summary>
-    /// Логика взаимодействия для PartsAdminView.xaml
+    /// Логика взаимодействия для CardsAdminVM.xaml
     /// </summary>
-    public partial class PartsAdminView : UserControl
+    public partial class CardsAdminVM : UserControl
     {
-        public PartsAdminVM a = new PartsAdminVM();
-        public PartsAdminView()
+        public CardsAdminVM()
         {
             InitializeComponent();
-            DataContext = a;
-        }
-
-        private void ListBox_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }

@@ -17,20 +17,15 @@ using System.Windows.Shapes;
 namespace CourseWork.Views.AdminViews
 {
     /// <summary>
-    /// Логика взаимодействия для PartsAdminView.xaml
+    /// Логика взаимодействия для MarksAdminView.xaml
     /// </summary>
-    public partial class PartsAdminView : UserControl
+    public partial class MarksAdminView : UserControl
     {
-        public PartsAdminVM a = new PartsAdminVM();
-        public PartsAdminView()
+        MarksAdminVM a = new MarksAdminVM();
+        public MarksAdminView()
         {
             InitializeComponent();
             DataContext = a;
-        }
-
-        private void ListBox_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }

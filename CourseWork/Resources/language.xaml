@@ -34,4 +34,13 @@
     <v:String x:Key="Language">Language:</v:String>
     <v:String x:Key="Apply">Apply</v:String>
     <v:String x:Key="More">More</v:String>
+    <v:String x:Key="FAQ">Frequently Asked Questions</v:String>
+    <v:String x:Key="FAQ1">1. How can I pay for the order?</v:String>
+    <v:String x:Key="FAQ11">Answer: You must link your card and the money will be debited from your account when ordering</v:String>
+    <v:String x:Key="FAQ2">2. How can I pick up the order?</v:String>
+    <v:String x:Key="FAQ21">You can choose the "Pick up" option when ordering if you want to pick up the order yourself or choose one of the available courier services. Please note that if you choose 'Pick up' then it is absolutely free.</v:String>
+    <v:String x:Key="Contacts">Caontacts:</v:String>
+    <v:String x:Key="Confirm">To confirm the order, check your email and enter a five-digit code</v:String>
+    <v:String x:Key="CancelOrder">To cancel the order, check your email and enter the code you received</v:String>
+    <v:String x:Key="ConfirmButton">Confirm</v:String>
 </ResourceDictionary>
