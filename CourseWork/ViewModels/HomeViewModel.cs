@@ -54,11 +54,17 @@ namespace CourseWork.ViewModels
         {
             using (PartShopDbContext db = new PartShopDbContext())
             {
-                Parts = new ObservableCollection<Part>(db.Parts);
-                PartsForSearch = new ObservableCollection<Part>(db.Parts);
-                categories = new ObservableCollection<Category>(db.Categories);
-                Marks = new ObservableCollection<Mark>(db.Marks);
-                //Parts = db.Parts.ToList();
+                try
+                {
+                    Parts = new ObservableCollection<Part>(db.Parts);
+                    PartsForSearch = new ObservableCollection<Part>(db.Parts);
+                    categories = new ObservableCollection<Category>(db.Categories);
+                    Marks = new ObservableCollection<Mark>(db.Marks);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
         }
         public ICommand AddToCartCommand
@@ -79,10 +85,17 @@ namespace CourseWork.ViewModels
                 return findByCategory ??
                   (findByCategory = new Command(obj =>
                   {
-                      using (PartShopDbContext db = new PartShopDbContext())
+                      try
                       {
-                          Parts = new ObservableCollection<Part>(db.Parts.Where(x => x.CategoryId == SelectedCategory.CategoryId));
-                          Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
+                          using (PartShopDbContext db = new PartShopDbContext())
+                          {
+                              Parts = new ObservableCollection<Part>(db.Parts.Where(x => x.CategoryId == SelectedCategory.CategoryId));
+                              Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
                       }
                   }));
             }
@@ -105,8 +118,15 @@ namespace CourseWork.ViewModels
                 return findByName ??
                   (findByName = new Command(obj =>
                   {
-                      PartsForSearch = new ObservableCollection<Part>(App.db.Parts.Where(x => x.Name.Contains(textForSearch)));
-                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(PartsForSearch);
+                      try
+                      {
+                          PartsForSearch = new ObservableCollection<Part>(App.db.Parts.Where(x => x.Name.Contains(textForSearch)));
+                          Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(PartsForSearch);
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }
@@ -118,8 +138,15 @@ namespace CourseWork.ViewModels
                 return testCommand ??
                   (testCommand = new Command(obj =>
                   {
-                      App.db.Parts.Where(x => x.PartId == 13).FirstOrDefault().Quantity -= 3;
-                      App.db.SaveChanges();
+                      try
+                      {
+                          App.db.Parts.Where(x => x.PartId == 13).FirstOrDefault().Quantity -= 3;
+                          App.db.SaveChanges();
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

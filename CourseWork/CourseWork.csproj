@@ -85,9 +85,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Commands\IUndo.cs" />
-    <Compile Include="Commands\UndoCommand.cs" />
-    <Compile Include="Commands\UndoManager.cs" />
     <Compile Include="Database\ConnectionBetweenViews.cs" />
     <Compile Include="Database\PartShopDbContext.cs" />
     <Compile Include="Localization\Language.cs" />
@@ -142,8 +139,6 @@
     <Compile Include="SingletonView\SingletonAuth.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AddCardViewModel.cs" />
-    <Compile Include="ViewModels\AddUserViewModel.cs" />
-    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddDeliveryVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddPartVM.cs" />
     <Compile Include="ViewModels\AdminViewModels\CardsAdminVM.cs" />
@@ -175,12 +170,6 @@
     </Compile>
     <Compile Include="Views\AddCardView.xaml.cs">
       <DependentUpon>AddCardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AddUserView.xaml.cs">
-      <DependentUpon>AddUserView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AdminView.xaml.cs">
-      <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminViews\AddDeliveryWindow.xaml.cs">
       <DependentUpon>AddDeliveryWindow.xaml</DependentUpon>
@@ -305,14 +294,6 @@
     <Page Include="Views\AddCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AddUserView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AdminView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdminViews\AddDeliveryWindow.xaml">
       <SubType>Designer</SubType>

@@ -47,16 +47,23 @@ namespace CourseWork.ViewModels
                 return submitCode ??
                   (submitCode = new Command(obj =>
                   {
-                      if (code == Convert.ToInt32(codeFromBox)) //--ToDo: Переделать. Передавать определенный заказ и его потом изменять.
+                      try
                       {
-                          App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
-                          App.db.SaveChanges();
-                          notifier.ShowSuccess("Ваш заказ был подтвержден");
-                          EmailSenderService.SendTicket(Settings.Default.UserMail, "Чек заказа", EmailSenderService.GenerateTicket(order)).GetAwaiter();
+                          if (code == Convert.ToInt32(codeFromBox)) //--ToDo: Переделать. Передавать определенный заказ и его потом изменять.
+                          {
+                              App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
+                              App.db.SaveChanges();
+                              notifier.ShowSuccess("Ваш заказ был подтвержден");
+                              EmailSenderService.SendTicket(Settings.Default.UserMail, "Чек заказа", EmailSenderService.GenerateTicket(order)).GetAwaiter();
+                          }
+                          else
+                          {
+                              notifier.ShowError("Введенный вами код ошибочный");
+                          }
                       }
-                      else
+                      catch(Exception e)
                       {
-                          notifier.ShowError("Введенный вами код ошибочный");
+                          MessageBox.Show(e.Message);
                       }
                   }));
             }

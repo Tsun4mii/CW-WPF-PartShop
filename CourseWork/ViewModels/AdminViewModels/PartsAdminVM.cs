@@ -7,7 +7,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -31,31 +33,28 @@ namespace CourseWork.ViewModels.AdminViewModels
                 OnPropertyChanged("SelectedPart");
             }
         }
-        public UndoCommand<Part> deleteCommand;
+        public Command deleteCommand;
         public ICommand DeleteCommand
         {
             get
             {
                 return deleteCommand ??
-                  (deleteCommand = new UndoCommand<Part>(obj =>
+                  (deleteCommand = new Command(obj =>
                   {
-                      if (selectedPart != null)
+                      try
                       {
-                          Part part = new Part();
-                          part = selectedPart;
-                          Parts.Remove(part);
-                          deletedParts.Add(part);
+                          if (selectedPart != null)
+                          {
+                              Part part = new Part();
+                              part = selectedPart;
+                              Parts.Remove(part);
+                              deletedParts.Add(part);
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Товар был удален");
+                          }
                       }
-                      return selectedPart;
-                  },
-                  obj =>
-                  {
-                      if (selectedPart != null)
+                      catch(Exception e)
                       {
-                          Part part = new Part();
-                          part = selectedPart;
-                          Parts.Add(part);
-                          deletedParts.Remove(part);
+                          MessageBox.Show(e.Message);
                       }
                   }
                 ));
@@ -68,12 +67,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return saveCommand ??
                   (saveCommand = new Command(obj =>
                   {
-                      foreach (Part i in deletedParts)
+                      try
                       {
-                          App.db.Parts.Remove(i);
+                          foreach (Part i in deletedParts)
+                          {
+                              App.db.Parts.Remove(i);
+                          }
+                          App.db.SaveChanges();
+                          deletedParts.Clear();
                       }
-                      App.db.SaveChanges();
-                      deletedParts.Clear();
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

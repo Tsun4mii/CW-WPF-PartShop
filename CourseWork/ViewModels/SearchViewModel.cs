@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels
@@ -109,17 +110,24 @@ namespace CourseWork.ViewModels
                 return detailedSearch ??
                   (detailedSearch = new Command(obj =>
                   {
-                      if (selectedCategory != null)
+                      try
                       {
-                          Parts = new ObservableCollection<Part>(App.db.Parts.Where(x => (x.CategoryId == selectedCategory.CategoryId) &&
-                                                                x.Price >= lowValue && x.Price <= maxValue));
+                          if (selectedCategory != null)
+                          {
+                              Parts = new ObservableCollection<Part>(App.db.Parts.Where(x => (x.CategoryId == selectedCategory.CategoryId) &&
+                                                                    x.Price >= lowValue && x.Price <= maxValue));
+                          }
+                          else
+                          {
+                              Parts = new ObservableCollection<Part>(App.db.Parts.Where(x =>
+                                                                     x.Price >= lowValue && x.Price <= maxValue));
+                          }
+                          Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
                       }
-                      else
+                      catch(Exception e)
                       {
-                          Parts = new ObservableCollection<Part>(App.db.Parts.Where(x =>
-                                                                 x.Price >= lowValue && x.Price <= maxValue));
+                          MessageBox.Show(e.Message);
                       }
-                      Singleton.getInstance(null).MainViewModel.CurrentViewModel = new SearchViewModel(Parts);
                   }));
             }
         }

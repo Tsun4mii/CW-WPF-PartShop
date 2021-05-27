@@ -111,16 +111,6 @@ namespace CourseWork.ViewModels
                           {
                               throw new Exception("Данный заказ уже отменен");
                           }
-                          //List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == selectedOrder.OrderId));
-                          //foreach (var p in prts)
-                          //{
-                          //    App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Quantity += p.Amount;
-                          //    Sum += App.db.Parts.Where(x => x.PartId == p.PartId).FirstOrDefault().Price * p.Amount;
-                          //}
-                          //Sum += selectedOrder.Delivery.Price;
-                          //selectedOrder.OrderState = Resources.canceled;
-                          //Card.Balance += Sum;
-                          //await App.db.SaveChangesAsync();
                           CancelOrderViewModel.orderId = selectedOrder.OrderId;
                           Singleton.getInstance(null).MainViewModel.CurrentViewModel = new CancelOrderViewModel();
                       }
@@ -139,8 +129,22 @@ namespace CourseWork.ViewModels
                 return addCard ??
                   (addCard = new Command(obj =>
                   {
-                      AddCardView window = new AddCardView();
-                      window.ShowDialog();
+                      try
+                      {
+                          if (App.db.Cards.Where(x => x.UserId == Settings.Default.UserId).FirstOrDefault() != null)
+                          {
+                              throw new Exception("Невозможно привязаать еще 1 карту");
+                          }
+                          else
+                          {
+                              AddCardView window = new AddCardView();
+                              window.ShowDialog();
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

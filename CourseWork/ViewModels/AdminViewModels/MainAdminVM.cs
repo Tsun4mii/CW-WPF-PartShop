@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels.AdminViewModels
@@ -27,7 +28,19 @@ namespace CourseWork.ViewModels.AdminViewModels
             SingletonAdmin.getInstance(this);
             CurrentViewModel = new HomeAdminVM();
         }
-
+        private Command exit;
+        public ICommand Exit
+        {
+            get
+            {
+                return exit ??
+                 (exit = new Command(obj =>
+                 {
+                     Application.Current.Shutdown();
+                     System.Diagnostics.Process.Start(Environment.GetCommandLineArgs()[0]);
+                 }));
+            }
+        }
         public Command openUsers;
         public ICommand OpenUsers
         {

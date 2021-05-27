@@ -98,7 +98,7 @@ namespace CourseWork.ViewModels
                           Summary -= selectedPart.Price;
                           Parts.Remove(SelectedPart);
                       }
-                      ConfirmOrderViewModel.notifier.ShowWarning("Товар был удален из корзины");
+                      App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Товар был удален из корзины");
                   }));
             }
         }

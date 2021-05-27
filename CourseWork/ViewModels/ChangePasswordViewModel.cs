@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseWork.ViewModels
@@ -29,9 +30,16 @@ namespace CourseWork.ViewModels
                 return generteCode ??
                   (generteCode = new Command(obj =>
                   {
-                      Random random = new Random();
-                      code = random.Next(99999);
-                      EmailSenderService.SendCode(Settings.Default.UserMail, code).GetAwaiter();
+                      try
+                      {
+                          Random random = new Random();
+                          code = random.Next(99999);
+                          EmailSenderService.SendCode(Settings.Default.UserMail, code).GetAwaiter();
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }
@@ -43,10 +51,17 @@ namespace CourseWork.ViewModels
                 return confirmChange ??
                   (confirmChange = new Command(obj =>
                   {
-                      if(newPassword == repeatPassword & code == codeFromView)
+                      try
                       {
-                          App.db.Users.Where(x => x.Id == Settings.Default.UserId).FirstOrDefault().Password = SecurePassService.Hash(newPassword);
-                          App.db.SaveChanges();
+                          if (newPassword == repeatPassword & code == codeFromView)
+                          {
+                              App.db.Users.Where(x => x.Id == Settings.Default.UserId).FirstOrDefault().Password = SecurePassService.Hash(newPassword);
+                              App.db.SaveChanges();
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
                       }
                   }));
             }

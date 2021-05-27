@@ -22,32 +22,74 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <ComboBox ItemsSource="{Binding Marks}" SelectedItem="{Binding SelectedMark}" Height="30" Width="200" materialDesign:HintAssist.Hint="Mark">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MarkName}" Margin="0" VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </materialDesign:Card>
+                </Grid>
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBox Text="{Binding Name}" materialDesign:HintAssist.Hint="Name"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <TextBox Text="{Binding Name}" materialDesign:HintAssist.Hint="Name" Height="30" Width="200"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBox Text="{Binding Quantity}" materialDesign:HintAssist.Hint="Quantity"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                    <TextBox Text="{Binding Quantity}" materialDesign:HintAssist.Hint="Quantity" Width="200" Height="30"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="2">
-                    <TextBox Text="{Binding ProviderId}" materialDesign:HintAssist.Hint="ProviderId"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <ComboBox Height="30" Width="200" ItemsSource="{Binding Providers}" SelectedItem="{Binding SelectedProvider}" materialDesign:HintAssist.Hint="Provider">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" Margin="0" VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="0">
-                    <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Price"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Price" Height="30" Width="200"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBox Text="{Binding Description}" materialDesign:HintAssist.Hint="Description"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <TextBox Text="{Binding Description}" materialDesign:HintAssist.Hint="Description" Height="30" Width="200"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="2">
-                    <TextBox Text="{Binding FullDescription}" materialDesign:HintAssist.Hint="Full Description"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <TextBox Text="{Binding FullDescription}" materialDesign:HintAssist.Hint="Full Description" Height="30" Width="200"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="0">
-                    <TextBox Text="{Binding ImageLink}" materialDesign:HintAssist.Hint="Image Link"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <TextBox Text="{Binding ImageLink}" materialDesign:HintAssist.Hint="Image Link" Height="30" Width="200"/>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="2">
-                    <TextBox Text="{Binding CategoryId}" materialDesign:HintAssist.Hint="CategoryId"/>
+                    <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                        <ComboBox Height="30" Width="200" materialDesign:HintAssist.Hint="Category" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" Margin="0" VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </materialDesign:Card>
                 </Grid>
                 <Grid Grid.Row="4" Grid.Column="1">
-                    <Button Command="{Binding AddPart}"/>
+                    <Button Content="{DynamicResource Add}" Command="{Binding AddPart}" Style="{StaticResource RoundedButtonStyle}" Height="40"/>
                 </Grid>
             </Grid>
         </materialDesign:Card>

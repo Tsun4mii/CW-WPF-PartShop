@@ -39,17 +39,17 @@
                         <RowDefinition Height="180*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <Button Content="Save" Width="100" Style="{StaticResource RoundedButtonStyle}" Height="40"/>
+                        <Button Content="{DynamicResource Save}" Width="100" Style="{StaticResource RoundedButtonStyle}" Height="40"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
                                 <TextBlock Text="Name: "/>
-                                <TextBox Text="{Binding CategoryName}"/>
+                                <TextBox Text="{Binding CategoryName}" Width="200"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Description: "/>
-                                <TextBox Text="{Binding Description}"/>
+                                <TextBox Text="{Binding Description}" Width="200"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>

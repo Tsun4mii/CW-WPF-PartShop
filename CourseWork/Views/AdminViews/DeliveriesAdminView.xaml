@@ -80,11 +80,9 @@
         <Grid Grid.Row="1" Grid.Column="0">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Orientation="Horizontal">
-                    <Button Command="{Binding SaveCommand}" Content="Save"/>
-                    <Button Command="{Binding UndoCommand}" Content="Undo"/>
-                    <Button Command="{Binding RedoCommand}" Content="Redo"/>
-                    <Button Command="{Binding OpenAddWindow}" Content="Add"/>
-                    <Button Command="{Binding RefreshView}" Content="Refresh"/>
+                    <Button Command="{Binding SaveCommand}" Content="{DynamicResource Save}" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="70"/>
+                    <Button Command="{Binding OpenAddWindow}" Content="{DynamicResource Add}" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="70"/>
+                    <Button Command="{Binding RefreshView}" Content="Refresh" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="70"/>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>        

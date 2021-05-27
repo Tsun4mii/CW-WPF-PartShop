@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CourseWork.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="#a05344">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#a05344" FontFamily="Helvetica">
     <Grid>
         <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
             <Grid>
@@ -26,10 +26,10 @@
                     <TextBlock FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Text="{DynamicResource Confirm}"></TextBlock>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBox Margin="10,10,10,10" x:Name="codeCheck" Text="{Binding codeFromBox}"/>
+                    <TextBox TextAlignment="Center" FontSize="16" Margin="10,10,10,10" x:Name="codeCheck" Text="{Binding codeFromBox}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="1">
-                    <Button x:Name="codeConfirm" Content="{DynamicResource ConfirmButton}" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
+                    <Button x:Name="codeConfirm" FontSize="18" Content="{DynamicResource ConfirmButton}" Command="{Binding SubmitCode}" Style="{StaticResource RoundedButtonStyle}"/>
                 </Grid>
             </Grid>
         </materialDesign:Card>

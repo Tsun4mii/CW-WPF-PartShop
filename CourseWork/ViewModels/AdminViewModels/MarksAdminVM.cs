@@ -6,7 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -38,12 +40,20 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return deleteCommand ??
                   (deleteCommand = new Command(obj =>
                   {
-                      if (SelectedMark != null)
+                      try
                       {
-                          Mark mark = new Mark();
-                          mark = selectedMark;
-                          Marks.Remove(mark);
-                          deletedMarks.Add(mark);
+                          if (SelectedMark != null)
+                          {
+                              Mark mark = new Mark();
+                              mark = selectedMark;
+                              Marks.Remove(mark);
+                              deletedMarks.Add(mark);
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Марка авто была удалена");
+                          }
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
                       }
                   }));
             }
@@ -56,12 +66,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return saveCommand ??
                   (saveCommand = new Command(obj =>
                   {
-                      foreach (Mark i in deletedMarks)
+                      try
                       {
-                          App.db.Marks.Remove(i);
+                          foreach (Mark i in deletedMarks)
+                          {
+                              App.db.Marks.Remove(i);
+                          }
+                          App.db.SaveChanges();
+                          deletedMarks.Clear();
                       }
-                      App.db.SaveChanges();
-                      deletedMarks.Clear();
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }
@@ -73,11 +90,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return addCommand ??
                   (addCommand = new Command(obj =>
                   {
-                      Mark mark = new Mark();
-                      mark.MarkName = NewMark;
-                      App.db.Marks.Add(mark);
-                      App.db.SaveChanges();
-                      deletedMarks.Clear();
+                      try
+                      {
+                          Mark mark = new Mark();
+                          mark.MarkName = NewMark;
+                          App.db.Marks.Add(mark);
+                          App.db.SaveChanges();
+                          deletedMarks.Clear();
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Марка авто была успешно добавлена");
+                      }
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

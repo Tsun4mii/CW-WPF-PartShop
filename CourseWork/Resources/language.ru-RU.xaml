@@ -43,4 +43,22 @@
     <v:String x:Key="Confirm">Для подтверждения заказа проверьте вашу почту и введите пятизначный код</v:String>
     <v:String x:Key="CancelOrder">Для отмены заказа проверьте почту и введите полученный код</v:String>
     <v:String x:Key="ConfirmButton">Подтвердить</v:String>
+    <v:String x:Key="Users">Пользователи</v:String>
+    <v:String x:Key="Cards">Карты</v:String>
+    <v:String x:Key="Marks">Марки</v:String>
+    <v:String x:Key="Orders">Заказы</v:String>
+    <v:String x:Key="Providers">Поставщики</v:String>
+    <v:String x:Key="Deliveries">Доставки</v:String>
+    <v:String x:Key="Parts">Запчасти</v:String>
+    <v:String x:Key="Categories">Категории</v:String>
+    <v:String x:Key="Save">Сохранить</v:String>
+    <v:String x:Key="Add">Добавить</v:String>
+    <v:String x:Key="Login">АВТОРИЗАЦИЯ</v:String>
+    <v:String x:Key="Register">РЕГИСТРАЦИЯ</v:String>
+    <v:String x:Key="Registration">Регистрация</v:String>
+    <v:String x:Key="Password">Пароль</v:String>
+    <v:String x:Key="Login2">Логин</v:String>
+    <v:String x:Key="Email">Электронная почта</v:String>
+    <v:String x:Key="FirstName">Имя</v:String>
+    <v:String x:Key="Surname">Фамилия</v:String>
 </ResourceDictionary>

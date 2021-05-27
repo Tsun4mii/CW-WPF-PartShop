@@ -6,7 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -30,31 +32,28 @@ namespace CourseWork.ViewModels.AdminViewModels
                 OnPropertyChanged("SelectedOrder");
             }
         }
-        public UndoCommand<Order> deleteCommand;
+        public Command deleteCommand;
         public ICommand DeleteCommand
         {
             get
             {
                 return deleteCommand ??
-                  (deleteCommand = new UndoCommand<Order>(obj =>
+                  (deleteCommand = new Command(obj =>
                   {
-                      if (selectedOrder != null)
+                      try
                       {
-                          Order order = new Order();
-                          order = selectedOrder;
-                          Orders.Remove(order);
-                          deletedOrders.Add(order);
+                          if (selectedOrder != null)
+                          {
+                              Order order = new Order();
+                              order = selectedOrder;
+                              Orders.Remove(order);
+                              deletedOrders.Add(order);
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Заказ был удален");
+                          }
                       }
-                      return selectedOrder;
-                  },
-                  obj =>
-                  {
-                      if (selectedOrder != null)
+                      catch(Exception e)
                       {
-                          Order user = new Order();
-                          user = selectedOrder;
-                          Orders.Add(user);
-                          deletedOrders.Remove(user);
+                          MessageBox.Show(e.Message);
                       }
                   }
                 ));
@@ -67,12 +66,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return saveCommand ??
                   (saveCommand = new Command(obj =>
                   {
-                      foreach (Order i in deletedOrders)
+                      try
                       {
-                          App.db.Orders.Remove(i);
+                          foreach (Order i in deletedOrders)
+                          {
+                              App.db.Orders.Remove(i);
+                          }
+                          App.db.SaveChanges();
+                          deletedOrders.Clear();
                       }
-                      App.db.SaveChanges();
-                      deletedOrders.Clear();
+                      catch (Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

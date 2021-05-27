@@ -32,7 +32,25 @@ namespace CourseWork.ViewModels
                 OnPropertyChanged("ErrorMessage");
             }
         }
-
+        private Command backCommand;
+        public ICommand BackCommand
+        {
+            get
+            {
+                return backCommand ??
+                  (backCommand = new Command(obj =>
+                  {
+                      try
+                      {
+                          SingletonAuth.getInstance(null).StartViewModel.CurrentViewModel = new LoginViewModel();
+                      }
+                      catch (Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
+                  }));
+            }
+        }
         public Command regCommand;
         public ICommand RegCommand
         {
@@ -47,9 +65,13 @@ namespace CourseWork.ViewModels
                          {
                              User user = new User();
                              user.Login = login;
-                             if (password != null)
+                             if (password != null & password[0] != ' ')
                              {
                                  user.Password = SecurePassService.Hash(password);
+                             }
+                             else
+                             {
+                                 throw new Exception("Не верный формат пароля");
                              }
                              user.FirstName = firstname;
                              user.LastName = lastname;

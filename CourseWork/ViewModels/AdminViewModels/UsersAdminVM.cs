@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -32,11 +33,7 @@ namespace CourseWork.ViewModels.AdminViewModels
             }
         }
 
-        public static UndoManager<User> undoCommandManager = new UndoManager<User>();
-
-        public UndoCommand<User> deleteCommand;
-        private Command undoCommand;
-        private Command redoCommand;
+        public Command deleteCommand;
         private Command saveCommand;
 
         public ICommand DeleteCommand
@@ -44,25 +41,22 @@ namespace CourseWork.ViewModels.AdminViewModels
             get
             {
                 return deleteCommand ??
-                  (deleteCommand = new UndoCommand<User>(obj =>
+                  (deleteCommand = new Command(obj =>
                   {
-                      if(selectedUser != null)
+                      try
                       {
-                          User user = new User();
-                          user = selectedUser;
-                          Users.Remove(user);
-                          deletedUsers.Add(user);
+                          if (selectedUser != null)
+                          {
+                              User user = new User();
+                              user = selectedUser;
+                              Users.Remove(user);
+                              deletedUsers.Add(user);
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Пользователь был удален");
+                          }
                       }
-                      return selectedUser;
-                  },
-                  obj =>
-                  {
-                      if(selectedUser != null)
+                      catch(Exception e)
                       {
-                          User user = new User();
-                          user = selectedUser;
-                          Users.Add(user);
-                          deletedUsers.Remove(user);
+                          MessageBox.Show(e.Message);
                       }
                   }
                 ));
@@ -75,36 +69,22 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return saveCommand ??
                   (saveCommand = new Command(obj =>
                   {
-                      foreach(User i in deletedUsers)
+                      try
                       {
-                          App.db.Users.Remove(i);
+                          foreach (User i in deletedUsers)
+                          {
+                              App.db.Users.Remove(i);
+                          }
+                          App.db.SaveChanges();
+                          deletedUsers.Clear();
                       }
-                      App.db.SaveChanges();
-                      deletedUsers.Clear();
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }
-        public ICommand UndoCommand
-        {
-            get
-            {
-                return undoCommand ??
-                  (undoCommand = new Command(obj =>
-                  {
-                      undoCommandManager.Undo();
-                  }));
-            }
-        }
-        public ICommand RedoCommand
-        {
-            get
-            {
-                return redoCommand ??
-                  (redoCommand = new Command(obj =>
-                  {
-                      undoCommandManager.Redo();
-                  }));
-            }
-        }
+        
     }
 }

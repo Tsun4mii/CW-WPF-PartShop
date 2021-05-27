@@ -31,7 +31,7 @@
         </Grid>
         <Grid Grid.Column="1">
             <materialDesign:Card Margin="5" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                <Button VerticalAlignment="Top" Margin="10" Content="Save" Command="{Binding SaveCommand}" Style="{StaticResource RoundedButtonStyle}" Height="40"/>
+                <Button VerticalAlignment="Top" Margin="10" Content="{DynamicResource Save}" Command="{Binding SaveCommand}" Style="{StaticResource RoundedButtonStyle}" Height="40"/>
             </materialDesign:Card>
         </Grid>
     </Grid>

@@ -39,8 +39,6 @@ namespace CourseWork.ViewModels
                       {
                           if (Convert.ToInt32(codeFromView) == code)
                           {
-                              //App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.canceled;
-                              //App.db.SaveChanges();
                               List<OrderedParts> prts = new List<OrderedParts>(App.db.OrderedParts.Where(x => x.OrderId == orderId));
                               foreach (var p in prts)
                               {

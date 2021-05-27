@@ -38,10 +38,6 @@ namespace CourseWork.ViewModels
                 return exit ??
                  (exit = new Command(obj =>
                  {
-                     //AuthView auth = new AuthView();
-                     //auth.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                     //auth.Show();
-                     //Close();
                      Application.Current.Shutdown();
                      System.Diagnostics.Process.Start(Environment.GetCommandLineArgs()[0]);
                  }));

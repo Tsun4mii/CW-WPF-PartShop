@@ -20,21 +20,21 @@
             <ColumnDefinition Width="128*"/>
             <ColumnDefinition Width="73*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            <materialDesign:Card UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                <TextBox Text="{Binding CardNumber}" materialDesign:HintAssist.Hint="Card nubmer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,40,0,0" Width="250"/>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="#321f28">
+            <materialDesign:Card Background="Gray" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" Width="230" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" >
+                <TextBox Background="Gray" Foreground="Black" Text="{Binding CardNumber}" materialDesign:HintAssist.Hint="Card nubmer" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalAlignment="Left"  Width="230"/>
             </materialDesign:Card>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="2">
-            <materialDesign:Card UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="0,2,0,0">
+        <Grid Grid.Row="1" Grid.Column="2">
+            <materialDesign:Card VerticalAlignment="Bottom" Margin="0,0,5,10" Height="40" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" Background="Gray" >
                 <TextBox Text="{Binding CvvCode}" materialDesign:HintAssist.Hint="CVV" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <TextBox Text="{Binding Balance}" materialDesign:HintAssist.Hint="Balance" Width="100"/>
         </Grid>
-        <Grid Grid.Row="3" Grid.Column="2">
-            <Button Command="{Binding AddCard}"/>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Button Command="{Binding AddCard}" Style="{StaticResource RoundedButtonStyle}" Background="#321f28" Content="Добавить" Foreground="White"/>
         </Grid>
     </Grid>
 </Window>

@@ -8,7 +8,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -32,13 +34,13 @@ namespace CourseWork.ViewModels.AdminViewModels
                 OnPropertyChanged("SelectedDelivery");
             }
         }
-        public UndoCommand<Delivery> deleteCommand;
+        public Command deleteCommand;
         public ICommand DeleteCommand
         {
             get
             {
                 return deleteCommand ??
-                  (deleteCommand = new UndoCommand<Delivery>(obj =>
+                  (deleteCommand = new Command(obj =>
                   {
                       if (selectedDelivery != null)
                       {
@@ -46,18 +48,9 @@ namespace CourseWork.ViewModels.AdminViewModels
                           delivery = selectedDelivery;
                           Deliveries.Remove(delivery);
                           deletedDeliveries.Add(delivery);
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Служба доставки была удалена");
                       }
-                      return selectedDelivery;
-                  },
-                  obj =>
-                  {
-                      if (selectedDelivery != null)
-                      {
-                          Delivery delivery = new Delivery();
-                          delivery = selectedDelivery;
-                          Deliveries.Add(delivery);
-                          deletedDeliveries.Remove(delivery);
-                      }
+                     
                   }
                 ));
             }

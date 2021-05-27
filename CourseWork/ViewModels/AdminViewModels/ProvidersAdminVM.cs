@@ -6,7 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -30,31 +32,28 @@ namespace CourseWork.ViewModels.AdminViewModels
                 OnPropertyChanged("SelectedProvider");
             }
         }
-        public UndoCommand<Provider> deleteCommand;
+        public Command deleteCommand;
         public ICommand DeleteCommand
         {
             get
             {
                 return deleteCommand ??
-                  (deleteCommand = new UndoCommand<Provider>(obj =>
+                  (deleteCommand = new Command(obj =>
                   {
-                      if (selectedProvider != null)
+                      try
                       {
-                          Provider provider = new Provider();
-                          provider = selectedProvider;
-                          Providers.Remove(provider);
-                          deletedProviders.Add(provider);
+                          if (selectedProvider != null)
+                          {
+                              Provider provider = new Provider();
+                              provider = selectedProvider;
+                              Providers.Remove(provider);
+                              deletedProviders.Add(provider);
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Поставщик был удален");
+                          }
                       }
-                      return selectedProvider;
-                  },
-                  obj =>
-                  {
-                      if (selectedProvider != null)
+                      catch(Exception e)
                       {
-                          Provider provider = new Provider();
-                          provider = selectedProvider;
-                          Providers.Add(provider);
-                          deletedProviders.Remove(provider);
+                          MessageBox.Show(e.Message);
                       }
                   }
                 ));
@@ -67,12 +66,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return saveCommand ??
                   (saveCommand = new Command(obj =>
                   {
-                      foreach (Provider i in deletedProviders)
+                      try
                       {
-                          App.db.Providers.Remove(i);
+                          foreach (Provider i in deletedProviders)
+                          {
+                              App.db.Providers.Remove(i);
+                          }
+                          App.db.SaveChanges();
+                          deletedProviders.Clear();
                       }
-                      App.db.SaveChanges();
-                      deletedProviders.Clear();
+                      catch(Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
                   }));
             }
         }

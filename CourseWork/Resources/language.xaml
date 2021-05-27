@@ -43,4 +43,22 @@
     <v:String x:Key="Confirm">To confirm the order, check your email and enter a five-digit code</v:String>
     <v:String x:Key="CancelOrder">To cancel the order, check your email and enter the code you received</v:String>
     <v:String x:Key="ConfirmButton">Confirm</v:String>
+    <v:String x:Key="Users">Users</v:String>
+    <v:String x:Key="Cards">Cards</v:String>
+    <v:String x:Key="Marks">Marks</v:String>
+    <v:String x:Key="Orders">Orders</v:String>
+    <v:String x:Key="Providers">Providers</v:String>
+    <v:String x:Key="Deliveries">Deliveries</v:String>
+    <v:String x:Key="Parts">Parts</v:String>
+    <v:String x:Key="Categories">Categories</v:String>
+    <v:String x:Key="Save">Save</v:String>
+    <v:String x:Key="Add">Add</v:String>
+    <v:String x:Key="Login">LOGIN</v:String>
+    <v:String x:Key="Register">Register</v:String>
+    <v:String x:Key="Registration">REGISTRATION</v:String>
+    <v:String x:Key="Password">Password</v:String>
+    <v:String x:Key="Login2">Login</v:String>
+    <v:String x:Key="Email">Email</v:String>
+    <v:String x:Key="FirstName">Name</v:String>
+    <v:String x:Key="Surname">Surname</v:String>
 </ResourceDictionary>

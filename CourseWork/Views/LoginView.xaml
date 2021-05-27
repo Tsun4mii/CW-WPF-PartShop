@@ -23,15 +23,15 @@
             </Rectangle.Effect>
         </Rectangle>
         <Grid VerticalAlignment="Bottom" Margin="35,80" Height="260">
-            <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" FontFamily="Helvetica"/>
+            <Label Content="{DynamicResource Login}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" FontFamily="Helvetica"/>
             <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Margin="30" Foreground="Red" FontSize="12" FontFamily="Helvetica" MaxWidth="280" TextWrapping="Wrap"/>
             <StackPanel VerticalAlignment="Center" Margin="15,40,15,0">
-                <TextBox Margin="0,10" materialDesign:HintAssist.Hint="Login" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                <PasswordBox Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" x:Name="password_textbox" PasswordChanged="PasswordBox_PasswordChanged"/>
+                <TextBox Margin="0,10" materialDesign:HintAssist.Hint="{DynamicResource Login2}" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <PasswordBox Margin="0,10" materialDesign:HintAssist.Hint="{DynamicResource Password}" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18" x:Name="password_textbox" PasswordChanged="PasswordBox_PasswordChanged"/>
             </StackPanel>
         </Grid>
-        <Button Style="{StaticResource RoundedButtonStyle}" Width="150" Command="{Binding AuthCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN"/>
-        <Button Style="{StaticResource RoundedButtonStyle}" Width="150" Command="{Binding OpenRegCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,38" Content="REG"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" Width="150" Command="{Binding AuthCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="{DynamicResource Login}"/>
+        <Button Style="{StaticResource RoundedButtonStyle}" Width="150" Command="{Binding OpenRegCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,38" Content="{DynamicResource Registration}"/>
         <materialDesign:PackIcon Kind="Home" Width="100" Height="100" VerticalAlignment="Top" Margin="125,30,0,0"/>
         <!--<TextBox x:Name="login_textbox" Text="{Binding login}" Margin="0,-142,412.2,0"/>
             <PasswordBox x:Name="password_textbox" Height="50" PasswordChanged="PasswordBox_PasswordChanged" Margin="0,55,412.2,56"/>

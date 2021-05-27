@@ -23,16 +23,19 @@
             </Rectangle.Effect>
         </Rectangle>
         <Grid VerticalAlignment="Bottom" Margin="35.2,0,35.2,30" Height="350">
-            <Label Content="REGISTRATION" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <Button  Content="{materialDesign:PackIcon Kind=ArrowBack}" Style="{StaticResource RoundedButtonStyle}" Width="40" Command="{Binding BackCommand}"/>
+                <Label Content="{DynamicResource Registration}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="45,0,0,0" Foreground="Gray" FontSize="18"/>
+            </StackPanel>
             <TextBlock Text="{Binding ErrorMessage}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="35" Foreground="Red" FontSize="12" TextWrapping="Wrap"/>
             <StackPanel VerticalAlignment="Center" Margin="10">
-                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="Login" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
-                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="Email" Text="{Binding mail}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
-                <PasswordBox Margin="0,5" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="14" x:Name="password_textbox" PasswordChanged="PasswordBox_PasswordChanged"/>
-                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="First name" Text="{Binding firstname}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
-                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="Last name" Text="{Binding lastname}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
+                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="{DynamicResource Login2}" Text="{Binding login}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
+                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="{DynamicResource Email}" Text="{Binding mail}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
+                <PasswordBox Margin="0,5" materialDesign:HintAssist.Hint="{DynamicResource Password}" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="14" x:Name="password_textbox" PasswordChanged="PasswordBox_PasswordChanged"/>
+                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="{DynamicResource FirstName}" Text="{Binding firstname}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
+                <TextBox Margin="0,5" materialDesign:HintAssist.Hint="{DynamicResource Surname}" Text="{Binding lastname}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="14"/>
             </StackPanel>
         </Grid>
-        <Button Width="150" Command="{Binding RegCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20" Content="REGISTER"/>
+        <Button Width="150" Command="{Binding RegCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20" Content="{DynamicResource Register}" Style="{StaticResource RoundedButtonStyle}"/>
     </Grid>
 </UserControl>
