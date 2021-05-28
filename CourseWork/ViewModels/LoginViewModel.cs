@@ -67,10 +67,6 @@ namespace CourseWork.ViewModels
                                  Settings.Default.UserMail = authUser.Email;
                                  Settings.Default.UserId = authUser.Id;
                              }
-                             else
-                             {
-                                 MessageBox.Show("Bad");
-                             }
                          }
                      }
                      catch(Exception e)

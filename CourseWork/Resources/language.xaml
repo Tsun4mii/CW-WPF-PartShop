@@ -61,4 +61,5 @@
     <v:String x:Key="Email">Email</v:String>
     <v:String x:Key="FirstName">Name</v:String>
     <v:String x:Key="Surname">Surname</v:String>
+    <v:String x:Key="Deposit">Deposit</v:String>
 </ResourceDictionary>

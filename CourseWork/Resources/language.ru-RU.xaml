@@ -61,4 +61,5 @@
     <v:String x:Key="Email">Электронная почта</v:String>
     <v:String x:Key="FirstName">Имя</v:String>
     <v:String x:Key="Surname">Фамилия</v:String>
+    <v:String x:Key="Deposit">Пополнить</v:String>
 </ResourceDictionary>

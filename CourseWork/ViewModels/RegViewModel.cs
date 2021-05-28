@@ -73,6 +73,10 @@ namespace CourseWork.ViewModels
                              {
                                  throw new Exception("Не верный формат пароля");
                              }
+                             if(firstname == null || lastname == null)
+                             {
+                                 throw new Exception("Не введены имя или фамилия");
+                             }
                              user.FirstName = firstname;
                              user.LastName = lastname;
                              user.Is_admin = false;
@@ -89,12 +93,6 @@ namespace CourseWork.ViewModels
                                      db.SaveChanges();
                                      SingletonAuth.getInstance(null).StartViewModel.CurrentViewModel = new LoginViewModel();
                                  }
-                             }
-                             else
-                             {
-                                 db.Users.Add(user);
-                                 db.SaveChanges();
-                                 SingletonAuth.getInstance(null).StartViewModel.CurrentViewModel = new LoginViewModel();
                              }
                          }
                      }

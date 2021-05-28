@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CourseWork.ViewModels.AdminViewModels.AddDeliveryVM" Collapsed="true">
+    <Position X="36" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAAAAAAAAAEAAAABAAAA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\AddDeliveryVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.AddPartVM" Collapsed="true">
+    <Position X="24.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAkCgAIBQAAACUAABABEAAAAQQigAAAAAA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\AddPartVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.CardsAdminVM" Collapsed="true">
+    <Position X="31.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAEAAQAAAAEIAAAAAAAAAAQAAAAEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\CardsAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.CategoriesAdminVM" Collapsed="true">
+    <Position X="32" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIgCAECCAAAAAAAACAAEAAAAAQgAAAEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\CategoriesAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.DeliveriesAdminVM" Collapsed="true">
+    <Position X="26.75" Y="11.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAABAEAAEQEAAAAAAAAAAQAAAAEAQAAAAEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\DeliveriesAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.HomeAdminVM" Collapsed="true">
+    <Position X="36.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\HomeAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.MainAdminVM" Collapsed="true">
+    <Position X="33.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAAAAAEGAAABBgAAAAIAIABAEKIAQFCCAABAA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\MainAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.MarksAdminVM" Collapsed="true">
+    <Position X="27.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAECAQAQAAEAAAAAAAAAAEQAAAAEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\MarksAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.OrdersAdminVM" Collapsed="true">
+    <Position X="33.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAgAAEAIAAAAAAAAAAAAAAAAAQAAAAkAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\OrdersAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.PartsAdminVM" Collapsed="true">
+    <Position X="34.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAARAAAAEAAAABAAAAAQQAAAQEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\PartsAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.ProvidersAdminVM" Collapsed="true">
+    <Position X="38" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAEIAAAAACAAAAAAAAAAAAwAAAAEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\ProvidersAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AdminViewModels.UsersAdminVM" Collapsed="true">
+    <Position X="34.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAIQAABCEAQA=</HashCode>
+      <FileName>ViewModels\AdminViewModels\UsersAdminVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AboutViewModel" Collapsed="true">
+    <Position X="31.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAQACAAEAAgAAA=</HashCode>
+      <FileName>ViewModels\AboutViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AddCardViewModel" Collapsed="true">
+    <Position X="24.75" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAACA=</HashCode>
+      <FileName>ViewModels\AddCardViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.AuthViewModel" Collapsed="true">
+    <Position X="36" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAQAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ViewModels\AuthViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.CancelOrderViewModel" Collapsed="true">
+    <Position X="36.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAEAAAAAAAIAAIAAAAAAAAAAQABAAAAQ=</HashCode>
+      <FileName>ViewModels\CancelOrderViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.CartViewModel" Collapsed="true">
+    <Position X="38" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARDAAAUgACAEAAAAERAAIAEAAIAAEAAAAQQAIAAQgAE=</HashCode>
+      <FileName>ViewModels\CartViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.ChangePasswordViewModel" Collapsed="true">
+    <Position X="31.75" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAABIAAAAAICAIAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ChangePasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.ConfirmOrderViewModel" Collapsed="true">
+    <Position X="29" Y="11.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAABACAAAAAAAAAAABAAIAAAACAAAQAAABAAAAA=</HashCode>
+      <FileName>ViewModels\ConfirmOrderViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.FullInfoViewModel" Collapsed="true">
+    <Position X="26.75" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAICAAAAAAAAAAABAAAAAAAAAAAAAAAAAACCA=</HashCode>
+      <FileName>ViewModels\FullInfoViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.HomeViewModel" Collapsed="true">
+    <Position X="27.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAACAACCAAARAAAAEQIIEAAAABAAQgAAADIpA=</HashCode>
+      <FileName>ViewModels\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="39.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAAAAAAAAAgAAAAKAAAAAgAAAAAAAAgCAEAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="38.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAIAAAgCAEAIAABAAAAAAgIAAAMCIAABACGAAAA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.ProfileViewModel" Collapsed="true">
+    <Position X="29.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQFBIAGAEAAggIAAoAgAAAAIAAAAAAAAABAQAgAAACY=</HashCode>
+      <FileName>ViewModels\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.RegViewModel" Collapsed="true">
+    <Position X="25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAIAAhICAAAAAAAAAAAAAEAAAAAAAAAAggAEAE=</HashCode>
+      <FileName>ViewModels\RegViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.SearchViewModel" Collapsed="true">
+    <Position X="29.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAACACAACAAAARAAAAEAAYAAECAAAAQgAAACgYA=</HashCode>
+      <FileName>ViewModels\SearchViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.SettingsViewModel" Collapsed="true">
+    <Position X="29.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAABCAQAAAgAAAAIAAgAAAAAA=</HashCode>
+      <FileName>ViewModels\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourseWork.ViewModels.ViewModelBase" Collapsed="true">
+    <Position X="31.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

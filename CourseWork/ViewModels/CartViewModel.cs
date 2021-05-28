@@ -113,11 +113,18 @@ namespace CourseWork.ViewModels
                   {
                       try
                       {
-                          if (Card == null)
+                          if (Parts.Count() == 0)
+                          {
+                              throw new Exception("Невозможно заказать пустую корзину");
+                          }
+                          else if (Card == null)
                           {
                               throw new Exception("Для покупки должна быть привязана карта");
                           }
-                          AddOrder(Parts);
+                          else
+                          {
+                              AddOrder(Parts);
+                          }
                       }
                       catch(Exception e)
                       {
@@ -171,8 +178,8 @@ namespace CourseWork.ViewModels
                     order.OrderDate = DateTime.Now;
                     order.OrderState = Resources.waiting;
                     List<OrderedParts> details = new List<OrderedParts>();
-                    foreach (Part i in Parts)                                      //--Огромный ебучий кастыль(но работает)
-                    {                                                              //--Решает баг с дублированием объектов в бд
+                    foreach (Part i in Parts)                                      
+                    {                                                              
                         if(i.Amount > db.Parts.Where(x => x.PartId == i.PartId).FirstOrDefault().Quantity)
                         {
                             throw new Exception($"Товаров {i.Name} недостаточно на складе для заказа");

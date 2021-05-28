@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels
 {
@@ -148,6 +149,35 @@ namespace CourseWork.ViewModels
                   }));
             }
         }
+        private Command deleteCard;
+        public ICommand DeleteCard
+        {
+            get
+            {
+                return deleteCard ??
+                  (deleteCard = new Command(obj =>
+                  {
+                      try
+                      {
+                          Card card = App.db.Cards.Where(x => x.UserId == Settings.Default.UserId).FirstOrDefault();
+                          if (card != null)
+                          {
+                              App.db.Cards.Remove(card);
+                              App.db.SaveChanges();
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowWarning("Привязка карты была отменена");
+                          }
+                          else
+                          {
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowError("Невозможно отвязать непривазанную карту");
+                          }
+                      }
+                      catch (Exception e)
+                      {
+                          MessageBox.Show(e.Message);
+                      }
+                  }));
+            }
+        }
         private Command changePassword;
         public ICommand ChangePassword
         {
@@ -174,6 +204,7 @@ namespace CourseWork.ViewModels
                           {
                               App.db.Cards.Where(x => x.CardId == Card.CardId).FirstOrDefault().Balance += plusBalance;
                               App.db.SaveChanges();
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess($"Баланс был пополнен на {plusBalance}");
                           }
                           else
                           {

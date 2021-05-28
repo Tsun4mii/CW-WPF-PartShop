@@ -3,6 +3,7 @@ using CourseWork.Models;
 using CourseWork.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,17 @@ namespace CourseWork.ViewModels
                           App.db.Cards.Add(card);
                           App.db.SaveChanges();
                       }
-                      catch(Exception e)
+                      catch (DbEntityValidationException e)
+                      {
+                          foreach (DbEntityValidationResult validationRes in e.EntityValidationErrors)
+                          {
+                              foreach (DbValidationError err in validationRes.ValidationErrors)
+                              {
+                                  MessageBox.Show(err.ErrorMessage);
+                              }
+                          }
+                      }
+                      catch (Exception e)
                       {
                           MessageBox.Show(e.Message);
                       }

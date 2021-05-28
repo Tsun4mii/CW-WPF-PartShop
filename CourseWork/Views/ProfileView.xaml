@@ -76,6 +76,11 @@
                     <Grid Grid.Row="3" Grid.Column="3">
                         <Image Source="E:\2nd course\OOP\CW\CourseWork\CourseWork\Resources\Images\visa1.png"></Image>
                     </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2">
+                        <Button Style="{StaticResource RoundedButtonStyle}" Margin="3" Width="70" Command="{Binding DeleteCard}">
+                            <materialDesign:PackIcon Kind="Minus" Width="10" Height="10"/>
+                        </Button>
+                    </Grid>
                     <Grid Grid.Row="0" Grid.Column="3">
                         <Button Style="{StaticResource RoundedButtonStyle}" Margin="3" Command="{Binding AddCard}">
                             <materialDesign:PackIcon Kind="Add" Width="10" Height="10"/>
@@ -91,10 +96,10 @@
                         <TextBlock Text="{Binding FullName}" Foreground="White" Margin="20,0,0,0"/>
                     </Grid>
                     <Grid Grid.Row="4" Grid.Column="0">
-                        <TextBox materialDesign:HintAssist.Hint="пополнить" Foreground="white" Text="{Binding plusBalance}"/>
+                        <TextBox materialDesign:HintAssist.Hint="{DynamicResource Deposit}" Foreground="white" Text="{Binding plusBalance}"/>
                     </Grid>
                     <Grid Grid.Row="4" Grid.Column="1">
-                        <Button Style="{StaticResource RoundedButtonStyle}" Height="25" Width="80" Content="Пополнить" Command="{Binding Deposit}"/>
+                        <Button Style="{StaticResource RoundedButtonStyle}" Height="25" Width="80" Content="{DynamicResource Deposit}" Command="{Binding Deposit}"/>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

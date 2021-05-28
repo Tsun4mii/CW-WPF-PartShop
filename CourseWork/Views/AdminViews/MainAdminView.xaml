@@ -16,7 +16,14 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="274*"/>
         </Grid.ColumnDefinitions>
-
+        <Grid Grid.Row="0" Grid.Column="0">
+            <materialDesign:Card Margin="10,0,10,0" UniformCornerRadius="5" materialDesign:ShadowAssist.ShadowDepth="Depth4" Background="#734046">
+                <Grid>
+                    <TextBlock Text="AutoLight" FontSize="35" FontFamily="Helvetica" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Opacity="0.5 "/>
+                    <TextBlock Text="AutoLight" Margin="5,5,0,0" FontSize="35" FontFamily="Helvetica" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
 
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">

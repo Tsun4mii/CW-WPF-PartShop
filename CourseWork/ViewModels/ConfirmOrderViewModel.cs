@@ -49,7 +49,7 @@ namespace CourseWork.ViewModels
                   {
                       try
                       {
-                          if (code == Convert.ToInt32(codeFromBox)) //--ToDo: Переделать. Передавать определенный заказ и его потом изменять.
+                          if (code == Convert.ToInt32(codeFromBox))
                           {
                               App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
                               App.db.SaveChanges();
