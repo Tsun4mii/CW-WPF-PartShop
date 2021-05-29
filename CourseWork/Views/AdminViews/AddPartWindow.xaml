@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseWork.Views.AdminViews"
         mc:Ignorable="d"
-        Title="AddPartWindow" Height="450" Width="800" Background="#a05344">
+        Title="Add part" Height="450" Width="800" Background="#a05344">
     <Grid>
         <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
             <Grid>

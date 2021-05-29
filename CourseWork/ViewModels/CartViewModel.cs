@@ -120,6 +120,7 @@ namespace CourseWork.ViewModels
                           else if (Card == null)
                           {
                               throw new Exception("Для покупки должна быть привязана карта");
+
                           }
                           else
                           {
@@ -129,6 +130,7 @@ namespace CourseWork.ViewModels
                       catch(Exception e)
                       {
                           ErrorMessage = e.Message;
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowError(e.Message);
                       }
                   }));
             }

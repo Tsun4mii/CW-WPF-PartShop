@@ -1,6 +1,7 @@
 ﻿using CourseWork.Commands;
 using CourseWork.Models;
 using CourseWork.Properties;
+using CourseWork.Views;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels
 {
@@ -35,6 +37,9 @@ namespace CourseWork.ViewModels
                           card.UserId = Settings.Default.UserId;
                           App.db.Cards.Add(card);
                           App.db.SaveChanges();
+                          this.Close();
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Карта была успешно привязана");
+                          
                       }
                       catch (DbEntityValidationException e)
                       {
@@ -51,6 +56,16 @@ namespace CourseWork.ViewModels
                           MessageBox.Show(e.Message);
                       }
                   }));
+            }
+        }
+        public void Close()
+        {
+            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window.DataContext == this)
+                {
+                    window.Close();
+                }
             }
         }
     }

@@ -34,7 +34,7 @@ namespace CourseWork.ViewModels
                       {
                           Random random = new Random();
                           code = random.Next(99999);
-                          EmailSenderService.SendCode(Settings.Default.UserMail, code).GetAwaiter();
+                          EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код для смены пароля", "Никому не сообщайте данный пароль!\nКод для смены пароля: ").GetAwaiter();
                       }
                       catch(Exception e)
                       {

@@ -3,6 +3,7 @@ using CourseWork.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace CourseWork.ViewModels.AdminViewModels
     {
         public ObservableCollection<Provider> Providers { get; set; }
         public ObservableCollection<Provider> deletedProviders { get; set; }
+        public string Name { get; set; }
+        public string Mail { get; set; }
         public ProvidersAdminVM()
         {
             Providers = new ObservableCollection<Provider>(App.db.Providers);
@@ -57,6 +60,43 @@ namespace CourseWork.ViewModels.AdminViewModels
                       }
                   }
                 ));
+            }
+        }
+        private Command addCommand;
+        public ICommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                  (addCommand = new Command(obj =>
+                  {
+                      try
+                      {
+                          if (Name == null | Mail == null)
+                          {
+                              throw new Exception("Для добавления должны быть введены все параметры");
+                          }
+                          Provider provider = new Provider();
+                          provider.Name = Name;
+                          provider.Email = Mail;
+                          App.db.Providers.Add(provider);
+                          App.db.SaveChanges();
+                      }
+                      catch (DbEntityValidationException e)
+                      {
+                          foreach (DbEntityValidationResult validationRes in e.EntityValidationErrors)
+                          {
+                              foreach (DbValidationError err in validationRes.ValidationErrors)
+                              {
+                                  App.NotifyWindow(Application.Current.Windows[0]).ShowError(err.ErrorMessage);
+                              }
+                          }
+                      }
+                      catch (Exception e)
+                      {
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowError(e.Message);
+                      }
+                  }));
             }
         }
         public ICommand SaveCommand

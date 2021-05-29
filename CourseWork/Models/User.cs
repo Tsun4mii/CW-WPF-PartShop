@@ -19,7 +19,9 @@ namespace CourseWork.Models
         [RegularExpression(@"^[A-Za-z0-9]+$", ErrorMessage = "Пароль должен состоять только из английских символов и цифр")]
         public string Password { get; set; }
         public bool Is_admin { get; set; }
+        [RegularExpression(@"^[A-Z]{1}[a-z]+", ErrorMessage = "Имя должно начинатсья с большой буквы и написано латинецей")]
         public string FirstName { get; set; }
+        [RegularExpression(@"^[A-Z]{1}[a-z]+", ErrorMessage = "Фамилия должно начинатсья с большой буквы и написано латинецей")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Электронная почта обязательна")]
         [RegularExpression(@"^([a-zA-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$", ErrorMessage = "Неверный формат email")]

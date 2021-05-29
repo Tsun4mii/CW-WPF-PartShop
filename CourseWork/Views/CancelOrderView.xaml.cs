@@ -23,15 +23,9 @@ namespace CourseWork.Views
     /// </summary>
     public partial class CancelOrderView : UserControl
     {
-        CancelOrderViewModel a = new CancelOrderViewModel();
         public CancelOrderView()
         {
             InitializeComponent();
-            DataContext = a;
-            Random random = new Random();
-            int code = random.Next(99999);
-            EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код отмены", "Никому не сообщайте данный код! \nКод подтверждения: ").GetAwaiter();
-            a.code = code;
         }
     }
 }

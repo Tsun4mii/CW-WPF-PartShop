@@ -74,6 +74,10 @@ namespace CourseWork.ViewModels.AdminViewModels
                   {
                       try
                       {
+                          if(Name == null | Quantity == null | selectedProvider == null| selectedMark == null | Price == null | Description == null | FullDescription == null | selectedCategory == null)
+                          {
+                              throw new Exception("Все ключевые поля должны быть заполнены");
+                          }
                           if (Convert.ToInt32(Quantity) <= 0)
                           {
                               throw new Exception("Количество не может быть меньше или равна 0");
@@ -82,6 +86,7 @@ namespace CourseWork.ViewModels.AdminViewModels
                           {
                               throw new Exception("Цена не может быть меньше или равно 0");
                           }
+
                           Part part = new Part();
                           part.Name = Name;
                           part.Quantity = Convert.ToInt32(Quantity);
@@ -94,6 +99,7 @@ namespace CourseWork.ViewModels.AdminViewModels
                           part.MarkId = selectedMark.MarkId;
                           App.db.Parts.Add(part);
                           App.db.SaveChanges();
+                          this.Close();
                           App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Деталь была добавлена");
                       }
                       catch(Exception e)
@@ -101,6 +107,16 @@ namespace CourseWork.ViewModels.AdminViewModels
                           App.NotifyWindow(Application.Current.Windows[0]).ShowError(e.Message);
                       }
                   }));
+            }
+        }
+        public void Close()
+        {
+            foreach (System.Windows.Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window.DataContext == this)
+                {
+                    window.Close();
+                }
             }
         }
     }

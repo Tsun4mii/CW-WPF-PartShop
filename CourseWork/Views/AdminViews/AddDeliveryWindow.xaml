@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CourseWork.Views.AdminViews"
         mc:Ignorable="d"
-        Title="AddDeliveryWindow" Height="450" Width="400">
+        Title="Add delivery" Height="450" Width="400" Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89*"/>
@@ -16,16 +16,16 @@
             <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
-            <TextBox Height="50" materialDesign:HintAssist.HelperText="Name" Text="{Binding Name}"/>
+            <TextBox Height="30" materialDesign:HintAssist.HelperText="Name" Text="{Binding Name}"/>
         </Grid>
         <Grid Grid.Row="2">
-            <TextBox Height="50" materialDesign:HintAssist.HelperText="Price" Text="{Binding Price}"/>
+            <TextBox Height="30" materialDesign:HintAssist.HelperText="Price" Text="{Binding Price}"/>
         </Grid>
         <Grid Grid.Row="3">
-            <TextBox Height="50" materialDesign:HintAssist.HelperText="Description" Text="{Binding Description}"/>
+            <TextBox Height="30" materialDesign:HintAssist.HelperText="Description" Text="{Binding Description}"/>
         </Grid>
         <Grid Grid.Row="4">
-            <Button Command="{Binding AddDelivery}"/>
+            <Button Command="{Binding AddDelivery}" Style="{StaticResource RoundedButtonStyle}" Height="30" Content="{DynamicResource Add}"/>
         </Grid>
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ namespace CourseWork.Models
         [Key]
         public int ProviderId { get; set; }
         public string Name { get; set; }
+        [RegularExpression(@"^([a-zA-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$", ErrorMessage = "Неверный формат email")]
         public string Email { get; set; }
 
     }

@@ -92,16 +92,19 @@ namespace CourseWork.ViewModels.AdminViewModels
                   {
                       try
                       {
+                          if(NewMark == null)
+                          {
+                              throw new Exception("Для добавления марки должно быть введено ее название");
+                          }
                           Mark mark = new Mark();
                           mark.MarkName = NewMark;
                           App.db.Marks.Add(mark);
                           App.db.SaveChanges();
-                          deletedMarks.Clear();
                           App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Марка авто была успешно добавлена");
                       }
                       catch(Exception e)
                       {
-                          MessageBox.Show(e.Message);
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowError(e.Message);
                       }
                   }));
             }

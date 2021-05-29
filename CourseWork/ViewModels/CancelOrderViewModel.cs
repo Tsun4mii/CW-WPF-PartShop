@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels
 {
@@ -25,6 +26,9 @@ namespace CourseWork.ViewModels
         {
             orderForCancelation = App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault();
             userCard = App.db.Cards.Where(x => x.UserId == Settings.Default.UserId).FirstOrDefault();
+            Random random = new Random();
+            code = random.Next(99999);
+            EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код отмены", "Никому не сообщайте данный код! \nКод подтверждения: ").GetAwaiter();
 
         }
         private Command cancelOrder;
@@ -49,10 +53,11 @@ namespace CourseWork.ViewModels
                               orderForCancelation.OrderState = Resources.canceled;
                               userCard.Balance += Sum;
                               App.db.SaveChangesAsync();
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Ваш заказ отменен");
                           }
                           else
                           {
-                              throw new Exception("Ошибка кода");
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowError("Введен неверный код");
                           }
                       }
                       catch(Exception e)

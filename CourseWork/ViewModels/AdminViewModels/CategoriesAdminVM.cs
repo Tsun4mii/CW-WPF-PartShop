@@ -6,7 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using ToastNotifications.Messages;
 
 namespace CourseWork.ViewModels.AdminViewModels
 {
@@ -74,12 +76,23 @@ namespace CourseWork.ViewModels.AdminViewModels
                 return addCommand ??
                   (addCommand = new Command(obj =>
                   {
-                      Category category = new Category();
-                      category.Name = CategoryName;
-                      category.Description = Description;
-                      App.db.Categories.Add(category);
-                      App.db.SaveChanges();
-                      deletedCategories.Clear();
+                      try
+                      {
+                          if (CategoryName == null | Description == null)
+                          {
+                              throw new Exception("Для добавления категории должны быть введены все данные");
+                          }
+                          Category category = new Category();
+                          category.Name = CategoryName;
+                          category.Description = Description;
+                          App.db.Categories.Add(category);
+                          App.db.SaveChanges();
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Категория была добавлена");
+                      }
+                      catch(Exception e)
+                      {
+                          App.NotifyWindow(Application.Current.Windows[0]).ShowError(e.Message);
+                      }
                   }));
             }
         }

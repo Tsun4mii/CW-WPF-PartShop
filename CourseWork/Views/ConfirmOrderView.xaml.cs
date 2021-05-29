@@ -23,15 +23,9 @@ namespace CourseWork.Views
     /// </summary>
     public partial class ConfirmOrderView : UserControl
     {
-        ConfirmOrderViewModel a = new ConfirmOrderViewModel();
         public ConfirmOrderView()
         {
             InitializeComponent();
-            DataContext = a;
-            Random rand = new Random();
-            int code = rand.Next(99999);
-            EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код подтверждения", "Никому не сообщайте данный код! \nКод подтверждения: ").GetAwaiter();
-            a.code = code;
         }
     }
 }

@@ -24,22 +24,11 @@ namespace CourseWork.ViewModels
         public static int orderId;
         public Order order = App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault();
         public ConfirmOrderViewModel()
-        { }
-        public static Window wndw = Application.Current.Windows[0];
-        public static Notifier notifier = new Notifier(cfg =>
         {
-            cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: wndw,
-                corner: Corner.TopRight,
-                offsetX: 10,
-                offsetY: 10);
-
-            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(3),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
-
-            cfg.Dispatcher = Application.Current.Dispatcher;
-        });
+            Random rand = new Random();
+            code = rand.Next(99999);
+            EmailSenderService.SendCodeRefactor(Settings.Default.UserMail, code, "Код подтверждения", "Никому не сообщайте данный код! \nКод подтверждения: ").GetAwaiter();
+        }
         public ICommand SubmitCode
         {
             get
@@ -53,12 +42,12 @@ namespace CourseWork.ViewModels
                           {
                               App.db.Orders.Where(x => x.OrderId == orderId).FirstOrDefault().OrderState = Resources.acepted;
                               App.db.SaveChanges();
-                              notifier.ShowSuccess("Ваш заказ был подтвержден");
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowSuccess("Ваш заказ был подтвержден");
                               EmailSenderService.SendTicket(Settings.Default.UserMail, "Чек заказа", EmailSenderService.GenerateTicket(order)).GetAwaiter();
                           }
                           else
                           {
-                              notifier.ShowError("Введенный вами код ошибочный");
+                              App.NotifyWindow(Application.Current.Windows[0]).ShowError("Введен неверный код");
                           }
                       }
                       catch(Exception e)

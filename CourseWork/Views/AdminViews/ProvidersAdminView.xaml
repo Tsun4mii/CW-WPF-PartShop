@@ -33,6 +33,17 @@
             <materialDesign:Card Margin="10" materialDesign:ShadowAssist.ShadowDepth="Depth4" UniformCornerRadius="5">
                 <StackPanel Orientation="Horizontal">
                     <Button Command="{Binding SaveCommand}" Content="{DynamicResource Save}" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="70"/>
+                    <Button Command="{Binding AddCommand}" Content="{DynamicResource Add}" Style="{StaticResource RoundedButtonStyle}" Height="40" Width="70"/>
+                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource Name}"/>
+                            <TextBox Width="100" Text="{Binding Name}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
+                            <TextBlock Text="{DynamicResource Email}"/>
+                            <TextBox Width="100" Text="{Binding Mail}"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

@@ -8,7 +8,7 @@
         xmlns:viewmodel ="clr-namespace:CourseWork.ViewModels"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AuthView" Height="500" Width="350">
+        Title="AutoLight" Height="500" Width="350">
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
